@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+	<title>Plataforma Lattes</title> 
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+
+<body>
+
+<h1>Busca simplificada no Lattes</h1>
+
+<form name="buscaForm" method="POST" action="http://buscatextual.cnpq.br/buscatextual/busca.do">
+		<input id="metodo" type="hidden" name="metodo" value="buscar">
+		<input id="buscaNome" type="hidden" name="filtros.buscaNome" value="true" >
+		<input id="buscarDoutores" type="hidden" name="buscarDoutores" value="true" />
+		<input id="buscarDemais" type="hidden" name="buscarDemais" value="true" />
+
+		<br />Nome do pesquisador:
+		<br /><input id="textoBusca" type="text" name="textoBusca" value="" size="80" >
+		<br />
+		<br />Texto da imagem (captcha):
+		<br /><input id="palavra" type="text" name="palavra" class="input_captcha" />
+		<img src="http://buscatextual.cnpq.br/buscatextual/simagem" />
+
+		<br />
+		<br />
+		<input id="confirmarCaptcha" type="submit" value="Confirmar" />
+</form>
+
+</body>
+
+</html>

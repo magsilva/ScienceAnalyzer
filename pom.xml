@@ -1,0 +1,181 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>icmc-usp</groupId>
+	<artifactId>lattes-analyzer</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Lattes Analyzer</name>
+	<inceptionYear>2011</inceptionYear>
+
+	<organization>
+		<name>Institute of Mathematical Sciences and Computing</name>
+		<url>http://www.icmc.usp.br</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments />
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>magsilva</id>
+			<name>Marco Aurélio Graciotto Silva</name>
+			<email>magsilva@icmc.usp.br</email>
+			<url>http://www.icmc.usp.br/~magsilva/</url>
+			<organization>Ironia Corporation</organization>
+			<organizationUrl>http://www.ironiacorp.com</organizationUrl>
+			<timezone>+3</timezone>
+			<roles>
+				<role>Manager</role>
+				<role>Main developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<version>0.0.1</version>
+	<issueManagement>
+	</issueManagement>
+
+	<scm>
+	</scm>
+
+	<ciManagement>
+		<system>Hudson</system>
+		<url>http://www.ironiacorp.com/Apps/Hudson/job/Lattes-Analyzer</url>
+		<notifiers>
+			<notifier>
+				<type>mail</type>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>false</sendOnSuccess>
+				<sendOnWarning>true</sendOnWarning>
+				<address>magsilva@ironiacorp.com</address>
+			</notifier>
+		</notifiers>
+	</ciManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>labes-pc-010808-releases</id>
+			<name>labes-pc-010808-releases</name>
+			<url>http://www.ironiacorp.com/Apps/Artifactory/libs-releases-local</url>
+		</repository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>labes-pc-010808-releases</id>
+			<url>http://www.ironiacorp.com/Apps/Artifactory/repo</url>
+		</repository>
+	</repositories>
+
+	<properties>
+		<sonar.host.url>http://www.ironiacorp.com/Apps/Sonar/</sonar.host.url>
+		<!--
+			<sonar.core.codeCoveragePlugin>emma</sonar.core.codeCoveragePlugin>
+		-->
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>[4.0,)</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ironiacorp</groupId>
+			<artifactId>commons-http</artifactId>
+			<version>[1.2.2,)</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>ironiacorp</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>[2.2.0,)</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>[2.8,)</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.cssparser</groupId>
+			<artifactId>cssparser</artifactId>
+			<version>0.9.5</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.james</groupId>
+			<artifactId>apache-mime4j</artifactId>
+			<version>0.6.1</version>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${artifactId}-${version}</finalName>
+
+		<directory>target</directory>
+
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
+
+		<outputDirectory>target/classes</outputDirectory>
+		<testOutputDirectory>target/test-classes</testOutputDirectory>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<meminitial>128m</meminitial>
+					<maxmem>512m</maxmem>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>bin/</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<outputDirectory>site</outputDirectory>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.sonar-plugins</groupId>
+				<artifactId>maven-report</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
+</project>
