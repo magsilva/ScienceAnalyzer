@@ -6,24 +6,27 @@ import java.io.File;
 import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.sql.rowset.WebRowSet;
 
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.Executor;
 import org.apache.commons.exec.PumpStreamHandler;
+import org.apache.commons.lang.StringEscapeUtils;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.UnexpectedPage;
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlFont;
+import com.gargoylesoftware.htmlunit.WebRequest;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlHiddenInput;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
+import com.gargoylesoftware.htmlunit.util.NameValuePair;
 import com.ironiacorp.http.HttpJob;
 import com.ironiacorp.http.HttpJobRunner;
 import com.ironiacorp.http.HttpMethod;
@@ -33,9 +36,14 @@ import com.ironiacorp.io.IoUtil;
 
 public class Extractor
 {
+	private HttpJobRunner runner;
+
+	private WebClient browser;
+
+	
 	private static final int MAX_CAPTHA_TRIES = 3;
 	
-	private static Pattern PATTERN_LATTES_MIXED_ID = Pattern.compile("javascript:abreDetalhe\\(\'(.*)\',\'.*\',\'.*\'\\)");
+	private static Pattern PATTERN_LATTES_MIXED_ID = Pattern.compile("javascript:abreDetalhe\\('(.*)','.*','.*'\\)");
 	
 	private static Pattern PATTERN_LATTES_NUMID_EN = Pattern.compile("<span class=\"texto\">Address to access this CV: <br>http://lattes.cnpq.br/(\\d+)</span>");
 
@@ -43,7 +51,9 @@ public class Extractor
 
 	public Extractor()
 	{
-		
+		 runner = new HttpJobRunnerHttpClient4();
+		 browser = new WebClient(BrowserVersion.FIREFOX_3_6); //, "127.0.0.1", 8888);
+		 // browser = new WebClient(BrowserVersion.FIREFOX_3_6, "127.0.0.1", 8888);
 	}
 
 	public File runConvert(File input)
@@ -104,30 +114,9 @@ public class Extractor
 		return null;
 	}
 
-	public String guessCaptchaAlternative()
-	{
-		CommandLine cmdLine = new CommandLine("/usr/bin/wget");
-		File outputFile = IoUtil.createTempFile("lattes-captcha", ".jpg");
-		cmdLine.addArgument("--output-document=" + outputFile.getAbsolutePath());
-		cmdLine.addArgument("http://buscatextual.cnpq.br/buscatextual/simagem");
-		
-		Executor executor = new DefaultExecutor();
-		try {
-			executor.setExitValue(0);
-			executor.execute(cmdLine);
-		} catch (Exception e) {
-		}
-		
-		File convertedImage = runConvert(outputFile);
-		String captcha = runOCR(convertedImage);
-		
-		return captcha;
-	}
-	
 	public String guessCaptcha()
 	{
 		try {
-			HttpJobRunner runner = new HttpJobRunnerHttpClient4();
 			HttpJob job = new HttpJob(HttpMethod.GET, new URI("http://buscatextual.cnpq.br/buscatextual/simagem"));
 			runner.addJob(job);
 			runner.run();
@@ -143,9 +132,24 @@ public class Extractor
 		return null;
 	}
 
+	public String guessCaptcha2()
+	{
+		try {
+			UnexpectedPage page = browser.getPage("http://buscatextual.cnpq.br/buscatextual/simagem");
+			File image = new File("/home/magsilva/teste.jpg");
+			image.delete();
+			IoUtil.toFile(page.getInputStream(), image);
+			File convertedImage = runConvert(image);
+			String captcha = runOCR(convertedImage);
+			return captcha;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
 	public String getText(String url)
 	{
-		HttpJobRunner runner = new HttpJobRunnerHttpClient4();
 		HttpJob job;
 		try {
 			job = new HttpJob(HttpMethod.GET, new URI(url));
@@ -161,9 +165,8 @@ public class Extractor
 		return text;
 	}
 	
-	public String runQueryAtLattes_Method1(String name, String captcha)
+	public String runQueryAtLattes(String name, String captcha)
 	{
-		HttpJobRunner runner = new HttpJobRunnerHttpClient4();
 		String mixedIdPageContent = null;
 		try {
 			HttpJob job = new HttpJob(HttpMethod.POST, new URI("http://buscatextual.cnpq.br/buscatextual/busca.do"));
@@ -173,7 +176,6 @@ public class Extractor
 			job.addParameter("buscarDemais", "true");
 			job.addParameter("textoBusca", name);
 			job.addParameter("palavra", captcha);
-			job.addParameter("confirmarCaptcha", "Confirmar");
 			runner.addJob(job);
 			runner.run();
 			
@@ -186,9 +188,8 @@ public class Extractor
 		return mixedIdPageContent;
 	}
 	
-	public String runQueryAtLattes_Method2(String name, String captcha)
+	public String runQueryAtLattes2(String name, String captcha)
 	{
-		WebClient browser = new WebClient();
 		String pageText = null;
 		try {
 			HtmlPage pageInput = browser.getPage("http://www.ironiacorp.com/Projects/Alumni/lattes2.html");
@@ -207,11 +208,40 @@ public class Extractor
 			searchOthersField.setValueAttribute("true");
 			nameField.setValueAttribute(name);
 			captchaField.setValueAttribute(captcha);
-
+			
 			HtmlPage pageOutput = submitButton.click();
-			pageOutput.save(new File("/home/magsilva/teste.html"));
 			pageText = pageOutput.asXml();
-			System.out.println(pageText);
+			pageText = StringEscapeUtils.unescapeHtml(pageText);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return pageText;
+	}
+
+	
+	public String runQueryAtLattes3(String name, String captcha)
+	{
+		WebClient browser = new WebClient(BrowserVersion.FIREFOX_3_6, "127.0.0.1", 8888);
+		String pageText = null;
+		try {
+			WebRequest request = new WebRequest(new URL("http://buscatextual.cnpq.br/buscatextual/busca.do"));
+			ArrayList<NameValuePair> parameters = new ArrayList<NameValuePair>();
+			parameters.add(new NameValuePair("metodo", "buscar"));
+			parameters.add(new NameValuePair("filtros.buscaNome", "true"));
+			parameters.add(new NameValuePair("buscarDoutores", "true"));
+			parameters.add(new NameValuePair("buscarDemais", "true"));
+			parameters.add(new NameValuePair("textoBusca", name));
+			parameters.add(new NameValuePair("palavra", captcha));
+			request.setHttpMethod(com.gargoylesoftware.htmlunit.HttpMethod.POST);
+			request.setRequestParameters(parameters);
+
+			// Finally, we can get the page
+			HtmlPage page = browser.getPage(request);
+			File outputFile = new File("/home/magsilva/teste.html");
+			outputFile.delete();
+			page.save(outputFile);
+			pageText = page.asXml();
 			browser.closeAllWindows();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -219,12 +249,15 @@ public class Extractor
 		
 		return pageText;
 	}
+
+	
+
 	
 	public String getLattesId(String name)
 	{
 		String captcha = null;
 		for (int i = 0; captcha == null && i < MAX_CAPTHA_TRIES; i++) {
-			captcha = guessCaptcha();
+			captcha = guessCaptcha2();
 		}
 		
 		if (captcha == null) {
@@ -232,31 +265,32 @@ public class Extractor
 		}
 	
 		try {
-			String mixedIdPageContent = runQueryAtLattes_Method2(name, captcha); 
+			String mixedIdPageContent = runQueryAtLattes2(name, captcha); 
 			String numIdPageContent = null;
 			String mixedId = null;
 			String numId = null;
 			
 			Matcher matcherMixedId = PATTERN_LATTES_MIXED_ID.matcher(mixedIdPageContent);
-			if (matcherMixedId.matches()) {
+			if (matcherMixedId.find()) {
 				mixedId = matcherMixedId.group(1);
 			}
 
 			numIdPageContent = getText("http://buscatextual.cnpq.br/buscatextual/visualizacv.jsp?id=" + mixedId);
 			Matcher matcherNumId = PATTERN_LATTES_NUMID_PT.matcher(numIdPageContent);
-			if (matcherNumId.matches()) {
+			if (matcherNumId.find()) {
 				numId = matcherNumId.group(1);
 			}
 			
-			System.out.println(numId);
+			return numId;
 		} catch (Exception e) {
+			System.out.println(e);
 		}
 
-		
-		// Load the page K4774689J1
-		// Grab the Lattes ID
-
-		
-		return "";
+		return null;
+	}
+	
+	public void reset()
+	{
+		browser.closeAllWindows();
 	}
 }

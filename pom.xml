@@ -40,7 +40,7 @@
 		</developer>
 	</developers>
 
-	<version>0.0.1</version>
+	<version>0.1.0</version>
 	<issueManagement>
 	</issueManagement>
 
@@ -95,7 +95,7 @@
 		<dependency>
 			<groupId>ironiacorp</groupId>
 			<artifactId>commons-http</artifactId>
-			<version>[1.2.2,)</version>
+			<version>[1.2.4,)</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
