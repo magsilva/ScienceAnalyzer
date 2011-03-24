@@ -3,11 +3,15 @@ package br.usp.icmc.lattes;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +21,10 @@ import org.apache.commons.exec.Executor;
 import org.apache.commons.exec.PumpStreamHandler;
 import org.apache.commons.lang.StringEscapeUtils;
 
+import au.com.bytecode.opencsv.CSVReader;
+
 import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.UnexpectedPage;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebRequest;
@@ -150,6 +157,7 @@ public class Extractor
 	
 	public String getText(String url)
 	{
+		HttpJobRunner runner = new HttpJobRunnerHttpClient4();;
 		HttpJob job;
 		try {
 			job = new HttpJob(HttpMethod.GET, new URI(url));
@@ -164,6 +172,41 @@ public class Extractor
 		
 		return text;
 	}
+	
+	public String getText2(String url)
+	{
+		try {
+			HtmlPage page = browser.getPage(url);
+			return page.asXml();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+
+	/*
+	public String getText3(String url)
+	{
+		try {
+			Page page = browser.getPage(url);
+			File image = new File("/home/magsilva/texto.txt");
+			image.delete();
+			InputStreamReader isr = new InputStreamReader(page.getInputStream());
+			StringBuilder sb = new StringBuilder();
+			BufferedReader br = new BufferedReader(isr);
+			String line = null;
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+				sb.append("\n");
+			}
+			return sb.toString();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	*/
+
 	
 	public String runQueryAtLattes(String name, String captcha)
 	{
@@ -256,8 +299,16 @@ public class Extractor
 	public String getLattesId(String name)
 	{
 		String captcha = null;
+		Random random = new Random();
 		for (int i = 0; captcha == null && i < MAX_CAPTHA_TRIES; i++) {
 			captcha = guessCaptcha2();
+			if (captcha == null) {
+		    	try {
+					Thread.sleep(random.nextInt(1000));
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		if (captcha == null) {
@@ -273,12 +324,12 @@ public class Extractor
 			Matcher matcherMixedId = PATTERN_LATTES_MIXED_ID.matcher(mixedIdPageContent);
 			if (matcherMixedId.find()) {
 				mixedId = matcherMixedId.group(1);
-			}
-
-			numIdPageContent = getText("http://buscatextual.cnpq.br/buscatextual/visualizacv.jsp?id=" + mixedId);
-			Matcher matcherNumId = PATTERN_LATTES_NUMID_PT.matcher(numIdPageContent);
-			if (matcherNumId.find()) {
-				numId = matcherNumId.group(1);
+				
+				numIdPageContent = getText("http://buscatextual.cnpq.br/buscatextual/visualizacv.jsp?id=" + mixedId);
+				Matcher matcherNumId = PATTERN_LATTES_NUMID_PT.matcher(numIdPageContent);
+				if (matcherNumId.find()) {
+					numId = matcherNumId.group(1);
+				}
 			}
 			
 			return numId;
@@ -292,5 +343,48 @@ public class Extractor
 	public void reset()
 	{
 		browser.closeAllWindows();
+	}
+	
+	
+	private void printLine(PrintWriter writer, String[] line, String id)
+	{
+		for (int i = 0; i < 6; i++) {
+			writer.print("\"");
+			writer.print(line[i]);
+			writer.print("\"");
+			writer.print(",");
+		}
+		if (id == null) {
+			writer.println(0);
+		} else {
+			writer.println(id);
+		}
+	}
+	
+	public static void main(String[] args) throws Exception
+	{
+		Extractor extractor = new Extractor();
+		CSVReader reader = new CSVReader(new FileReader("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni.csv"));
+	    String [] line;
+	    Random random = new Random();
+	    int mintime = 6000;
+	    PrintWriter writer = new PrintWriter("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni-with-lattesId.csv");
+	    String id = null;
+	    
+	    while ((line = reader.readNext()) != null) {
+	    	String name = line[3];
+	    	if (line.length < 7) {
+	    		id = extractor.getLattesId(name);
+		    	System.out.println(name + "," + id);
+		    	int time = random.nextInt(2 * mintime);
+		    	Thread.sleep(mintime + time);
+	    	} else {
+	    		id = line[6];
+		    	System.out.println(name + "," + id);
+	    	}
+	    	extractor.printLine(writer, line, id);
+		    writer.flush();
+	    }
+	    writer.close();
 	}
 }
