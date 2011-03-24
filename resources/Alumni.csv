@@ -143,7 +143,7 @@
 "2008","ME","Esteganografia em vídeos comprimidos MPEG-4","Diego Fiori de Carvalho","Rudinei Goularte","12/3/2008",4206553594571147
 "2008","ME","Geração de aplicações para linhas de produtos orientadas a aspectos com apoio da ferramenta Captor-AO","Carlos Alberto de Freitas Pereira Júnior","Rosana Teresinha Vaccare Braga","11/19/2008",5554760296984590
 "2008","DO","Arquitetura robótica inspirada na análise do comportamento","Cláudio Adriano Policastro","Roseli Aparecida Francelin Romero","10/24/2008",7242329759605773
-"2008","ME","Identificação de espécies vegetais por meio da análise de textura foliar","Dalcimar Casanova","Odemir Martinez Bruno","10/24/2008",0
+"2008","ME","Identificação de espécies vegetais por meio da análise de textura foliar","Dalcimar Casanova","Odemir Martinez Bruno","10/24/2008",4155115530052195
 "2008","DO","Simulação de escoamento de fluidos em superfícies definidas por pontos não organizados","Kémelli Campanharo Estacio","Luis Gustavo Nonato","10/24/2008",5153100844415438
 "2008","DO","Relações entre ranking, análise ROC e calibração em aprendizado de máquina","Edson Takashi Matsubara","Maria Carolina Monard","10/21/2008",1842905075999080
 "2008","DO","Mapeamento de dados multi-dimensionais - integrando mineração e visualização","Fernando Vieira Paulovich","Rosane Minghim","10/7/2008",4328003866597876
@@ -203,7 +203,7 @@
 "2007","ME","Investigação de combinações de técnicas de detecção de ruído para dados de expressão gênica","Giampaolo Luiz Libralon","André Carlos Ponce de Leon Ferreira de Carvalho","11/9/2007",6437581638743498
 "2007","ME","Servidor web distribuído com diferenciação de serviços - implementação e avaliação de um protótipo","Valter Rogério Messias","Marcos José Santana","10/19/2007",6883456166413319
 "2007","ME","Adição e avaliação de estímulos sonoros como ferramenta de apoio à exploração visual de dados","Wagner Jose Franchin","Rosane Minghim","10/2/2007",0
-"2007","ME","Mapeamento de dados multidimensionais usando árvores filogenéticas: foco em mapeamento de textos","Ana Maria Cuadros Valdivia","Rosane Minghim","10/1/2007",0
+"2007","ME","Mapeamento de dados multidimensionais usando árvores filogenéticas: foco em mapeamento de textos","Ana Maria Cuadros Valdivia","Rosane Minghim","10/1/2007",2798040375469165
 "2007","DO","Uma abordagem híbrida relacional para a desambiguação lexical de sentido na tradução automática","Lucia Specia","Maria das Graças Volpe Nunes","9/28/2007",0236755867490947
 "2007","ME","Um modelo de referência para o desenvolvimento ágil de software","Gustavo Vaz Nascimento","Rosely Sanches","9/20/2007",9511304377767363
 "2007","ME","Simulação numérica do escoamento em torno de um cilindro utilizando o método das fronteiras imersas","Evelise Roman Corbalan Góis","Leandro Franco de Souza","9/14/2007",9016529086471152
@@ -290,14 +290,14 @@
 "2006","ME","Análise de um modelo de regressão com erros nas variáveis multivariado com intercepto nulo","Cibele Maria Russo Noveli","Reiko Aoki","6/19/2006",1011098065426388
 "2006","ME","Avaliação de desempenho com algoritmos de escalonamento em clusters de servidores Web","Caio Peres Sabo","Regina Helena Carlucci Santana","6/13/2006",6593668238256360
 "2006","ME","Concepção e implementação de um modelo de coordenação para uma plataforma de visualização exploratória","Vilson Moreno","Maria Cristina Ferreira de Oliveira","5/26/2006",3242246307352533
-"2006","DO","Uma contribuição ao projeto arquitetural de ambientes de engenharia de software","Elisa Yumi Nakagawa","José Carlos Maldonado","5/25/2006",0
+"2006","DO","Uma contribuição ao projeto arquitetural de ambientes de engenharia de software","Elisa Yumi Nakagawa","José Carlos Maldonado","5/25/2006",7494142007764616
 "2006","ME","Desenvolvimento de aplicações multi-plataformas para dispositivos móveis","Jane Dirce Alves Monteiro","Maria da Graça Campos Pimentel","5/25/2006",0
 "2006","DO","Extensão de GENSMAC para escoamentos de fluidos governados pelos modelos integrais Maxwell e K-BKZ","Manoel Silvino Batalha de Araujo","Murilo Francisco Tomé","5/22/2006",5344063649301668
 "2006","ME","Uma heurística para o problema de dimensionamento de lotes em fundições de mercado","Viviane Sayuri Tonaki","Franklina Maria Bragion de Toledo","5/22/2006",1510814208677723
 "2006","ME","Modelo de avaliação do processo de gerência de configuração de software","Thaís Miranda Cia","Rosely Sanches","5/10/2006",9821612502186977
 "2006","ME","Desenvolvimento de software orientado a temas: um estudo de caso","Antonielly Garcia Rodrigues","Paulo Cesar Masiero","5/5/2006",8599914470707091
 "2006","ME","Rendering híbrido: mapeamento de volumes sobre superfícies","Danilo Medeiros Eler","Maria Cristina Ferreira de Oliveira","4/27/2006",0840226903480590
-"2006","ME","Ensino integrado de fundamentos de programação e teste de software","Camila Kozlowski Della Corte","José Carlos Maldonado","4/26/2006",0
+"2006","ME","Ensino integrado de fundamentos de programação e teste de software","Camila Kozlowski Della Corte","José Carlos Maldonado","4/26/2006",3307931070563298
 "2006","DO","Uma arquitetura de controle inteligente para múltiplos robôs","Gedson Faria","Roseli Aparecida Francelin Romero","4/24/2006",2708367680798139
 "2006","ME","Segmentação de imagens e validação de classes por abordagem estocástica","Leandro Cavaleri Gerhardinger","João do Espírito Santo Batista Neto","4/13/2006",1719908865174769
 "2006","DO","Otimização do processo de corte integrado à produção de bobinas - modelos e métodos de solução","Sônia Cristina Poltroniere Silva","Marcos Nereu Arenales","4/12/2006",7702866698432666
@@ -337,7 +337,7 @@
 "2005","DO","Uso de marcadores estilísticos para a busca na Web em português","Rachel Virgínia Xavier Aires","Sandra Maria Aluisio","9/21/2005",5808258408510204
 "2005","DO","Simulação de escoamentos multifásicos em malhas não estruturadas","Fabrício Simeoni de Sousa","Norberto Mangiavacchi","8/23/2005",1361624597372651
 "2005","ME","Escalonamento em grids computacionais: estudo de caso","Valéria Quadros dos Reis","Marcos José Santana","8/23/2005",7372808441783055
-"2005","ME","mCards: Ferramenta de apoio a construção de aplicativos para assistentes pessoais digitais","Danilo Rogério Boccardo","Maria da Graça Campos Pimentel","8/19/2005",0
+"2005","ME","mCards: Ferramenta de apoio a construção de aplicativos para assistentes pessoais digitais","Danilo Rogério Boccardo","Maria da Graça Campos Pimentel","8/19/2005",2747867003816445
 "2005","ME","Implementação paralela da transformada de distância euclidiana exata","Julio Cesar Torelli","Odemir Martinez Bruno","8/19/2005",2612393585609762
 "2005","ME","Identificação de espécies vegetais por meio da análise do contorno foliar - uma abordagem bio-inspirada","Maurício Falvo","Odemir Martinez Bruno","8/12/2005",1457433896521556
 "2005","ME","Abordagem genética para seleção de um conjunto reduzido de características para construção de ensembles de redes neurais: aplicação à língua eletrônica","Ednaldo José Ferreira","Alexandre Cláudio Botazzo Delbem","8/10/2005",9786847819001035
@@ -375,7 +375,7 @@
 "2005","ME","Implementação do barramento on-chip AMBA baseada em computação reconfigurável","Daniel Cruz de Queiroz","Eduardo Marques","2/4/2005",1963567847644875
 "2005","ME","Teste de programas orientados a aspectos: uma abordagem estrutural para AspectJ","Otávio Augusto Lazzarini Lemos","Paulo Cesar Masiero","2/4/2005",8869840348353359
 "2005","ME","Um mecanismo de recuperação de design rationale em documentos na web","Lisandra Cazassa Fumagalli","Renata Pontin de Mattos Fortes","2/3/2005",7745440920290030
-"2004","ME","Sistema de visão baseado em redes neurais artificiais para o controle de robôs móveis","Marcos Gonçalves Quiles","Roseli Aparecida Francelin Romero","12/22/2004",0
+"2004","ME","Sistema de visão baseado em redes neurais artificiais para o controle de robôs móveis","Marcos Gonçalves Quiles","Roseli Aparecida Francelin Romero","12/22/2004",8867164774240536
 "2004","DO","Métodos auto-organizáveis para segmentação de imagens","Patrícia Rufino Oliveira","Roseli Aparecida Francelin Romero","12/21/2004",9174573815394512
 "2004","DO","Aplicação da análise de mutantes no contexto do teste e validação de redes de Petri coloridas","Adenilso da Silva Simão","José Carlos Maldonado","12/17/2004",9836776931160228
 "2004","ME","NBSP: Uma política de escalonamento network-bound para aplicações paralelas distribuídas","Renato Porfirio Ishii","Marcos José Santana","12/17/2004",8992362063539452
@@ -395,7 +395,7 @@
 "2004","DO","Uma contribuição para o teste de especificações SDL: aspectos teóricos e empíricos","Tatiana Sugeta","José Carlos Maldonado","8/27/2004",6636699004901164
 "2004","ME","Metodologias para geração e atualização de mosaicos de fotos aéreas no Projeto ARARA","Rodrigo Borges dos Santos","Onofre Trindade Junior","8/17/2004",6660467791743161
 "2004","ME","Uso de aspectos para apoiar a evolução não funcional de frameworks: aplicação ao framework GREN","Maria Tânia Francelino da Silva","Paulo Cesar Masiero","7/8/2004",5836217894412846
-"2004","DO","Visualizações temporais em uma plataforma de software extensível e adaptável","Milton Hirokazu Shimabukuro","Maria Cristina Ferreira de Oliveira","7/5/2004",0
+"2004","DO","Visualizações temporais em uma plataforma de software extensível e adaptável","Milton Hirokazu Shimabukuro","Maria Cristina Ferreira de Oliveira","7/5/2004",1184195536814806
 "2004","DO","Especificação, instanciação e experimentação de um arcabouço para criação automática de ligações hipertexto entre informações homogêneas","Alessandra Alaniz Macedo","Maria da Graça Campos Pimentel","7/2/2004",2407277993285186
 "2004","ME","Gerenciamento de contexto: uma abordagem baseada em representações extensíveis","Rodrigo Felicio dos Santos","Edson dos Santos Moreira","7/2/2004",0
 "2004","ME","Aplicação do modelo t-student para análise dos resultados de ensaios de proficiência","Flávia Maria Ravagnani Neves Cintra","Dorival Leão Pinto Junior","6/28/2004",8383217580104219
@@ -437,9 +437,9 @@
 "2004","ME","Comparação entre diferentes abordagens do problema de fluxo de potência ótimo utilizando o método de pontos interiores","Aline Maria de Lima","Aurelio Ribeiro Leite de Oliveira","3/12/2004",7269429424717422
 "2004","ME","Ferramentas de avaliação de desempenho para servidores web: análise, implementação de melhorias e testes","Hermes Pimenta Moraes Junior","Marcos José Santana","3/12/2004",6630358366366849
 "2004","ME","Reconstrução de superfícies a partir de nuvens de pontos","João Paulo Gois","Antonio Castelo Filho","3/11/2004",5931389474585838
-"2004","DO","Um sistema nebuloso-evolutivo para determinar a portabilidade de benchmarks paralelos","Omar Andrés Carmona Cortés","Regina Helena Carlucci Santana","3/8/2004",0
+"2004","DO","Um sistema nebuloso-evolutivo para determinar a portabilidade de benchmarks paralelos","Omar Andrés Carmona Cortés","Regina Helena Carlucci Santana","3/8/2004",5523293886612004
 "2004","DO","Recuperação de informação por similaridade utilizando técnicas inteligentes","Ernesto Cuadros Vargas","Roseli Aparecida Francelin Romero","3/3/2004",4134800147939218
-"2004","ME","Estratégias de adaptação de casos para sistemas de raciocínio baseado em casos","Cláudio Adriano Policastro","André Carlos Ponce de Leon Ferreira de Carvalho","2/27/2004",0
+"2004","ME","Estratégias de adaptação de casos para sistemas de raciocínio baseado em casos","Cláudio Adriano Policastro","André Carlos Ponce de Leon Ferreira de Carvalho","2/27/2004",7242329759605773
 "2004","ME","Uma estratégia para correção de uma característica de qualidade de uma peça devido à variação de temperatura","Paulo Leonardo Sirimarco Gomes","Dorival Leão Pinto Junior","2/27/2004",3472822731554515
 "2004","ME","Utilização de aprendizado de máquina para a adaptação de estruturas em hipermídia adaptativa","Alfredo Lanari de Aragão","André Carlos Ponce de Leon Ferreira de Carvalho","2/16/2004",6238914575375391
 "2004","ME","Identificação dos sintomas de ferrugem em áreas cultivadas com cana-de-açúcar","Desirée Nagliati Dias","João do Espírito Santo Batista Neto","2/16/2004",0965425743884515
@@ -477,7 +477,7 @@
 "2003","ME","Métodos de pontos interiores aplicados ao fluxo de carga ótimo utilizando coordenadas cartesianas","Adriano Thomaz","Aurelio Ribeiro Leite de Oliveira","5/26/2003",2781134206611998
 "2003","ME","Técnica híbrida de visualização para exploração de dados volumétricos não estruturados","Patricia Shirley Herrera Cateriano","Luis Gustavo Nonato","5/21/2003",5031006607384081
 "2003","DO","Pré-processamento de dados em aprendizado de máquina supervisionado","Gustavo Enrique de Almeida Prado Alves Batista","Maria Carolina Monard","5/16/2003",3521622923263530
-"2003","DO","Métodos de Acesso Métricos para suporte a consultas por similaridade: Apresentação da Técnica Omni","Roberto Figueira Santos Filho","Agma Juci Machado Traina","5/16/2003",0
+"2003","DO","Métodos de Acesso Métricos para suporte a consultas por similaridade: Apresentação da Técnica Omni","Roberto Figueira Santos Filho","Agma Juci Machado Traina","5/16/2003",1124138800139746
 "2003","ME","Aplicação de técnicas de data mining em logs de servidores web","Ramon Chiara","Maria Carolina Monard","5/9/2003",0787777551506450
 "2003","ME","Context Kernel: um Web Service baseado nas dimensões de informação de contexto","Carlos Roberto Esperança de Arruda Junior","Maria da Graça Campos Pimentel","4/29/2003",9744369756134361
 "2003","ME","Visualização como suporte à exploração de uma base de dados pluviométricos","Vinicius Marques Alves Branco","Maria Cristina Ferreira de Oliveira","4/28/2003",4141373305269026
@@ -508,7 +508,7 @@
 "2002","ME","Investigando abordagens para a criação automática de ligações entre repositórios web","Jose Antonio Camacho Guerrero","Maria da Graça Campos Pimentel","12/20/2002",1054460556375140
 "2002","ME","Indexação e recuperação de informações utilizando redes neurais da família ART","José Flavio Vicentini","Roseli Aparecida Francelin Romero","12/18/2002",4990871448072797
 "2002","ME","Problemas de otimização linear canalizados e esparsos","Carla Taviane Lucke da Silva Ghidini","Marcos Nereu Arenales","12/17/2002",5757626568571248
-"2002","ME","Um novo modelo para o sistema computacional distribuído do ICMC","Fernando Cesar Miranda","Marcos José Santana","12/16/2002",0
+"2002","ME","Um novo modelo para o sistema computacional distribuído do ICMC","Fernando Cesar Miranda","Marcos José Santana","12/16/2002",9046839212784447
 "2002","ME","Expansão do sistema FreeFlow-3D para escoamentos com influência da temperatura","Marcelo Henrique Sabatini","Antonio Castelo Filho","12/12/2002",2496938258088945
 "2002","DO","Modelagem de ambientes interativos conscientes de contexto: uma abordagem baseada nos padrões MPEG-4 e MPEG-7","João Benedito dos Santos Junior","Edson dos Santos Moreira","12/9/2002",9284563343635061
 "2002","ME","Implementação de espaços de tuplas do tipo JavaSpaces","Orlando de Andrade Figueiredo","Dilvan de Abreu Moreira","12/6/2002",2619438438944805
@@ -574,7 +574,7 @@
 "2001","ME","Pré-processamento para extração de conhecimento de bases textuais","Cristiane Yae- Mi Imamura","Solange Oliveira Rezende","10/23/2001",0
 "2001","ME","Gramática de unificação funcional: levantamento de requisitos para a geração sentencial de português","Alexsandro Santos Soares","Maria das Graças Volpe Nunes","10/22/2001",7063573044220973
 "2001","ME","Projeto de uma rede neural usada no reconhecimento de gestos por robôs móveis utilizando-se computação reconfigurável","Denis Fernando Wolf","Eduardo Marques","10/17/2001",8948846267711214
-"2001","DO","Statecharts estocásticos e queuing statecharts: novas abordagens para avaliação de desempenho baseadas em especificação statecharts","Carlos Renato Lisboa Francês","Marcos José Santana","10/15/2001",0
+"2001","DO","Statecharts estocásticos e queuing statecharts: novas abordagens para avaliação de desempenho baseadas em especificação statecharts","Carlos Renato Lisboa Francês","Marcos José Santana","10/15/2001",7458287841862567
 "2001","ME","Projeto de um circuito controlador de rede com tolerância a falhas baseado em computação reconfigurável","Klinger Gervásio da Silva","Eduardo Marques","10/5/2001",0
 "2001","ME","Métricas para hiperdocumentos web: uma análise utilizando técnicas de aprendizado de máquina","Elisandra Aparecida Alves da Silva","Renata Pontin de Mattos Fortes","9/27/2001",7305431752431773
 "2001","ME","O uso de MPEG-7 na personalização da TV Interativa","Gustavo Blengini Faria","Edson dos Santos Moreira","9/26/2001",3814225406634673
@@ -636,7 +636,7 @@
 "2000","ME","Título não disponível, por favor, solicite à CPG a atualização do título através do Sistema Janus.","José Geraldo Veloso Moreira","Antonio Castelo Filho","8/16/2000",0
 "2000","ME","Suporte Automático à Avaliação da Consistência Estrutural em WWW","Enzo Seraphim","Renata Pontin de Mattos Fortes","8/10/2000",6574521460964227
 "2000","ME","Um Procedimento para Escolha de Pacote de Software na Área de Sistemas de Informação","Jusane Farina Lara","Rosely Sanches","8/10/2000",5387267835250159
-"2000","ME","Visualização na WWW: Estudo e Implementação de um Sistema","Alexandre Donizeti Alves","Maria Cristina Ferreira de Oliveira","8/4/2000",0
+"2000","ME","Visualização na WWW: Estudo e Implementação de um Sistema","Alexandre Donizeti Alves","Maria Cristina Ferreira de Oliveira","8/4/2000",2994979403174851
 "2000","ME","Alguns Modelos de Filas Paralelas que são mais Eficientes do que Fila Única","Willian de Souza Pereira","Maria Creusa Bretas Salles","7/21/2000",8304986781981419
 "2000","ME","Estudos em Otimização Linear","Ricardo Silveira Sousa","Marcos Nereu Arenales","7/13/2000",7893000106533373
 "2000","ME","Projeto de um Sistema de Monitoramento de Ambientes de Intranet usando Data Werehousing","Claudio Haruyoshi Hirose","Edson dos Santos Moreira","7/12/2000",0389529536740036
@@ -709,8 +709,8 @@
 "1999","ME","Desenvolvimento e Avaliação de Algoritmos Numéricos Paralelos","Omar Andrés Carmona Cortés","Regina Helena Carlucci Santana","4/16/1999",5523293886612004
 "1999","ME","Estudos de Problemas de Dimensionamento de Lotes Monoestágio com Restrição de Capacidade","Silvio Alexandre de Araujo","Marcos Nereu Arenales","4/9/1999",9919773182316062
 "1999","ME","Extensão da Ferramenta de Apoio à Programação Paralela (F.A.P.P.) para Ambientes Paralelos Virtuais","Kalinka Regina Lucas Jaquie Castelo Branco","Marcos José Santana","3/30/1999",3559042497669898
-"1999","ME","Desenvolvimento de um Sistema de Simulação de Escoamentos de Fluidos com Superfícies Livres Bidimensionais","Juliana de Oliveira","Antonio Castelo Filho","3/25/1999",0
-"1999","ME","EHDM: Um Método para o Projeto de Aplicações Hipermídia para Ensino","Luciano Tadeu Esteves Pansanato","Maria das Graças Volpe Nunes","3/24/1999",0
+"1999","ME","Desenvolvimento de um Sistema de Simulação de Escoamentos de Fluidos com Superfícies Livres Bidimensionais","Juliana de Oliveira","Antonio Castelo Filho","3/25/1999",6365064516575540
+"1999","ME","EHDM: Um Método para o Projeto de Aplicações Hipermídia para Ensino","Luciano Tadeu Esteves Pansanato","Maria das Graças Volpe Nunes","3/24/1999",1484702906945243
 "1999","ME","Otimização de Redes Neurais RBF Usando Algoritmos Genéticos e sua Aplicação na Área Financeira","Estéfane George Macedo de Lacerda","André Carlos Ponce de Leon Ferreira de Carvalho","3/10/1999",1763651349773729
 "1999","ME","Utilização de Redes de Petri para Avaliação de Sistemas Computacionais","Silmara Aparecida Nonato","Regina Helena Carlucci Santana","2/11/1999",0
 "1999","ME","Avaliação de Tecnologia e Rede de Alto Desempenho para Utilização no SPP2","Silvio Tadao Fujisaki","Onofre Trindade Junior","2/11/1999",6314795487036971
@@ -873,7 +873,7 @@
 "1994","ME","ARQTEMA: UM MODELO GENERICO PARA SISTEMAS TUTORES INTELIGENTES EM MATEMATICA.","Rosana Satie Takehara","Maria das Graças Volpe Nunes","8/10/1994",0102246271621064
 "1994","ME","ESTRUTURAS ESPECIAIS EM PROGRAMACAO INTEIRA","Andréa Carla Gonçalves Vianna","Marcos Nereu Arenales","7/21/1994",0739450084378369
 "1994","ME","DESENVOLVIMENTO DE UM AGENTE SNMP PARA PLATAFORMAS RODANDO DOS.","Renata Cicilini","Edson dos Santos Moreira","6/27/1994",9077090054343821
-"1994","ME","UM SISTEMA DE COMPRESSAO DE IMAGENS DIGITAIS.","Carlos Fernando Assis Paniago","Agma Juci Machado Traina","5/25/1994",0
+"1994","ME","UM SISTEMA DE COMPRESSAO DE IMAGENS DIGITAIS.","Carlos Fernando Assis Paniago","Agma Juci Machado Traina","5/25/1994",9184129822473909
 "1994","ME","DESENVOLVIMENTO DE UM SISTEMA MONITOR GRAFICO BASEADO EM PROTOCOLO DE GERENCIAMENTO SNMP.","Cybelle Suemi Oda","Edson dos Santos Moreira","5/25/1994",0
 "1993","ME","SISTEMAS LINEARES, UMA SOLUCAO NA NORMA CHEBYSHEV.","Edméa Cássia Baptista","Marcos Nereu Arenales","12/15/1993",8479687404526958
 "1993","ME","AUTOMACAO LABORATORIAL: UM DOMINIO DE APLICACAO E UM SOFTWARE DE APOIO.","Luiz Manoel Silva Cunha","Paulo Cesar Masiero","12/14/1993",0
@@ -963,42 +963,38 @@
 "1984","ME","SOBRE UMA ABORDAGEM OPERACIONAL PARA DESENVOLVIMENTO DE SISTEMAS DE INFORMACAO.","Rosangela Aparecida Dellosso Penteado","Fernao Stella de Rodrigues Germano","9/25/1984",4061946080136286
 "1984","ME","REGRESSAO LINEAR MULTIPLA ATRAVES DE MINIMIZACAO DA SOMA DOS DESVIOS ABSOLUTOS.","Rosa Maria Paolillo Marcondes","Gabriela Stangenhaus","7/30/1984",0
 "1984","ME","ESTRUTURAS DE DADOS PARA BUSCA POR INTERVALO.","Heloisa de Arruda Camargo","Maria Carolina Monard","2/16/1984",0487231065057783
-1983,Mestre,Sobre a Proposta de um Modelo Linear para Solução do Problema de Geração de Horários de Aulas de uma Universidade,Luis Carlos Trevelin,Gabriela Stangenhaus,1/7/1983,0
-1983,Mestre,Exibição Microprogramada de Informações com Transmissão Serial,Cesar Augusto Camillo Teixeira,Silvio Davi Paciornik,22/09/1983,0
-1982,Mestre,Estruturas e Esperanças de Formas Quadráticas,Ruben Delly Veiga,José Ferreira de Carvalho,25/05/1982,0
-1982,Mestre,Uma Possibilidade de Apoio por Computador à Aplicação da Metodologia SOP,Celso Corrêa dos Santos,Odelar Leite Linhares,11/10/1982,0
-1982,Mestre,Ajuste de Dados Por Modelos Segmentados,Carlos Roberto do Carmo Leite,Euclydes Custódio de Lima Filho,17/11/1982,0
-1982,Mestre,Análise de Interações em Experimentos Fatoriais não Replicados,Irineu Giannotti,José Ferreira de Carvalho,19/11/1982,0
-1982,Mestre,Sistema de Apoio por Computador à Documentação de Sistemas,Caetano Traina Junior,Fernão Stella de Rodrigues Germano,3/12/1982,0
-1981,Mestre,"Aspectos de Programação Quadrática, com Aplicação à Regressão Linear com Restrições nos Parâmetros",José Marcos Lopes,Gabriela Stangenhaus,27/11/1981,0
-1981,Mestre,Teste do Tipo Wilcoxon para Comparação de Curvas de Sobrevivência,Lael Almeida de Oliveira,Euclydes Custódio de Lima Filho,20/11/1981,0
-1980,Mestre,Sobre Métodos Iterativos Cíclicos para Solução de Sistemas Lineares Algébricos,Antonio Luiz Delachiave,Odelar Leite Linhares,20/10/1980,0
-1980,Mestre,Relações Lineares Funcional e Estrutural Sujeitas a Erros de Observação,Bárbara Brandão de Almeida Prado,Euclydes Custódio de Lima Filho,7/7/1980,0
-1980,Mestre,Sobre Método Iterativo Assemelhado aos de Rutishauser e de Francis para a Solução Numérica de Problema de Auto-valores de Matrizes,Leila Nocchi Kobayashi,Odelar Leite Linhares,27/02/1980,0
-1980,Mestre,Sobre Classes  de Matrizes Quadradas para Testes de Algoritmos Computacionais Matemáticos,Orlando Alcino Mendes,Odelar Leite Linhares,27/02/1980,0
-1980,Mestre,Sobre o Processo Racionalizado de Givens-Jacobi e Aplicações,Paulo Domingos Mieres Caruso,Odelar Leite Linhares,9/1/1980,0
-1980,Mestre,Sobre Aspectos Lógicos da Análise de Sistemas de Informação e Projeto de Bases de Dados,Thelma Cecilia dos Santos,Fernão Stella de Rodrigues Germano,20/12/1980,0
-1980,Mestre,Estatísticas e Sub-álgebras Suficientes,Estatísticas e Sub-álgebras Suficiences,Susana F. Long Foglio,26/02/1980,0
-1979,Mestre,Apoio Programacional para Projetos de Sistemas Digitais,Paulo Rogério Foina,João Antonio Zuffo,29/06/1979,2340113518789981
-1979,Mestre,"Modularização, Estruturação e Documentação em Projetos de Sistemas de Informação",Paulo Cesar Masiero,Fernão Stella de Rodrigues Germano,18/08/1979,8903183021436431 
-1979,Mestre,"Considerações Sobre os Métodos de Aproximação Estocástica de Robbins-Monro e de Kiefer-Wolfowitz",Geraldo Garcia Duarte Junior,Euclydes Custódio de Lima Filho,25/10/1979,9271743715003094
-1978,Mestre,Medidas Invariantes para Sistemas Markovianos com Interação de Exclusão,Maria Creusa Bretas Salles,Carlos Alberto Barbosa Dantas,20/01/1978,8546030917992467 
-1978,Mestre,Sobre Álgebras da Informação,Gerson da Silva Olivetti,Fernão Stella de Rodrigues Germano,20/05/1978,3291557727490993
-1978,Mestre,Moléculas Computacionais para Solução de Equações Diferenciais Parciais,Artur Darezzo Filho,Maximilian Emil Hehl,19/08/1978,2507603318596399 
-1978,Mestre,Sobre Aspectos Lógicos do Projeto de Bases de Dados,Maria Clara Paçó,Fernão Stella de Rodrigues Germano,30/09/1978,0
-1978,Mestre,"Uma Análise, com Descrição Formal, do Processo de Elaboração de Projeto de Sistemas de Informação",Marina Teresa Pires Vieira,Fernão Stella de Rodrigues Germano,4/10/1978,5446518523049572 
-1978,Mestre,"Aplicação da Lógica de Construção de Sistemas, com Auxílio do PSL/PSA",Dioraci Garcia Pinatti,Fernão Stella de Rodrigues Germano,7/10/1978,0
-1978,Mestre,"Projeto de uma Linguage, de Programação e Construção do Correspondente Compilador para o Computador HP 2100-A",Sérgio de Mello Schneider,Célio Cardoso Guimarães,20/12/1978,4551105348903321
-1978,Mestre,Sistema Computacional Básico para Análise Estatística Multidimensional,Luis Fortes Blotta,José Furtado Pisani,27/12/1978,0
-1978,Mestre,Um Método Estável para Cálculo de Regressão,Elásio Soares de Faria,José Ferreira de Carvalho,23/02/1978,5704324950294130
-1978,Mestre,Biplot e Aplicações,João Américo Prado de Andrade,José Ferreira de Carvalho,01/03/1978,0
-1977,Mestre,Sobre Modelos  Matemáticos do Projeto Lógico de Sistemas de Informação,Maria do Carmo Nicoletti,Odelar Leite Linhares,12/1/1977,6454154048263145 
-1977,Mestre,Estudo Comparativo de Linguagens para Descrição das Especificações de Sistemas de Informação,Rosely Sanches,Odelar Leite Linhares,13/01/1977,1185556204910616 
-1977,Mestre,"Sobre a ""Solução"" Numérica de Sistemas Lineares por Métodos de Mínimos Quadrados",Euclides Braga Malheiros,Odelar Leite Linhares,4/6/1977,4726596193949022 
-1977,Mestre,Solução Numérica para Sistemas de Equações Lineares de Grande Porte por Método Iterativo,Método,Maximilian Emil Hehl,15/09/1977,4417571378402443 
-1976,Mestre,Sobre A Programação Linear Inteira,Edson Walmir Cazarini,Odelar Leite Linhares,30/10/1976,7262881331231236 
-1976,Mestre,"Estudo de um Modelo para Descrição, Projeto e Análise da Dinâmica de Sistemas de Informação",João Sahão Junior,Odelar Leite Linhares,18/12/1976,0
-
-
-
-
+"1983","Mestre","Sobre a Proposta de um Modelo Linear para Solução do Problema de Geração de Horários de Aulas de uma Universidade","Luis Carlos Trevelin","Gabriela Stangenhaus","1/7/1983",0
+"1983","Mestre","Exibição Microprogramada de Informações com Transmissão Serial","Cesar Augusto Camillo Teixeira","Silvio Davi Paciornik","22/09/1983",0
+"1982","Mestre","Estruturas e Esperanças de Formas Quadráticas","Ruben Delly Veiga","José Ferreira de Carvalho","25/05/1982",5582058702219798
+"1982","Mestre","Uma Possibilidade de Apoio por Computador à Aplicação da Metodologia SOP","Celso Corrêa dos Santos","Odelar Leite Linhares","11/10/1982",9050494004887176
+"1982","Mestre","Ajuste de Dados Por Modelos Segmentados","Carlos Roberto do Carmo Leite","Euclydes Custódio de Lima Filho","17/11/1982",0
+"1982","Mestre","Análise de Interações em Experimentos Fatoriais não Replicados","Irineu Giannotti","José Ferreira de Carvalho","19/11/1982",0
+"1982","Mestre","Sistema de Apoio por Computador à Documentação de Sistemas","Caetano Traina Junior","Fernão Stella de Rodrigues Germano","3/12/1982",5118629875846648
+"1981","Mestre","Aspectos de Programação Quadrática, com Aplicação à Regressão Linear com Restrições nos Parâmetros","José Marcos Lopes","Gabriela Stangenhaus","27/11/1981",3864776491622816
+"1981","Mestre","Teste do Tipo Wilcoxon para Comparação de Curvas de Sobrevivência","Lael Almeida de Oliveira","Euclydes Custódio de Lima Filho","20/11/1981",0
+"1980","Mestre","Sobre Métodos Iterativos Cíclicos para Solução de Sistemas Lineares Algébricos","Antonio Luiz Delachiave","Odelar Leite Linhares","20/10/1980",0
+"1980","Mestre","Relações Lineares Funcional e Estrutural Sujeitas a Erros de Observação","Bárbara Brandão de Almeida Prado","Euclydes Custódio de Lima Filho","7/7/1980",7909440062812493
+"1980","Mestre","Sobre Método Iterativo Assemelhado aos de Rutishauser e de Francis para a Solução Numérica de Problema de Auto-valores de Matrizes","Leila Nocchi Kobayashi","Odelar Leite Linhares","27/02/1980",0
+"1980","Mestre","Sobre Classes  de Matrizes Quadradas para Testes de Algoritmos Computacionais Matemáticos","Orlando Alcino Mendes","Odelar Leite Linhares","27/02/1980",0
+"1980","Mestre","Sobre o Processo Racionalizado de Givens-Jacobi e Aplicações","Paulo Domingos Mieres Caruso","Odelar Leite Linhares","9/1/1980",5508546036237642
+"1980","Mestre","Sobre Aspectos Lógicos da Análise de Sistemas de Informação e Projeto de Bases de Dados","Thelma Cecilia dos Santos","Fernão Stella de Rodrigues Germano","20/12/1980",0
+"1980","Mestre","Estatísticas e Sub-álgebras Suficientes","Estatísticas e Sub-álgebras Suficiences","Susana F. Long Foglio","26/02/1980",0
+"1979","Mestre","Apoio Programacional para Projetos de Sistemas Digitais","Paulo Rogério Foina","João Antonio Zuffo","29/06/1979",2340113518789981
+"1979","Mestre","Modularização, Estruturação e Documentação em Projetos de Sistemas de Informação","Paulo Cesar Masiero","Fernão Stella de Rodrigues Germano","18/08/1979",8903183021436431 
+"1979","Mestre","Considerações Sobre os Métodos de Aproximação Estocástica de Robbins-Monro e de Kiefer-Wolfowitz","Geraldo Garcia Duarte Junior","Euclydes Custódio de Lima Filho","25/10/1979",9271743715003094
+"1978","Mestre","Medidas Invariantes para Sistemas Markovianos com Interação de Exclusão","Maria Creusa Bretas Salles","Carlos Alberto Barbosa Dantas","20/01/1978",8546030917992467 
+"1978","Mestre","Sobre Álgebras da Informação","Gerson da Silva Olivetti","Fernão Stella de Rodrigues Germano","20/05/1978",3291557727490993
+"1978","Mestre","Moléculas Computacionais para Solução de Equações Diferenciais Parciais","Artur Darezzo Filho","Maximilian Emil Hehl","19/08/1978",2507603318596399 
+"1978","Mestre","Sobre Aspectos Lógicos do Projeto de Bases de Dados","Maria Clara Paçó","Fernão Stella de Rodrigues Germano","30/09/1978",0
+"1978","Mestre","Uma Análise, com Descrição Formal, do Processo de Elaboração de Projeto de Sistemas de Informação","Marina Teresa Pires Vieira","Fernão Stella de Rodrigues Germano","4/10/1978",5446518523049572 
+"1978","Mestre","Aplicação da Lógica de Construção de Sistemas, com Auxílio do PSL/PSA","Dioraci Garcia Pinatti","Fernão Stella de Rodrigues Germano","7/10/1978",0
+"1978","Mestre","Projeto de uma Linguage, de Programação e Construção do Correspondente Compilador para o Computador HP 2100-A","Sérgio de Mello Schneider","Célio Cardoso Guimarães","20/12/1978",4551105348903321
+"1978","Mestre","Sistema Computacional Básico para Análise Estatística Multidimensional","Luis Fortes Blotta","José Furtado Pisani","27/12/1978",0
+"1978","Mestre","Um Método Estável para Cálculo de Regressão","Elásio Soares de Faria","José Ferreira de Carvalho","23/02/1978",5704324950294130
+"1978","Mestre","Biplot e Aplicações","João Américo Prado de Andrade","José Ferreira de Carvalho","01/03/1978",0
+"1977","Mestre","Sobre Modelos  Matemáticos do Projeto Lógico de Sistemas de Informação","Maria do Carmo Nicoletti","Odelar Leite Linhares","12/1/1977",6454154048263145 
+"1977","Mestre","Estudo Comparativo de Linguagens para Descrição das Especificações de Sistemas de Informação","Rosely Sanches","Odelar Leite Linhares","13/01/1977",1185556204910616 
+"1977","Mestre","Sobre a "Solução" Numérica de Sistemas Lineares por Métodos de Mínimos Quadrados","Euclides Braga Malheiros","Odelar Leite Linhares","4/6/1977",4726596193949022 
+"1977","Mestre","Solução Numérica para Sistemas de Equações Lineares de Grande Porte por Método Iterativo","Método","Maximilian Emil Hehl","15/09/1977",4417571378402443 
+"1976","Mestre","Sobre A Programação Linear Inteira","Edson Walmir Cazarini","Odelar Leite Linhares","30/10/1976",7262881331231236 
+"1976","Mestre","Estudo de um Modelo para Descrição, Projeto e Análise da Dinâmica de Sistemas de Informação","João Sahão Junior","Odelar Leite Linhares","18/12/1976",0
