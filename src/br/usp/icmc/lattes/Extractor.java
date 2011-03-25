@@ -368,13 +368,13 @@ public class Extractor
 	    int mintime = 2000;
 	    PrintWriter writer = new PrintWriter("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni-with-lattesId.csv");
 	    
-	   
+
 	    while ((line = reader.readNext()) != null) {
 	    	String name = line[3];
 	    	String id;
 	    	try {
 	    		id = line[6];
-	    		if (! "0".equals(id)) {
+	    		if (! "0".equals(id) && ! "-1".equals(id)) {
 			    	writer.print(id);
 			    	writer.print(", ");
 			    	writer.println(name);
@@ -384,7 +384,7 @@ public class Extractor
 	    	}
 	    }
 	    writer.close();
-	   
+
 	    
 	    /*
 	    while ((line = reader.readNext()) != null) {
@@ -406,5 +406,6 @@ public class Extractor
 	    }
 	    writer.close();
 	    */
+
 	}
 }
