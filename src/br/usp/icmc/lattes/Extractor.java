@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.net.URI;
@@ -24,7 +23,6 @@ import org.apache.commons.lang.StringEscapeUtils;
 import au.com.bytecode.opencsv.CSVReader;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.UnexpectedPage;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebRequest;
@@ -48,7 +46,7 @@ public class Extractor
 	private WebClient browser;
 
 	
-	private static final int MAX_CAPTHA_TRIES = 3;
+	private static final int MAX_CAPTHA_TRIES = 5;
 	
 	private static Pattern PATTERN_LATTES_MIXED_ID = Pattern.compile("javascript:abreDetalhe\\('(.*)','.*','.*'\\)");
 	
@@ -367,24 +365,46 @@ public class Extractor
 		CSVReader reader = new CSVReader(new FileReader("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni.csv"));
 	    String [] line;
 	    Random random = new Random();
-	    int mintime = 6000;
+	    int mintime = 2000;
 	    PrintWriter writer = new PrintWriter("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni-with-lattesId.csv");
-	    String id = null;
 	    
+	   
 	    while ((line = reader.readNext()) != null) {
 	    	String name = line[3];
-	    	if (line.length < 7) {
+	    	String id;
+	    	try {
+	    		id = line[6];
+	    		if (! "0".equals(id)) {
+			    	writer.print(id);
+			    	writer.print(", ");
+			    	writer.println(name);
+				    writer.flush();
+	    		}
+	    	} catch (ArrayIndexOutOfBoundsException e) {
+	    	}
+	    }
+	    writer.close();
+	   
+	    
+	    /*
+	    while ((line = reader.readNext()) != null) {
+	    	String name = line[3];
+	    	String id;
+	    	try {
+	    		id = line[6];
+	    		if ("0".equals(id)) {
+	        		throw new ArrayIndexOutOfBoundsException();
+	    		}
+	    	} catch (ArrayIndexOutOfBoundsException e) {
 	    		id = extractor.getLattesId(name);
 		    	System.out.println(name + "," + id);
 		    	int time = random.nextInt(2 * mintime);
 		    	Thread.sleep(mintime + time);
-	    	} else {
-	    		id = line[6];
-		    	System.out.println(name + "," + id);
 	    	}
 	    	extractor.printLine(writer, line, id);
 		    writer.flush();
 	    }
 	    writer.close();
+	    */
 	}
 }
