@@ -9,6 +9,9 @@ import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -346,34 +349,109 @@ public class Extractor
 	
 	private void printLine(PrintWriter writer, String[] line, String id)
 	{
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 5; i++) {
 			writer.print("\"");
 			writer.print(line[i]);
 			writer.print("\"");
 			writer.print(",");
 		}
-		if (id == null) {
-			writer.println(0);
-		} else {
-			writer.println(id);
+		writer.println(id);
+	}
+	
+	private void checkLine(String[] line)
+	{
+		String type = line[0];
+		if (! "DO".equals(type) && ! "ME".equals(type)) {
+			throw new IllegalArgumentException("Invalid degree");
+		}
+
+		String title = line[1];
+		if (title.length() < 10) {
+			throw new IllegalArgumentException("Invalid title");
+		}
+		
+		String author = line[2];
+		if (author.length() < 10) {
+			throw new IllegalArgumentException("Invalid author");
+		}
+		
+		String advisor = line[3];
+		if (advisor.length() < 5) {
+			throw new IllegalArgumentException("Invalid advisor");
+		}
+		
+		String date = line[4];
+		try {
+			DateFormat dateformat = new SimpleDateFormat("dd/MM/yy");
+			dateformat.parse(date);
+		} catch (ParseException e) {
+			throw new IllegalArgumentException(e);
+		}
+		
+		try {
+			String lattesId = line[5];
+			long id = Long.parseLong(lattesId);
+		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
 		}
 	}
 	
 	public static void main(String[] args) throws Exception
 	{
 		Extractor extractor = new Extractor();
-		CSVReader reader = new CSVReader(new FileReader("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni.csv"));
-	    String [] line;
 	    Random random = new Random();
+	    File srcfile = new File("/home/magsilva/Projects/ICMC/Alumni/resources/icmc/alumni-icmc-posgrad-mat.csv");
+	    File tmpfile = File.createTempFile("lattes", ".tmp.csv");
+		CSVReader reader;
+		PrintWriter writer; 
+	    String [] line;
 	    int mintime = 2000;
-	    PrintWriter writer = new PrintWriter("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni-with-lattesId.csv");
 	    
-
+	    reader = new CSVReader(new FileReader(srcfile));
 	    while ((line = reader.readNext()) != null) {
-	    	String name = line[3];
+	    	extractor.checkLine(line);
+	    }
+	    reader.close();
+	    
+	    
+	    reader = new CSVReader(new FileReader(srcfile));
+	    writer = new PrintWriter(tmpfile);
+	    while ((line = reader.readNext()) != null) {
+	    	extractor.checkLine(line);
+	    	String name = line[2];
 	    	String id;
 	    	try {
-	    		id = line[6];
+	    		id = line[5];
+	    		if ("0".equals(id)) {
+	        		throw new ArrayIndexOutOfBoundsException();
+	    		}
+	    	} catch (ArrayIndexOutOfBoundsException e) {
+	    		id = extractor.getLattesId(name);
+	    		if (id == null) {
+	    			id = "0";
+	    			int time = random.nextInt(2 * mintime);
+			    	Thread.sleep(mintime + time);
+	    		} else {
+	    			System.out.println(name + "," + id);
+	    		}
+	    	} 
+	    	extractor.printLine(writer, line, id);
+		    writer.flush();
+	    }
+	    writer.close();
+	    reader.close();
+	    
+	    IoUtil.copyFile(tmpfile, srcfile);
+	    tmpfile.delete();
+
+	    reader = new CSVReader(new FileReader(srcfile));
+	    writer = new PrintWriter("/home/magsilva/Projects/ICMC/Alumni/resources/icmc/alumni-icmc-posgrad-mat.data");
+	    while ((line = reader.readNext()) != null) {
+	    	String name = line[2];
+	    	String id;
+	    	try {
+	    		id = line[line.length - 1];
 	    		if (! "0".equals(id) && ! "-1".equals(id)) {
 			    	writer.print(id);
 			    	writer.print(", ");
@@ -384,28 +462,6 @@ public class Extractor
 	    	}
 	    }
 	    writer.close();
-
 	    
-	    /*
-	    while ((line = reader.readNext()) != null) {
-	    	String name = line[3];
-	    	String id;
-	    	try {
-	    		id = line[6];
-	    		if ("0".equals(id)) {
-	        		throw new ArrayIndexOutOfBoundsException();
-	    		}
-	    	} catch (ArrayIndexOutOfBoundsException e) {
-	    		id = extractor.getLattesId(name);
-		    	System.out.println(name + "," + id);
-		    	int time = random.nextInt(2 * mintime);
-		    	Thread.sleep(mintime + time);
-	    	}
-	    	extractor.printLine(writer, line, id);
-		    writer.flush();
-	    }
-	    writer.close();
-	    */
-
 	}
 }
