@@ -74,8 +74,8 @@ public class FileMerger
 	public static void main(String[] args) throws Exception
 	{
 		FileMerger merger = new FileMerger();
-	    File srcfile = new File("/home/magsilva/Projects/ICMC/Alumni/resources/icmc/alumni-icmc-posgrad-ccmc.csv");
-	    File fileToMerge = new File("/home/magsilva/Sites/ironiacorp.com/Projects/Alumni/CCMC/publications.csv");
+	    File srcfile = new File("/home/magsilva/Projects/ICMC/Alumni/resources/icmc/alumni-icmc-posgrad-mat.csv");
+	    File fileToMerge = new File("/home/magsilva/publications.csv");
 	    File tmpfile = File.createTempFile("lattes", ".tmp.csv");
 
 		CSVReader reader;

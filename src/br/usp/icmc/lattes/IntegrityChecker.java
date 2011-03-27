@@ -78,7 +78,7 @@ public class IntegrityChecker
 	{
 		IntegrityChecker merger = new IntegrityChecker();
 	    File srcfile = new File("/home/magsilva/Projects/ICMC/Alumni/resources/icmc/alumni-icmc-posgrad-ccmc.csv");
-	    File fileToMerge = new File("/home/magsilva/Projects/ICMC/Alumni/publications.csv");
+	    File fileToMerge = new File("/home/magsilva/publications.csv");
 	    
 		CSVReader reader;
 		Map<String, String> newData = new HashMap<String, String>();
