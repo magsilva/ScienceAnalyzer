@@ -1,34 +1,56 @@
 package br.usp.icmc.library;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-
-import org.apache.xerces.impl.xpath.regex.Match;
-
-import au.com.bytecode.opencsv.CSVReader;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Journal extends Publication
 {
+	
+	@OneToMany(cascade=CascadeType.PERSIST)
+	private Set<Issn> issn;
 
-	private String onlineIssn;
-
-	private String printIssn;
-
+	@Basic
 	private String name;
 	
+	@Basic
 	private int startYear;
 	
+	@Basic
 	private Date startDate;
 	
+	@Basic
 	private int endYear;
 	
+	@Basic
 	private Date endDate;
 	
+	@Basic
 	private String address;
+	
+	@Basic
+	private String acronym;
+
+	public Journal()
+	{
+		issn = new HashSet<Issn>();
+	}
+	
+	public String getAcronym()
+	{
+		return acronym;
+	}
+
+	public void setAcronym(String acronym)
+	{
+		this.acronym = acronym;
+	}
 
 	public String getAddress()
 	{
@@ -41,25 +63,6 @@ public class Journal extends Publication
 	}
 
 
-	public String getOnlineIssn()
-	{
-		return onlineIssn;
-	}
-
-	public void setOnlineIssn(String onlineIssn)
-	{
-		this.onlineIssn = onlineIssn;
-	}
-
-	public String getPrintIssn()
-	{
-		return printIssn;
-	}
-
-	public void setPrintIssn(String printIssn)
-	{
-		this.printIssn = printIssn;
-	}
 
 	public String getName()
 	{
@@ -111,12 +114,24 @@ public class Journal extends Publication
 		this.endDate = endDate;
 	}
 	
+	public Set<Issn> getIssn()
+	{
+		return issn;
+	}
+
+	public void setIssn(Set<Issn> issn)
+	{
+		this.issn = issn;
+	}
+	
+	public void addIssn(Issn issn)
+	{
+		this.issn.add(issn);
+	}
+
 	public String toString()
 	{
 		StringBuilder sb = new StringBuilder();
-		sb.append(onlineIssn);
-		sb.append(",");
-		sb.append(printIssn);
 		sb.append(",");
 		sb.append(name);
 		
