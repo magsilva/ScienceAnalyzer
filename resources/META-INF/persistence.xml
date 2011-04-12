@@ -16,7 +16,9 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://ironiacorp.com/academe" />
 			<property name="javax.persistence.jdbc.user" value="academe" />
 			<property name="javax.persistence.jdbc.password" value="evVDBufmrFvYtcva" />
+			<!-- 
 			<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+			-->
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
 		</properties>
 	</persistence-unit>

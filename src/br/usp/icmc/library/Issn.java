@@ -8,7 +8,7 @@ public class Issn
 {
 	@Basic
 	private String value;
-
+	
 	public String getValue()
 	{
 		return value;

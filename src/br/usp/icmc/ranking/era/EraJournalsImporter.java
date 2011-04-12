@@ -1,6 +1,5 @@
 package br.usp.icmc.ranking.era;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
@@ -16,28 +15,15 @@ import javax.persistence.Query;
 import au.com.bytecode.opencsv.CSVReader;
 import br.usp.icmc.library.Issn;
 import br.usp.icmc.library.Journal;
-import br.usp.icmc.ranking.RankImporter;
+import br.usp.icmc.ranking.CsvRankImporter;
 
 
-public class EraJournalsImporter implements RankImporter
+public class EraJournalsImporter extends CsvRankImporter
 {
     private EntityManagerFactory factory;
 
 	private EntityManager em;
 	
-	private int year;
-	
-	
-	
-	public int getYear()
-	{
-		return year;
-	}
-
-	public void setYear(int year)
-	{
-		this.year = year;
-	}
 
 	public EraJournalsImporter()
 	{
@@ -53,12 +39,12 @@ public class EraJournalsImporter implements RankImporter
 		return journals;
 	}
 	
-	public void read(File srcfile) throws IOException
+	public void importRankings() throws IOException
 	{
 		CSVReader reader;
 	    String [] line;
 
-	    reader = new CSVReader(new FileReader(srcfile));
+	    reader = new CSVReader(new FileReader(file));
 	    em = factory.createEntityManager();
 	    while ((line = reader.readNext()) != null) {
 	    	String rank = line[1].trim();
@@ -84,6 +70,7 @@ public class EraJournalsImporter implements RankImporter
 					journal.setName(name);
 		    		em.persist(journal);
 		    	}
+		    	
 		    	Iterator<String> i = issns.iterator();
 		    	while (i.hasNext()) {
 		    		Set<Issn> journalIssn = journal.getIssn();
@@ -114,12 +101,4 @@ public class EraJournalsImporter implements RankImporter
 		reader.close();
 		System.out.println();
 	}
-
-	public static void main(String[] args) throws IOException
-	{
-		EraJournalsImporter importer = new EraJournalsImporter();
-		importer.setYear(2010);
-		importer.read(new File("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Ranking/ERA/ERA 2010 - Periódicos.csv"));
-	}
-	
 }

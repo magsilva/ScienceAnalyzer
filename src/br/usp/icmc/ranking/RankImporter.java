@@ -1,6 +1,5 @@
 package br.usp.icmc.ranking;
 
-import java.io.File;
 import java.io.IOException;
 
 public interface RankImporter
@@ -9,5 +8,5 @@ public interface RankImporter
 	
 	void setYear(int year);
 	
-	void read(File file) throws IOException;
+	void importRankings() throws IOException;
 }

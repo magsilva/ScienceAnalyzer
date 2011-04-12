@@ -1,6 +1,5 @@
 package br.usp.icmc.ranking.qualis;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
@@ -14,27 +13,25 @@ import javax.persistence.Query;
 
 import au.com.bytecode.opencsv.CSVReader;
 import br.usp.icmc.library.Event;
-import br.usp.icmc.ranking.RankImporter;
+import br.usp.icmc.ranking.CsvRankImporter;
 
-public class QualisEventImporter implements RankImporter
+public class QualisEventsImporter extends CsvRankImporter
 {
     private EntityManagerFactory factory;
 
 	private EntityManager em;
 	
-	private int year;
-	
 	private String area;
 	
-	private static final Pattern ACRONYM_NAME = Pattern.compile("$(\\w+)\\s+(.*)", Pattern.CASE_INSENSITIVE);
+	private static final Pattern ACRONYM_NAME = Pattern.compile("(\\d+)\\s+(\\w+)\\s+(.*)", Pattern.CASE_INSENSITIVE);
 	
-	public QualisEventImporter()
+	public QualisEventsImporter()
 	{
 	    factory = Persistence.createEntityManagerFactory("academe");
 	}
 	
 	
-	private String getAcronymFrom2007(String nameField)
+	private String getAcronymFrom2003(String nameField)
 	{
 		Matcher m = ACRONYM_NAME.matcher(nameField);
 		if (m.find()) {
@@ -43,11 +40,11 @@ public class QualisEventImporter implements RankImporter
 		return null;
 	}
 	
-	private String getNameFrom2007(String nameField)
+	private String getNameFrom2003(String nameField)
 	{
 		Matcher m = ACRONYM_NAME.matcher(nameField);
 		if (m.find()) {
-			return m.group(1);
+			return m.group(3);
 		}
 		return null;
 	}
@@ -61,12 +58,12 @@ public class QualisEventImporter implements RankImporter
 		return events;
 	}
 	
-	public void read(File srcfile) throws IOException
+	public void importRankings() throws IOException
 	{
 		CSVReader reader;
 	    String [] line;
 
-	    reader = new CSVReader(new FileReader(srcfile));
+	    reader = new CSVReader(new FileReader(file));
 	    em = factory.createEntityManager();
 	    while ((line = reader.readNext()) != null) {
 	    	String areaField;
@@ -75,15 +72,26 @@ public class QualisEventImporter implements RankImporter
 	    	String rankField;
 	    	String scopeField;
 	    	switch (year) {
+	    		case 2003:
+	    			areaField = area;
+	       			nameField = getNameFrom2003(line[0].trim());
+	    			acronymField = getAcronymFrom2003(line[0].trim());
+	    			rankField = line[1].trim();
+	    			scopeField = null;
+	    			break;
 	    		case 2007:
 	    			areaField = line[0].trim();
-	    			if (area != null && ! area.equals(areaField)) {
-	    				throw new IllegalArgumentException();
-	    			}
-	    			nameField = getNameFrom2007(line[1].trim());
-	    			acronymField = getAcronymFrom2007(line[1].trim());
+	       			nameField = line[1].trim();
+	    			acronymField = null;
 	    			rankField = line[2].trim();
 	    			scopeField = line[3].trim();
+	    			break;
+	    		case 2009:
+	    			areaField = area;
+	       			nameField = line[2].trim();
+	    			acronymField = line[1].trim();
+	    			rankField = line[3].trim();
+	    			scopeField = null;
 	    			break;
 	    		default:
 	    			throw new IllegalArgumentException();
@@ -104,6 +112,7 @@ public class QualisEventImporter implements RankImporter
 		    		event.setName(nameField);
 		    		em.persist(event);
 		    	}
+		    	
 		    	if (event.getAcronym() == null) {
 		    		event.setAcronym(acronymField);
 		    	}
@@ -140,20 +149,6 @@ public class QualisEventImporter implements RankImporter
 		System.out.println();
 	}
 
-	
-	
-	public int getYear()
-	{
-		return year;
-	}
-
-
-	public void setYear(int year)
-	{
-		this.year = year;
-	}
-
-
 	public String getArea()
 	{
 		return area;
@@ -164,16 +159,4 @@ public class QualisEventImporter implements RankImporter
 	{
 		this.area = area;
 	}
-
-
-	public static void main(String[] args) throws IOException
-	{
-		QualisEventImporter importer =  new QualisEventImporter();
-		importer.setYear(2009);
-		importer.read(new File("/media/magsilva/Education/CPG/Egressos/Qualis/Qualis 2009 - Computação - Periódicos.csv"));
-		importer.read(new File("/media/magsilva/Education/CPG/Egressos/Qualis/Qualis 2009 - Educação - Periódicos.csv"));
-		importer.read(new File("/media/magsilva/Education/CPG/Egressos/Qualis/Qualis 2009 - Engenharias IV - Periódicos.csv"));
-		importer.read(new File("/media/magsilva/Education/CPG/Egressos/Qualis/Qualis 2009 - Interdisciplinar - Periódicos.csv"));
-	}
-
 }

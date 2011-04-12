@@ -1,6 +1,5 @@
 package br.usp.icmc.ranking.era;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
@@ -12,9 +11,10 @@ import javax.persistence.Query;
 
 import au.com.bytecode.opencsv.CSVReader;
 import br.usp.icmc.library.Event;
+import br.usp.icmc.ranking.CsvRankImporter;
 
 
-public class EraEventsImporter
+public class EraEventsImporter extends CsvRankImporter
 {
     private EntityManagerFactory factory;
 
@@ -34,13 +34,12 @@ public class EraEventsImporter
 		return events;
 	}
 	
-	public void read(String filename, int year) throws IOException
+	public void importRankings() throws IOException
 	{
-		File srcfile = new File(filename);
 		CSVReader reader;
 	    String [] line;
 
-	    reader = new CSVReader(new FileReader(srcfile));
+	    reader = new CSVReader(new FileReader(file));
 	    em = factory.createEntityManager();
 	    while ((line = reader.readNext()) != null) {
 	    	String name = line[0].trim();
@@ -57,15 +56,16 @@ public class EraEventsImporter
 		    		    	
 		    	if (events.size() == 1) {
 		    		event = events.get(0);
-		    		if (event.getAcronym() == null) {
-		    			event.setAcronym(acronym);
-		    		}
 		    	} else {
 		    		event = new Event();
 					event.setName(name);
-					event.setAcronym(acronym);
 		    		em.persist(event);
 		    	}
+
+	    		if (event.getAcronym() == null) {
+	    			event.setAcronym(acronym);
+	    		}
+
 		    	
 				if (! "Not ranked".equalsIgnoreCase(rank)) {
 			    	EraRanking ranking = new EraRanking();
@@ -84,11 +84,4 @@ public class EraEventsImporter
 		reader.close();
 		System.out.println();
 	}
-
-	public static void main(String[] args) throws IOException
-	{
-		EraEventsImporter importer = new EraEventsImporter();
-		importer.read("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Ranking/ERA/ERA 2010 - Eventos.csv", 2010);
-	}
-	
 }
