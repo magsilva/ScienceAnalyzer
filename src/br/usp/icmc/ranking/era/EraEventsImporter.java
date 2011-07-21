@@ -37,7 +37,7 @@ public class EraEventsImporter extends CsvRankImporter
 	public void importRankings() throws IOException
 	{
 		CSVReader reader;
-	    String [] line;
+	    String[] line;
 
 	    reader = new CSVReader(new FileReader(file));
 	    em = factory.createEntityManager();

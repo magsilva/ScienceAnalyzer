@@ -173,6 +173,11 @@
 			<version>2.1.0</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>ironiacorp</groupId>
+			<artifactId>commons-graph</artifactId>
+			<version>[0.2.0,)</version>
+		</dependency>
 	</dependencies>
 
 	<build>
