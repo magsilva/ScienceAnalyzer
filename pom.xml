@@ -45,6 +45,10 @@
 	</issueManagement>
 
 	<scm>
+		<connection>https://www.ironiacorp.com/svn/projects/LattesAnalyzer/trunk</connection>
+		<developerConnection>https://www.ironiacorp.com/svn/projects/LattesAnalyzer/trunk</developerConnection>
+		<tag>trunk</tag>
+		<url>http://www.ironiacorp.com/Apps/WebSVN/wsvn/Active%20projects.LattesAnalyzer</url>
 	</scm>
 
 	<ciManagement>
@@ -173,6 +177,7 @@
 			<version>2.1.0</version>
 			<scope>compile</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>ironiacorp</groupId>
 			<artifactId>commons-graph</artifactId>
