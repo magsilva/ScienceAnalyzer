@@ -45,25 +45,15 @@
 	</issueManagement>
 
 	<scm>
-		<connection>https://www.ironiacorp.com/svn/projects/LattesAnalyzer/trunk</connection>
-		<developerConnection>https://www.ironiacorp.com/svn/projects/LattesAnalyzer/trunk</developerConnection>
+		<connection>https://www.ironiacorp.com/svn/projects/ScienceAnalyzer/trunk</connection>
+		<developerConnection>https://www.ironiacorp.com/svn/projects/ScienceAnalyzer/trunk</developerConnection>
 		<tag>trunk</tag>
-		<url>http://www.ironiacorp.com/Apps/WebSVN/wsvn/Active%20projects.LattesAnalyzer</url>
+		<url>http://www.ironiacorp.com/Apps/WebSVN/wsvn/Active%20projects.ScienceAnalyzer</url>
 	</scm>
 
 	<ciManagement>
 		<system>Hudson</system>
-		<url>http://www.ironiacorp.com/Apps/Hudson/job/Lattes-Analyzer</url>
-		<notifiers>
-			<notifier>
-				<type>mail</type>
-				<sendOnError>true</sendOnError>
-				<sendOnFailure>true</sendOnFailure>
-				<sendOnSuccess>false</sendOnSuccess>
-				<sendOnWarning>true</sendOnWarning>
-				<address>magsilva@ironiacorp.com</address>
-			</notifier>
-		</notifiers>
+		<url>http://www.ironiacorp.com/Apps/Hudson/job/Science-Analyzer</url>
 	</ciManagement>
 
 	<distributionManagement>
@@ -132,7 +122,7 @@
 		<dependency>
 			<groupId>ironiacorp</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>[2.2.0,)</version>
+			<version>[3.0.0,)</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
@@ -181,7 +171,7 @@
 		<dependency>
 			<groupId>ironiacorp</groupId>
 			<artifactId>commons-graph</artifactId>
-			<version>[0.2.0,)</version>
+			<version>[3.0.0,)</version>
 		</dependency>
 	</dependencies>
 
@@ -199,14 +189,14 @@
 		<resources>
 			<resource>
 				<directory>${project.basedir}/resources</directory>
-				<filtering>true</filtering>
+				<filtering>false</filtering>
 			</resource>
 		</resources>
 
 		<testResources>
 			<testResource>
 				<directory>${project.basedir}/test-resources</directory>
-				<filtering>true</filtering>
+				<filtering>false</filtering>
 			</testResource>
 		</testResources>
 

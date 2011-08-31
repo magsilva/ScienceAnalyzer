@@ -34,8 +34,8 @@ import com.ironiacorp.graph.layout.GraphvizGraph;
 import com.ironiacorp.graph.model.DirectedEdge;
 import com.ironiacorp.graph.model.DirectedEdge.NodeType;
 import com.ironiacorp.graph.model.Edge;
-import com.ironiacorp.graph.model.Element;
 import com.ironiacorp.graph.model.Graph;
+import com.ironiacorp.graph.model.GraphElement;
 import com.ironiacorp.graph.model.Node;
 
 
@@ -172,7 +172,7 @@ public class AdvisingGraph
 		int level = 0;
 		Graph graph = getGraphFor(is);
 	
-		for (Element element : graph.getElements()) {
+		for (GraphElement element : graph.getElements()) {
 			if (element instanceof Node) {
 				Node node = (Node) element;
 				if (name.equalsIgnoreCase(element.getLabel())) {
@@ -183,7 +183,7 @@ public class AdvisingGraph
 		
 		while (hasBeenModified) {
 			Set<Node> newlySelectedNodes = new HashSet<Node>();
-			for (Element element : graph.getElements()) {
+			for (GraphElement element : graph.getElements()) {
 				/*
 				if (element instanceof Edge) {
 					Edge edge = (Edge) element;
