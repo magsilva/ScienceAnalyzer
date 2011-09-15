@@ -59,12 +59,24 @@ public class Extractor
 
 	public Extractor()
 	{
+		this(true);
+	}
+
+	public Extractor(boolean initialize)
+	{
+		if (initialize) {
+			initBrowser();
+		}
+	}
+	
+	public void initBrowser()
+	{
 		 runner = new HttpJobRunnerHttpClient4();
 		 browser = new WebClient(BrowserVersion.FIREFOX_3_6); //, "127.0.0.1", 8888);
 		 // browser = new WebClient(BrowserVersion.FIREFOX_3_6, "127.0.0.1", 8888);
 	}
-
-	public File runConvert(File input)
+	
+	public File convertToPPM(File input)
 	{
 		CommandLine cmdLine = new CommandLine("/usr/bin/convert");
 		File output = new File(IoUtil.replaceExtension(input.getAbsolutePath(), ".ppm"));
@@ -122,36 +134,48 @@ public class Extractor
 		return null;
 	}
 
-	public String guessCaptcha()
+	public File getCapcha()
 	{
+		File captchaImage;
+		
+		try {
+			File image = IoUtil.createTempFile("lattes-captcha", ".jpg");
+			UnexpectedPage page = browser.getPage("http://buscatextual.cnpq.br/buscatextual/simagem");
+			image.delete();
+			IoUtil.toFile(page.getInputStream(), image);
+			captchaImage = convertToPPM(image);
+			image.delete();
+		} catch (Exception e) {
+			captchaImage = null;
+		}
+		
+		return captchaImage;
+	}
+	
+	public File getCaptcha2()
+	{
+		File captchaImage;
+
 		try {
 			HttpJob job = new HttpJob(HttpMethod.GET, new URI("http://buscatextual.cnpq.br/buscatextual/simagem"));
 			runner.addJob(job);
 			runner.run();
-
 			HttpMethodResult result = job.getResult();
 			File image = result.getContentAsFile();
-			File convertedImage = runConvert(image);
-			String captcha = runOCR(convertedImage);
-			return captcha;
+			captchaImage = convertToPPM(image);
 		} catch (URISyntaxException e) {
+			captchaImage = null;
 		}
 		
-		return null;
+		return captchaImage;
 	}
 
-	public String guessCaptcha2()
+	public String guessCaptcha(File captchaImage)
 	{
 		try {
-			UnexpectedPage page = browser.getPage("http://buscatextual.cnpq.br/buscatextual/simagem");
-			File image = new File("/home/magsilva/teste.jpg");
-			image.delete();
-			IoUtil.toFile(page.getInputStream(), image);
-			File convertedImage = runConvert(image);
-			String captcha = runOCR(convertedImage);
+			String captcha = runOCR(captchaImage);
 			return captcha;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 		}
 		return null;
 	}
@@ -244,7 +268,7 @@ public class Extractor
 			HtmlHiddenInput searchOthersField = form.getInputByName("buscarDemais");
 			HtmlTextInput nameField = form.getInputByName("textoBusca");
 			HtmlTextInput captchaField = form.getInputByName("palavra");
-			HtmlSubmitInput submitButton = form.getInputByName("confirmarCaptcha");
+			HtmlSubmitInput submitButton = form.getInputByName("botaoBuscaFiltros");
 			
 			methodField.setValueAttribute("buscar");
 			searchNameFilterField.setValueAttribute("true");
@@ -302,14 +326,15 @@ public class Extractor
 		String captcha = null;
 		Random random = new Random();
 		for (int i = 0; captcha == null && i < MAX_CAPTHA_TRIES; i++) {
-			captcha = guessCaptcha2();
+			File captchaImage = getCapcha();
+			captcha = guessCaptcha(captchaImage);
 			if (captcha == null) {
 		    	try {
 					Thread.sleep(random.nextInt(1000));
 				} catch (InterruptedException e) {
-					e.printStackTrace();
 				}
 			}
+			captchaImage.delete();
 		}
 		
 		if (captcha == null) {
@@ -326,7 +351,7 @@ public class Extractor
 			if (matcherMixedId.find()) {
 				mixedId = matcherMixedId.group(1);
 				
-				numIdPageContent = getText("http://buscatextual.cnpq.br/buscatextual/visualizacv.jsp?id=" + mixedId);
+				numIdPageContent = getText("http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&palavra=10&id=" + mixedId);
 				Matcher matcherNumId = PATTERN_LATTES_NUMID_PT.matcher(numIdPageContent);
 				if (matcherNumId.find()) {
 					numId = matcherNumId.group(1);
@@ -349,7 +374,7 @@ public class Extractor
 	
 	private void printLine(PrintWriter writer, String[] line, String id)
 	{
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < (line.length - 1); i++) {
 			writer.print("\"");
 			writer.print(line[i]);
 			writer.print("\"");
@@ -401,7 +426,7 @@ public class Extractor
 	{
 		Extractor extractor = new Extractor();
 	    Random random = new Random();
-	    File srcfile = new File("/home/magsilva/Projects/ICMC/Alumni/resources/icmc/alumni-icmc-posgrad-mat.csv");
+	    File srcfile = new File("/home/magsilva/Dropbox/Papers/25thSBES-SoftwareTesting/Analysis/Authors.csv");
 	    File tmpfile = File.createTempFile("lattes", ".tmp.csv");
 		CSVReader reader;
 		PrintWriter writer; 
@@ -410,7 +435,7 @@ public class Extractor
 	    
 	    reader = new CSVReader(new FileReader(srcfile));
 	    while ((line = reader.readNext()) != null) {
-	    	extractor.checkLine(line);
+	    	// extractor.checkLine(line);
 	    }
 	    reader.close();
 	    
@@ -418,11 +443,11 @@ public class Extractor
 	    reader = new CSVReader(new FileReader(srcfile));
 	    writer = new PrintWriter(tmpfile);
 	    while ((line = reader.readNext()) != null) {
-	    	extractor.checkLine(line);
-	    	String name = line[2];
+	    	// extractor.checkLine(line);
+	    	String name = line[0];
 	    	String id;
 	    	try {
-	    		id = line[5];
+	    		id = line[1];
 	    		if ("0".equals(id)) {
 	        		throw new ArrayIndexOutOfBoundsException();
 	    		}
@@ -446,12 +471,12 @@ public class Extractor
 	    tmpfile.delete();
 
 	    reader = new CSVReader(new FileReader(srcfile));
-	    writer = new PrintWriter("/home/magsilva/Projects/ICMC/Alumni/resources/icmc/alumni-icmc-posgrad-mat.data");
+	    writer = new PrintWriter("/home/magsilva/Dropbox/Papers/25thSBES-SoftwareTesting/Analysis/Lattes/Authors.data");
 	    while ((line = reader.readNext()) != null) {
-	    	String name = line[2];
+	    	String name = line[0];
 	    	String id;
 	    	try {
-	    		id = line[line.length - 1];
+	    		id = line[1];
 	    		if (! "0".equals(id) && ! "-1".equals(id)) {
 			    	writer.print(id);
 			    	writer.print(", ");
