@@ -11,6 +11,8 @@ public class Degree
 		PHD
 	}
 	
+	private String courseName;
+	
 	private DegreeType type;
 	
 	private Person advisor;
@@ -20,6 +22,14 @@ public class Degree
 	private Date date;
 	
 	private Dissertation dissertation;
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
 
 	public DegreeType getType() {
 		return type;

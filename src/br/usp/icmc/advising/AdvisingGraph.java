@@ -33,6 +33,9 @@ import com.ironiacorp.graph.layout.Graphviz;
 import com.ironiacorp.graph.layout.GraphvizGraph;
 import com.ironiacorp.graph.model.DirectedEdge;
 import com.ironiacorp.graph.model.DirectedEdge.NodeType;
+import com.ironiacorp.graph.model.basic.BasicDirectedEdge;
+import com.ironiacorp.graph.model.basic.BasicGraph;
+import com.ironiacorp.graph.model.basic.BasicNode;
 import com.ironiacorp.graph.model.Edge;
 import com.ironiacorp.graph.model.Graph;
 import com.ironiacorp.graph.model.GraphElement;
@@ -113,7 +116,7 @@ public class AdvisingGraph
 	{
 		CSVReader reader = new CSVReader(new InputStreamReader(is));
 		String[] line;
-		Graph graph = new Graph();
+		Graph graph = new BasicGraph();
 		int count = 0;
 		Map<String, Node> people = new HashMap<String, Node>();
 		
@@ -124,7 +127,7 @@ public class AdvisingGraph
 		    	String title = line[1].trim();
 		    	String advisee = line[2].trim();
 		    	String advisor = line[3].trim();
-		    	DirectedEdge edge = new DirectedEdge();
+		    	DirectedEdge edge = new BasicDirectedEdge();
 		    	Node adviseeNode = null;
 		    	Node advisorNode = null;
 		    	
@@ -132,18 +135,18 @@ public class AdvisingGraph
 		    	count++;
 	    		adviseeNode = people.get(advisee.toLowerCase());
 	    		if (adviseeNode == null) {
-	    			adviseeNode = new Node();
+	    			adviseeNode = new BasicNode();
 		    		adviseeNode.setId(count);
-		    		adviseeNode.setLabel(advisee);
+		    		adviseeNode.setAttribute("label", advisee);
 		    		people.put(advisee.toLowerCase(), adviseeNode);
 		    		count++;
 		    	}
 		    		
 		    	advisorNode = people.get(advisor.toLowerCase());
 		    	if (advisorNode == null) {
-		    		advisorNode = new Node();
+		    		advisorNode = new BasicNode();
 		    		advisorNode.setId(count);
-		    		advisorNode.setLabel(advisor);
+		    		advisorNode.setAttribute("label", advisor);
 		    		people.put(advisor.toLowerCase(), advisorNode);
 		    		count++;
 		    	}
@@ -175,7 +178,7 @@ public class AdvisingGraph
 		for (GraphElement element : graph.getElements()) {
 			if (element instanceof Node) {
 				Node node = (Node) element;
-				if (name.equalsIgnoreCase(element.getLabel())) {
+				if (name.equalsIgnoreCase((String) element.getAttribute("label"))) {
 					hasBeenModified = selectedNodes.add(node);
 				}
 			}
@@ -212,9 +215,9 @@ public class AdvisingGraph
 			level++;
 		}
 		
-		Iterator<Element> i = graph.getElements().iterator();
+		Iterator<GraphElement> i = graph.getElements().iterator();
 		while (i.hasNext()) {
-			Element element = i.next();
+			GraphElement element = i.next();
 			if (element instanceof Edge) {
 				Edge edge = (Edge) element;
 				Set<Node> edgeNodes = edge.getNodes();
@@ -231,44 +234,5 @@ public class AdvisingGraph
 		}
 		
 		return graph;
-	}
-	
-	
-	public static void main(String[] args) throws Exception
-	{
-		AdvisingGraph advisingGraph = new AdvisingGraph();
-		GraphvizGraph graphvizGraph = new GraphvizGraph(); 
-		Graphviz graphviz = new Graphviz();
-		Graph graph;
-		String digraph;
-		String[] professorsCCMC = {
-				"Paulo Cesar Masiero",
-				"Maria Carolina Monard",
-		};
-		String[] professorsMAT = {
-				"Maria Aparecida Soares Ruas",
-				"Hildebrando Munhoz Rodrigues",
-				"Odelar Leite Linhares",
-		};
-
-		for (String professor : professorsCCMC) {
-			graph = advisingGraph.getGraphFor(new FileInputStream("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni/ICMC/alumni-icmc-posgrad-ccmc.csv"), professor);
-			digraph = graphvizGraph.convert(graph);
-			graphviz.run(digraph, Graphviz.Filter.DOT, Graphviz.OutputFormat.PNG, new File("/tmp/" + professor + ".dot.png"));
-			graphviz.run(digraph, Graphviz.Filter.FDP, Graphviz.OutputFormat.PNG, new File("/tmp/" + professor + ".fdp.png"));
-			graphviz.run(digraph, Graphviz.Filter.CIRCO, Graphviz.OutputFormat.PNG, new File("/tmp/" + professor + ".circo.png"));
-		}	
-		for (String professor : professorsMAT) {
-			graph = advisingGraph.getGraphFor(new FileInputStream("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni/ICMC/alumni-icmc-posgrad-mat.csv"), professor);
-			digraph = graphvizGraph.convert(graph);
-			graphviz.run(digraph, Graphviz.Filter.DOT, Graphviz.OutputFormat.PNG, new File("/tmp/" + professor + ".dot.png"));
-			graphviz.run(digraph, Graphviz.Filter.FDP, Graphviz.OutputFormat.PNG, new File("/tmp/" + professor + ".fdp.png"));
-		}
-		graph = advisingGraph.getGraphFor(new FileInputStream("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni/ICMC/alumni-icmc-posgrad-ccmc.csv"));
-		digraph = graphvizGraph.convert(graph);
-		graphviz.run(digraph, Graphviz.Filter.FDP, Graphviz.OutputFormat.PNG, new File("/tmp/CCMC.png"));
-		graph = advisingGraph.getGraphFor(new FileInputStream("/home/magsilva/Projects/ICMC/LattesAnalyzer/resources/Alumni/ICMC/alumni-icmc-posgrad-mat.csv"));
-		digraph = graphvizGraph.convert(graph);
-		graphviz.run(digraph, Graphviz.Filter.FDP, Graphviz.OutputFormat.PNG, new File("/tmp/MAT.png"));
 	}
 }

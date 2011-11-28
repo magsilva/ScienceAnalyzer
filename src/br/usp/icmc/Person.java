@@ -2,10 +2,13 @@ package br.usp.icmc;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Person implements Comparable
 {
 	private String name;
+	
+	private Set<String> names;
 
 	private Set<Degree> degrees;
 	
@@ -14,7 +17,8 @@ public class Person implements Comparable
 	public Person()
 	{
 		degrees = new HashSet<Degree>();
-		emails = new HashSet<String>();
+		emails = new TreeSet<String>();
+		names = new TreeSet<String>();
 	}
 	
 	public String getName()
@@ -25,6 +29,23 @@ public class Person implements Comparable
 	public void setName(String name)
 	{
 		this.name = name;
+		names.add(name);
+	}
+	
+	public void addName(String name)
+	{
+		names.add(name);
+		if (this.name == null) {
+			this.name = name;
+		}
+	}
+	
+	public void removeName(String name)
+	{
+		names.remove(name);
+		if (this.name.equals(name)) {
+			this.name = names.iterator().next();
+		}
 	}
 	
 	public Set<Degree> getDegrees()

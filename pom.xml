@@ -84,7 +84,7 @@
 		<repository>
 			<id>CodeHaus</id>
 			<url>http://repository.codehaus.org</url>
-				<releases>
+			<releases>
 				<updatePolicy>never</updatePolicy>
 			</releases>
 		</repository>	
@@ -108,7 +108,7 @@
 		<dependency>
 			<groupId>ironiacorp</groupId>
 			<artifactId>commons-http</artifactId>
-			<version>[1.2.4,)</version>
+			<version>[4.0.0,)</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
@@ -122,7 +122,7 @@
 		<dependency>
 			<groupId>ironiacorp</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>[3.0.0,)</version>
+			<version>[4.0.0,)</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
@@ -171,7 +171,13 @@
 		<dependency>
 			<groupId>ironiacorp</groupId>
 			<artifactId>commons-graph</artifactId>
-			<version>[3.0.0,)</version>
+			<version>[4.0.0,)</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>[1.0.14,)</version>
 		</dependency>
 	</dependencies>
 
