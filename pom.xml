@@ -179,6 +179,11 @@
 			<artifactId>jfreechart</artifactId>
 			<version>[1.0.14,)</version>
 		</dependency>
+		<dependency>
+			<groupId>ironiacorp</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
