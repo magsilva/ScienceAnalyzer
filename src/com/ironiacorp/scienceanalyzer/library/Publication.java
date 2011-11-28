@@ -1,6 +1,7 @@
 package com.ironiacorp.scienceanalyzer.library;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -8,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+
+import com.ironiacorp.scienceanalyzer.Person;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
@@ -25,6 +29,9 @@ public class Publication
 	
 	@Basic
 	private Date date;
+	
+	@OneToMany
+	private List<Person> authors;
 
 	public int getId()
 	{
@@ -61,6 +68,28 @@ public class Publication
 		this.date = date;
 	}
 
+	public void addAuthor(Person person)
+	{
+		if (authors.contains(person)) {
+			throw new IllegalArgumentException("Person is already listed as author of the publication");
+		}
+		authors.add(person);
+	}
+	
+	public void addAuthor(Person person, int position)
+	{
+		if (authors.contains(person)) {
+			authors.remove(person);
+		}
+
+		authors.add(position, person);
+	}
+	
+	public List<Person> getAuthors()
+	{
+		return authors;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

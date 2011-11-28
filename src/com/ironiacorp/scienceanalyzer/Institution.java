@@ -1,15 +1,24 @@
 package com.ironiacorp.scienceanalyzer;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
 import com.ironiacorp.scienceanalyzer.geo.Location;
 
+@Entity
 public class Institution
 {
+	@Basic
 	private Institution parent;
 	
+	@Basic
 	private String name;
 	
+	@ManyToOne
 	private Location address;
 	
+	@ManyToOne
 	private PhoneNumber phone;
 
 	public Institution getParent() {
@@ -42,7 +51,5 @@ public class Institution
 
 	public void setPhone(PhoneNumber phone) {
 		this.phone = phone;
-	}
-	
-	
+	}	
 }

@@ -16,12 +16,12 @@ public class PhoneNumber
 	
 	private short extension;
 
-	protected void parsePhoneNumber(String phoneNumber)
+	public void parsePhoneNumber(String phoneNumber)
 	{
 		parsePhoneNumber(phoneNumber, DEFAULT_COUNTRY_CODE, DEFAULT_STATE_AREA);
 	}
 
-	protected void parsePhoneNumber(String phoneNumber, short defaultCountryCode, short defaultStateArea)
+	public void parsePhoneNumber(String phoneNumber, short defaultCountryCode, short defaultStateArea)
 	{
 		String[] numbers = phoneNumber.split("\\(\\)");
 		switch (numbers.length) {
@@ -50,15 +50,6 @@ public class PhoneNumber
 				extension = Short.parseShort(numbers[3].replaceAll("\\D", ""));
 				break;
 		}
-	}
-
-	public PhoneNumber()
-	{
-	}
-	
-	public PhoneNumber(String phoneNumber)
-	{
-		parsePhoneNumber(phoneNumber);
 	}
 	
 	public short getInternationalCodeArea() {

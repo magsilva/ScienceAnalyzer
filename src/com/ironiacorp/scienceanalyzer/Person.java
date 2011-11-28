@@ -4,24 +4,31 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-import com.ironiacorp.scienceanalyzer.geo.Location;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
 import com.ironiacorp.scienceanalyzer.social.SocialAccount;
 
-
+@Entity
 public class Person implements Comparable
 {
+	@Basic
 	private String name;
 	
+	@OneToMany
 	private Set<String> names;
 
+	@OneToMany
 	private Set<Degree> degrees;
 	
+	@OneToMany
 	private Set<String> emails;
 	
-	private Location currentWorkingPlace;
+	@OneToMany
+	private Set<Job> jobs;
 	
-	private Set<Location> workingPlaces;
-	
+	@OneToMany
 	private Set<SocialAccount> socialAccounts;
 	
 	public Person()
@@ -29,6 +36,8 @@ public class Person implements Comparable
 		degrees = new HashSet<Degree>();
 		emails = new TreeSet<String>();
 		names = new TreeSet<String>();
+		socialAccounts = new HashSet<SocialAccount>();
+		jobs = new HashSet<Job>();
 	}
 	
 	public String getName()
@@ -79,7 +88,22 @@ public class Person implements Comparable
 			emails.add(email);
 		}
 	}
-			
+		
+	public void addSocialAccount(SocialAccount account)
+	{
+		socialAccounts.add(account);
+	}
+	
+	public void removeSocialAccount(SocialAccount account)
+	{
+		socialAccounts.remove(account);
+	}
+	
+	public Set<SocialAccount> getSocialAccounts()
+	{
+		return socialAccounts;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
