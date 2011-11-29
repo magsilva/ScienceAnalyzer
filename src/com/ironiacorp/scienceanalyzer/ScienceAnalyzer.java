@@ -26,7 +26,8 @@ import au.com.bytecode.opencsv.CSVReader;
 import com.ironiacorp.graph.layout.Graphviz;
 import com.ironiacorp.graph.layout.GraphvizGraph;
 import com.ironiacorp.graph.model.Graph;
-import com.ironiacorp.scienceanalyzer.Degree.DegreeType;
+import com.ironiacorp.scienceanalyzer.education.Degree;
+import com.ironiacorp.scienceanalyzer.education.Degree.DegreeType;
 import com.ironiacorp.scienceanalyzer.library.Dissertation;
 import com.ironiacorp.scienceanalyzer.loader.CsvLoader;
 

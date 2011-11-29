@@ -25,12 +25,14 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.ironiacorp.scienceanalyzer.Degree;
 import com.ironiacorp.scienceanalyzer.Institution;
 import com.ironiacorp.scienceanalyzer.Job;
 import com.ironiacorp.scienceanalyzer.Person;
 import com.ironiacorp.scienceanalyzer.PhoneNumber;
-import com.ironiacorp.scienceanalyzer.Degree.DegreeType;
+import com.ironiacorp.scienceanalyzer.DegreeType;
+import com.ironiacorp.scienceanalyzer.education.Degree;
+import com.ironiacorp.scienceanalyzer.education.MasterDegree;
+import com.ironiacorp.scienceanalyzer.education.PhdDegree;
 import com.ironiacorp.scienceanalyzer.geo.Location;
 import com.ironiacorp.scienceanalyzer.library.Dissertation;
 import com.ironiacorp.scienceanalyzer.social.FacebookAccount;
@@ -57,7 +59,7 @@ public class CsvLoader
 		Person advisee = new Person();
 		Person advisor = new Person();
 		Person coadvisor = new Person();
-		Degree degree = new Degree();
+		Degree degree;
         Dissertation dissertation = new Dissertation();
 		Date degreeDate;
         // TODO:
@@ -77,14 +79,10 @@ public class CsvLoader
         dissertation.addAuthor(advisee);
         dissertation.setAdvisor(advisor);
 
-        degree.setDissertation(dissertation);
-        degree.setAdvisor(advisor);
-        degree.setCoadvisor(coadvisor);
-        degree.setCourseName((String) data.get("Curso"));
         if (((String) data.get("Grau")).compareToIgnoreCase("ME") == 0) {
-            degree.setType(DegreeType.MSC);
+        	degree = new MasterDegree();
         } else if (((String) data.get("Grau")).compareToIgnoreCase("DO") == 0) {
-            degree.setType(DegreeType.MSC);
+        	degree = new PhdDegree();
         } else {
         	throw new IllegalArgumentException("Invalid or unknown degree");
         }
@@ -98,7 +96,12 @@ public class CsvLoader
         	}
         	degree.setDate(degreeDate);
         }
+        degree.setDissertation(dissertation);
+        degree.setAdvisor(advisor);
+        degree.setCoadvisor(coadvisor);
+        degree.setCourseName((String) data.get("Curso"));
 
+        
         advisee.setName((String)  data.get("Nome"));
         advisee.addDegree(degree);
      

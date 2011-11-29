@@ -1,22 +1,22 @@
-package com.ironiacorp.scienceanalyzer;
+package com.ironiacorp.scienceanalyzer.education;
 
 import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.ironiacorp.scienceanalyzer.DegreeType;
+import com.ironiacorp.scienceanalyzer.Person;
 import com.ironiacorp.scienceanalyzer.library.Dissertation;
 
-@Entity
+@Entity(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Degree
 {
 	@Basic
 	private String courseName;
-	
-	@Basic
-	private DegreeType type;
 	
 	@ManyToOne
 	private Person advisor;
@@ -29,6 +29,14 @@ public class Degree
 	
 	@OneToOne
 	private Dissertation dissertation;
+	
+	public Dissertation getDissertation() {
+		return dissertation;
+	}
+
+	public void setDissertation(Dissertation dissertation) {
+		this.dissertation = dissertation;
+	}
 
 	public String getCourseName() {
 		return courseName;
@@ -36,14 +44,6 @@ public class Degree
 
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
-	}
-
-	public DegreeType getType() {
-		return type;
-	}
-
-	public void setType(DegreeType type) {
-		this.type = type;
 	}
 
 	public Person getAdvisor() {
@@ -70,14 +70,6 @@ public class Degree
 		this.date = date;
 	}
 
-	public Dissertation getDissertation() {
-		return dissertation;
-	}
-
-	public void setDissertation(Dissertation dissertation) {
-		this.dissertation = dissertation;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,7 +78,6 @@ public class Degree
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result
 				+ ((dissertation == null) ? 0 : dissertation.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
 
@@ -117,23 +108,5 @@ public class Degree
 		if (type != other.type)
 			return false;
 		return true;
-	}
-	
-	@Override
-	public String toString()
-	{
-		StringBuilder sb = new StringBuilder();
-		switch (type) {
-			case MSC:
-				sb.append("MSc.");
-				break;
-			case PHD:
-				sb.append("Ph.D.");
-				break;
-		}
-		sb.append(", ");
-		sb.append(dissertation.getTitle());
-		
-		return sb.toString();
 	}
 }
