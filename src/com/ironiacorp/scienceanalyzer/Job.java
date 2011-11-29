@@ -22,6 +22,9 @@ public class Job
 	
 	@Basic
 	private Date endDate;
+	
+	@Basic
+	private boolean retired;
 
 	public String getName() {
 		return name;
@@ -61,5 +64,13 @@ public class Job
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public boolean isRetired() {
+		return retired;
+	}
+
+	public void setRetired(boolean retired) {
+		this.retired = retired;
 	}
 }

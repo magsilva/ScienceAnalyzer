@@ -1,5 +1,6 @@
 package com.ironiacorp.scienceanalyzer;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -15,6 +16,12 @@ public class Person implements Comparable
 {
 	@Basic
 	private String name;
+	
+	@Basic
+	private Date birthDay;
+	
+	@Basic
+	private Date deathDate;
 	
 	@OneToMany
 	private Set<String> names;
@@ -67,6 +74,22 @@ public class Person implements Comparable
 		}
 	}
 	
+	public Date getBirthDay() {
+		return birthDay;
+	}
+
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+
+	public Date getDeathDate() {
+		return deathDate;
+	}
+
+	public void setDeathDate(Date deathDate) {
+		this.deathDate = deathDate;
+	}
+
 	public Set<Degree> getDegrees()
 	{
 		return degrees;

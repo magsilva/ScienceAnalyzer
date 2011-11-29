@@ -91,5 +91,23 @@ public class ScienceAnalyzer
         graphic.pack();
         RefineryUtilities.centerFrameOnScreen(graphic);
         graphic.setVisible(true);
+        
+        Graphic graphic = new Graphic("Matemática", "Defesas por Ano - Mat");
+        graphic.generateGraphic(defesasPorAno,false);
+        graphic.pack();
+        RefineryUtilities.centerFrameOnScreen(graphic);
+        graphic.setVisible(true);
+        
+        graphic = new Graphic("Matemática", "Defesas Por Ano (ME/DO) - Mat");
+        graphic.generateGraphic2(defesasPorAno, true);
+        graphic.pack();
+        RefineryUtilities.centerFrameOnScreen(graphic);
+        graphic.setVisible(true);
+        
+         graphic = new Graphic("Matemática", "Mestrado/Doutorado - Mat");
+        graphic.generateGraphic3(defesasPorAno, true);
+        graphic.pack();
+        RefineryUtilities.centerFrameOnScreen(graphic);
+        graphic.setVisible(true);
     }
 }

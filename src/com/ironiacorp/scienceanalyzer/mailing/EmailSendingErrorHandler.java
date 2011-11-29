@@ -1,4 +1,4 @@
-package com.ironiacorp.scienceanalyzer;
+package com.ironiacorp.scienceanalyzer.mailing;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 import au.com.bytecode.opencsv.CSVReader;
 
-public class EmailPlusName
+public class EmailSendingErrorHandler
 {
 	public static void main(String[] args) throws IOException
 	{
