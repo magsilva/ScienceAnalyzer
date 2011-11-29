@@ -6,12 +6,10 @@
 	
 	<persistence-unit name="academePU" transaction-type="RESOURCE_LOCAL">
 		<properties>
-			<!-- 
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://ironiacorp.com/academe" />
 			<property name="javax.persistence.jdbc.user" value="academe" />
 			<property name="javax.persistence.jdbc.password" value="evVDBufmrFvYtcva" />
-			-->
 			<!-- 
 			<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
 			-->

@@ -216,10 +216,10 @@ public class CsvLoader
     public static void main(String[] args) throws Exception
     {
     	ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/applicationContext.xml");
-    	AutowireCapableBeanFactory fac = context.getAutowireCapableBeanFactory();
+    	// AutowireCapableBeanFactory fac = context.getAutowireCapableBeanFactory();
     	CsvLoader csvLoader = new CsvLoader();
     	
-    	fac.autowireBean(csvLoader);
+    	// fac.autowireBean(csvLoader);
     	CsvLoader loader = new CsvLoader();
     }
 }
