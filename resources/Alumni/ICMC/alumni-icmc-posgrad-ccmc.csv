@@ -1,4 +1,4 @@
-"Grau","Nome","Título do trabalho","Orientador","Data de defesa","Número USP","Identificador Lattes","Email","Telefone","Local de trabalho","Facebook","Orkut","LinkedIn","Twitter"
+"Grau","Nome","Título do trabalho","Orientador","Data de defesa","Nro. USP","Identificador Lattes","Email","Telefone","Situação/Função/Local","Facebook","Orkut","LinkedIn","Twitter"
 "DO","Marcelo Garcia Manzato","Uma arquitetura de personalização de conteúdo baseada em anotações do usuário","Rudinei Goularte","2/14/2011",,"8598262641668520","mmanzato@icmc.usp.br",,,,,,
 "ME","Francisco de Souza Júnior","Chipcflow - validação e implementação do modelo de partição e protocolo de comunicação no grafo a fluxo de dados dinâmico","Jorge Luiz e Silva","1/24/2011",,"0884747554065584","fsjunior@icmc.usp.br, chico@chico.net.br, fsjunior@gmail.com",,,"http://www.facebook.com/fsjunior",,,
 "DO","João Roberto Bertini Júnior","Classificação de dados estacionários e não estacionários baseada em grafos","Zhao Liang","1/24/2011",,"1627235547325264","bertini@icmc.usp.br",,,,,,
@@ -869,7 +869,7 @@
 "ME","Maria Cecília Vecchiato Saenz Carneiro","Um estudo do Método ISAC como alternativa do ISD para articulação com JSP","Paulo Cesar Masiero","2/2/1987",,"6119860627690652","mcsaenz@rc.unesp.br",,,,,,
 "ME","Leliane Nunes de Barros","Um Compilador de Regras para Geração de um Sistema Especialista com Encadeamento Regressivo","Antonio Eduardo Costa Pereira","12/29/1986",,"0348490713417429","leliane@ime.usp.br",,,,,,
 "ME","Sandra Camargo Pinto Ferraz Fabbri","Uma experiência de aplicação de microcomputadores a micro empresas","Fernão Stella de Rodrigues Germano","1/21/1986",,"2204086299921323","sfabbri@dc.ufscar.br",,,,,,
-"ME","Elisa Hatsue Moriya Hutiza","Uma Experiência de Desenvolvimento de Sistemas de Informação Usando Instrumental de 4a. Geração","Fernão Stella de Rodrigues Germano","1986",,"6545213253559397",,,,,,,
+"ME","Elisa Hatsue Moriya Hutiza","Uma Experiência de Desenvolvimento de Sistemas de Informação Usando Instrumental de 4a. Geração","Fernão Stella de Rodrigues Germano","01/01/1986",,"6545213253559397","emhuzita@din.uem.br",,,,,,
 "ME","Regina Helena Carlucci Santana","Estudo e avaliação de uma arquitetura de um módulo de memória virtual para um sistema distribuído funcional","Jan Frans Willem Slaets","11/25/1985",,"5888897744222998","rcs@icmc.usp.br",,,,,,
 "ME","Marcos José Santana","Descrição, Análise e Considerações Sobre a Implementação de um Duto Paralelo de Comunicação de Alto Nível para Um Sistema Distribuído Funcional","Jan Frans Willem Slaets","9/18/1985",,"1251013053012882","mjs@icmc.usp.br",,,,,,
 "ME","Maria das Graças Volpe Nunes","Algoritmos de busca em texto","Maria Carolina Monard","1/23/1985",,"3549648389944031","gracan@icmc.usp.br",,,,,,

@@ -6,7 +6,11 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.ironiacorp.scienceanalyzer.social.SocialAccount;
@@ -14,6 +18,10 @@ import com.ironiacorp.scienceanalyzer.social.SocialAccount;
 @Entity
 public class Person implements Comparable
 {
+	@Id
+	@GeneratedValue
+	private int id;
+	
 	@Basic
 	private String name;
 	
@@ -23,19 +31,19 @@ public class Person implements Comparable
 	@Basic
 	private Date deathDate;
 	
-	@OneToMany
+	@ElementCollection
 	private Set<String> names;
 
-	@OneToMany
+	@OneToMany(cascade=CascadeType.PERSIST)
 	private Set<Degree> degrees;
 	
-	@OneToMany
+	@ElementCollection
 	private Set<String> emails;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.PERSIST)
 	private Set<Job> jobs;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.PERSIST)
 	private Set<SocialAccount> socialAccounts;
 	
 	public Person()
@@ -45,6 +53,11 @@ public class Person implements Comparable
 		names = new TreeSet<String>();
 		socialAccounts = new HashSet<SocialAccount>();
 		jobs = new HashSet<Job>();
+	}
+	
+	public int getId()
+	{
+		return id;
 	}
 	
 	public String getName()

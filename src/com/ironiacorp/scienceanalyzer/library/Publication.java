@@ -1,9 +1,11 @@
 package com.ironiacorp.scienceanalyzer.library;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -30,9 +32,14 @@ public class Publication
 	@Basic
 	private Date date;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.PERSIST)
 	private List<Person> authors;
 
+	public Publication()
+	{
+		authors = new ArrayList<Person>();
+	}
+	
 	public int getId()
 	{
 		return id;

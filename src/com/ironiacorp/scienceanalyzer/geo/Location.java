@@ -1,17 +1,24 @@
 package com.ironiacorp.scienceanalyzer.geo;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+
+@Entity
 public class Location
 {
+	@Basic
 	private String name;
 	
-	private String phoneNumber;
-	
+	@Basic
 	private String address;
 	
+	@Basic
 	private String city;
 	
+	@Basic
 	private String state;
 	
+	@Basic
 	private String country;
 
 	public String getName() {
@@ -20,14 +27,6 @@ public class Location
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 
 	public String getAddress() {

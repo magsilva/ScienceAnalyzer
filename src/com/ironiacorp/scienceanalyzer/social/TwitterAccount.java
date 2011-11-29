@@ -1,6 +1,9 @@
 package com.ironiacorp.scienceanalyzer.social;
 
-public class TwitterAccount extends BasicAccount
+import javax.persistence.Entity;
+
+@Entity
+public class TwitterAccount extends SocialAccount
 {
 	@Override
 	public String getServiceName() {

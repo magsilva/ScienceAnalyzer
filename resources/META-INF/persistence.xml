@@ -5,14 +5,29 @@
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	
 	<persistence-unit name="academePU" transaction-type="RESOURCE_LOCAL">
+		<!-- 
+		<class>com.ironiacorp.scienceanalyzer.Degree</class>
+		<class>com.ironiacorp.scienceanalyzer.Institution</class>
+		<class>com.ironiacorp.scienceanalyzer.Job</class>
+		<class>com.ironiacorp.scienceanalyzer.Person</class>
+		<class>com.ironiacorp.scienceanalyzer.PhoneNumber</class>
+		<class>com.ironiacorp.scienceanalyzer.geo.Location</class>
+		<class>com.ironiacorp.scienceanalyzer.library.Dissertation</class>
+		<class>com.ironiacorp.scienceanalyzer.library.Event</class>
+		<class>com.ironiacorp.scienceanalyzer.library.Issn</class>
+		<class>com.ironiacorp.scienceanalyzer.library.Journal</class>
+		<class>com.ironiacorp.scienceanalyzer.library.Publication</class>
+		<class>com.ironiacorp.scienceanalyzer.library.Publisher</class>
+		<class>com.ironiacorp.scienceanalyzer.ranking.Ranking</class>
+		<class>com.ironiacorp.scienceanalyzer.ranking.era.EraRanking</class>
+		<class>com.ironiacorp.scienceanalyzer.ranking.qualis.QualisRanking</class>
+		-->
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://ironiacorp.com/academe" />
 			<property name="javax.persistence.jdbc.user" value="academe" />
 			<property name="javax.persistence.jdbc.password" value="evVDBufmrFvYtcva" />
-			<!-- 
 			<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
-			-->
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
 		</properties>
 	</persistence-unit>

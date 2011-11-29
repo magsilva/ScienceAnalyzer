@@ -1,6 +1,9 @@
 package com.ironiacorp.scienceanalyzer.social;
 
-public class LinkedInAccount extends BasicAccount
+import javax.persistence.Entity;
+
+@Entity
+public class LinkedInAccount extends SocialAccount
 {
 	@Override
 	public String getServiceName() {

@@ -1,6 +1,9 @@
 package com.ironiacorp.scienceanalyzer.social;
 
-public class OrkutAccount extends BasicAccount
+import javax.persistence.Entity;
+
+@Entity
+public class OrkutAccount extends SocialAccount
 {
 	@Override
 	public String getServiceName() {

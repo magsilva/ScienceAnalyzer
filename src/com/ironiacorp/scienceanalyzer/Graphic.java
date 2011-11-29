@@ -2,7 +2,6 @@ package com.ironiacorp.scienceanalyzer;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
@@ -33,7 +32,7 @@ public class Graphic extends ApplicationFrame {
         this.chart_title = chart_title;
     }
 
-    public void generateGraphic(TreeMap<Integer, HashMap<String, ArrayList<Aluno>>> defesasPorAno, boolean show_legend) {
+    public void generateGraphic(TreeMap<Integer, HashMap<String, ArrayList<Person>>> defesasPorAno, boolean show_legend) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         int index = 1;
         for (Integer ano : defesasPorAno.keySet()) {
@@ -62,7 +61,7 @@ public class Graphic extends ApplicationFrame {
         setContentPane(chartPanel);
     }
 
-    public void generateGraphic2(TreeMap<Integer, HashMap<String, ArrayList<Aluno>>> defesasPorAno, boolean show_legend) {
+    public void generateGraphic2(TreeMap<Integer, HashMap<String, ArrayList<Person>>> defesasPorAno, boolean show_legend) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         int index = 1;
         for (Integer ano : defesasPorAno.keySet()) {
@@ -94,10 +93,10 @@ public class Graphic extends ApplicationFrame {
         setContentPane(chartPanel);
     }
 
-    public void generateGraphic3(TreeMap<Integer, HashMap<String, ArrayList<Aluno>>> defesasPorAno, boolean show_legend) {
+    public void generateGraphic3(TreeMap<Integer, HashMap<String, ArrayList<Person>>> defesasPorAno, boolean show_legend) {
         DefaultPieDataset dataset = new DefaultPieDataset();
         int valor_mestrado = 0, valor_doutorado = 0;
-        for (HashMap<String, ArrayList<Aluno>> entry : defesasPorAno.values()) {
+        for (HashMap<String, ArrayList<Person>> entry : defesasPorAno.values()) {
             valor_mestrado += entry.get("ME").size();
             valor_doutorado += entry.get("DO").size();
         }

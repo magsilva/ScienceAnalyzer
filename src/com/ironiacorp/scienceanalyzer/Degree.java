@@ -2,9 +2,14 @@ package com.ironiacorp.scienceanalyzer;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import com.ironiacorp.scienceanalyzer.library.Dissertation;
 
-
+@Entity
 public class Degree
 {
 	public enum DegreeType {
@@ -12,16 +17,22 @@ public class Degree
 		PHD
 	}
 	
+	@Basic
 	private String courseName;
 	
+	@Basic
 	private DegreeType type;
 	
+	@ManyToOne
 	private Person advisor;
 	
+	@ManyToOne
 	private Person coadvisor;
 	
+	@Basic
 	private Date date;
 	
+	@OneToOne
 	private Dissertation dissertation;
 
 	public String getCourseName() {

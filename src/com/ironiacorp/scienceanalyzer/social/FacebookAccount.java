@@ -1,6 +1,9 @@
 package com.ironiacorp.scienceanalyzer.social;
 
-public class FacebookAccount extends BasicAccount
+import javax.persistence.Entity;
+
+@Entity
+public class FacebookAccount extends SocialAccount
 {
 	@Override
 	public String getServiceName() {

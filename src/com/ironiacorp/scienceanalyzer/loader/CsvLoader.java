@@ -18,6 +18,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
+import javax.persistence.PersistenceUnit;
 
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -41,7 +43,9 @@ import com.ironiacorp.scienceanalyzer.social.UspAccount;
 
 public class CsvLoader
 {
-	@PersistenceContext
+	@PersistenceUnit
+	private EntityManagerFactory emf;
+	
 	private EntityManager em;
 	
 	private static final DateFormat DEFAULT_DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy"); 
@@ -65,7 +69,7 @@ public class CsvLoader
 		// Process data
 		String[] advisors = ((String) data.get("Orientador")).split(","); 
         advisor.setName(advisors[0]);
-        if (advisors.length > 0) {
+        if (advisors.length > 1) {
         	coadvisor.setName(advisors[1]);
         }
 
@@ -76,9 +80,9 @@ public class CsvLoader
         degree.setDissertation(dissertation);
         degree.setAdvisor(advisor);
         degree.setCoadvisor(coadvisor);
-        if (((String) data.get("Degree")).compareToIgnoreCase("ME") == 0) {
+        if (((String) data.get("Grau")).compareToIgnoreCase("ME") == 0) {
             degree.setType(DegreeType.MSC);
-        } else if (((String) data.get("Degree")).compareToIgnoreCase("DO") == 0) {
+        } else if (((String) data.get("Grau")).compareToIgnoreCase("DO") == 0) {
             degree.setType(DegreeType.MSC);
         } else {
         	throw new IllegalArgumentException("Invalid or unknown degree");
@@ -104,8 +108,12 @@ public class CsvLoader
 
         if (data.containsKey("Telefone")) {
         	PhoneNumber phone = new PhoneNumber();
-        	phone.parsePhoneNumber((String) data.get("Telefone"));
-        	// TODO: 
+        	try {
+        		phone.parsePhoneNumber((String) data.get("Telefone"));
+        		// TODO:
+        	} catch (Exception e) {
+        		phone = null;
+        	}
         }
 
     	// TODO:
@@ -119,7 +127,7 @@ public class CsvLoader
         		usp.setUserName(Integer.toString(uspId));
         		advisee.addSocialAccount(usp);
         	} catch (NumberFormatException nfe) {
-        		throw new IllegalArgumentException("Invalid USP id");
+        		//throw new IllegalArgumentException("Invalid USP id");
         	}
         }
 
@@ -130,7 +138,7 @@ public class CsvLoader
         		lattes.setUserName(Integer.toString(lattesId));
         		advisee.addSocialAccount(lattes);
         	} catch (NumberFormatException nfe) {
-        		throw new IllegalArgumentException("Invalid Lattes id");
+        		//throw new IllegalArgumentException("Invalid Lattes id");
         	}
         }
 
@@ -141,7 +149,7 @@ public class CsvLoader
         		facebook.setUserName(facebookId);
         		advisee.addSocialAccount(facebook);
         	} catch (NumberFormatException nfe) {
-        		throw new IllegalArgumentException("Invalid Facebook id");
+        		//throw new IllegalArgumentException("Invalid Facebook id");
         	}
         }
 
@@ -152,7 +160,7 @@ public class CsvLoader
         		orkut.setUserName(orkutId);
         		advisee.addSocialAccount(orkut);
         	} catch (NumberFormatException nfe) {
-        		throw new IllegalArgumentException("Invalid Orkut id");
+        		//throw new IllegalArgumentException("Invalid Orkut id");
         	}
         }
         
@@ -164,7 +172,7 @@ public class CsvLoader
         		linkedin.setUserName(linkedInId);
         		advisee.addSocialAccount(linkedin);
         	} catch (NumberFormatException nfe) {
-        		throw new IllegalArgumentException("Invalid LinkedIn id");
+        		//throw new IllegalArgumentException("Invalid LinkedIn id");
         	}
         }
         
@@ -175,12 +183,18 @@ public class CsvLoader
         		twitter.setUserName(twitterId);
         		advisee.addSocialAccount(twitter);
         	} catch (NumberFormatException nfe) {
-        		throw new IllegalArgumentException("Invalid Twitter id");
+        		// throw new IllegalArgumentException("Invalid Twitter id");
         	}
         }
+        
+		em.persist(advisee);
+		em.persist(advisor);
+		em.persist(coadvisor);
+		em.persist(degree);
+		em.persist(dissertation);
 	}
 	
-    public void process(InputStream is) throws IOException
+    public void process(InputStream is) throws Exception
     {
     	LinkedHashSet<String> fields = new LinkedHashSet<String>();
     	Iterator<String> i;
@@ -189,37 +203,47 @@ public class CsvLoader
 		
 		line = reader.readNext();
 		for (String field : line) {
-			if (fields.add(field)) {
-				throw new IllegalArgumentException("Duplicate field (column name) found in input stream");
+			if (! fields.add(field)) {
+				throw new IllegalArgumentException("Duplicate field (column name) found in input stream: " + field);
 			}
 		}
+
+		em = emf.createEntityManager();
 		
 		while ((line = reader.readNext()) != null) {
 			Map<String, Object> data = new HashMap<String, Object>();
 
 			i = fields.iterator();
 			for (String fieldValue : line) {
-				data.put(i.next(), fieldValue);
+				if (fieldValue != null && ! fieldValue.trim().isEmpty()) {
+					data.put(i.next(), fieldValue);
+				}
 			}
 			em.getTransaction().begin();
 			try {
 	            // Read all data
 				process(data);
-	            // em.getTransaction().commit();
-				em.getTransaction().rollback();
+				System.out.print(".");
+	            em.getTransaction().commit();
 			} catch (Exception e) {
 				em.getTransaction().rollback();
 			}
 		}
+		em.close();
     }
     
     public static void main(String[] args) throws Exception
     {
     	ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/applicationContext.xml");
-    	// AutowireCapableBeanFactory fac = context.getAutowireCapableBeanFactory();
-    	CsvLoader csvLoader = new CsvLoader();
-    	
-    	// fac.autowireBean(csvLoader);
+    	AutowireCapableBeanFactory fac = context.getAutowireCapableBeanFactory();
     	CsvLoader loader = new CsvLoader();
+      	String[] files = {"Alumni/ICMC/alumni-icmc-posgrad-ccmc.csv", "Alumni/ICMC/alumni-icmc-posgrad-mat.csv"};
+
+      	fac.autowireBean(loader);
+    	
+    	for (String filename : files) {
+    	  	InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(filename);
+    		loader.process(is);
+    	}
     }
 }

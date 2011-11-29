@@ -1,6 +1,9 @@
 package com.ironiacorp.scienceanalyzer.social;
 
-public class LattesAccount extends BasicAccount
+import javax.persistence.Entity;
+
+@Entity
+public class LattesAccount extends SocialAccount
 {
 	@Override
 	public String getServiceName() {

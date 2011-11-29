@@ -1,5 +1,9 @@
 package com.ironiacorp.scienceanalyzer;
 
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+
+@Entity
 public class PhoneNumber
 {
 	public static final short DEFAULT_COUNTRY_CODE = 0;
@@ -8,12 +12,16 @@ public class PhoneNumber
 	
 	public static final short DEFAULT_EXTENSION = -1;
 	
+	@Basic
 	private short internationalCodeArea;
 	
+	@Basic
 	private short localCodeArea;
 	
+	@Basic
 	private int number;
 	
+	@Basic
 	private short extension;
 
 	public void parsePhoneNumber(String phoneNumber)

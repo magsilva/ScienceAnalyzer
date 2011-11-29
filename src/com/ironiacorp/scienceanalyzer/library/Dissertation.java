@@ -1,7 +1,7 @@
 package com.ironiacorp.scienceanalyzer.library;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import com.ironiacorp.scienceanalyzer.Institution;
 import com.ironiacorp.scienceanalyzer.Person;
@@ -9,11 +9,11 @@ import com.ironiacorp.scienceanalyzer.Person;
 @Entity
 public class Dissertation extends Publication
 {
-	@Basic
+	@ManyToOne
 	private Person advisor;
 	
-	@Basic
-	private Institution instituion;
+	@ManyToOne
+	private Institution institution;
 
 	public Person getAdvisor() {
 		return advisor;
@@ -23,11 +23,11 @@ public class Dissertation extends Publication
 		this.advisor = advisor;
 	}
 
-	public Institution getInstituion() {
-		return instituion;
+	public Institution getInstitution() {
+		return institution;
 	}
 
-	public void setInstituion(Institution instituion) {
-		this.instituion = instituion;
+	public void setInstitution(Institution institution) {
+		this.institution = institution;
 	}
 }

@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Job
@@ -11,10 +13,10 @@ public class Job
 	@Basic
 	private String name;
 	
-	@Basic
+	@ManyToOne
 	private Institution workplace;
 	
-	@Basic
+	@OneToOne
 	private PhoneNumber phone;
 	
 	@Basic

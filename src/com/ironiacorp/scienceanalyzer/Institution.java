@@ -3,13 +3,14 @@ package com.ironiacorp.scienceanalyzer;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.ironiacorp.scienceanalyzer.geo.Location;
 
 @Entity
 public class Institution
 {
-	@Basic
+	@ManyToOne
 	private Institution parent;
 	
 	@Basic
