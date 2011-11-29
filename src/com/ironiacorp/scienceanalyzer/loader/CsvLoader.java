@@ -80,6 +80,7 @@ public class CsvLoader
         degree.setDissertation(dissertation);
         degree.setAdvisor(advisor);
         degree.setCoadvisor(coadvisor);
+        degree.setCourseName((String) data.get("Curso"));
         if (((String) data.get("Grau")).compareToIgnoreCase("ME") == 0) {
             degree.setType(DegreeType.MSC);
         } else if (((String) data.get("Grau")).compareToIgnoreCase("DO") == 0) {
@@ -194,7 +195,7 @@ public class CsvLoader
 		em.persist(dissertation);
 	}
 	
-    public void process(InputStream is) throws Exception
+    public void process(InputStream is) throws IOException
     {
     	LinkedHashSet<String> fields = new LinkedHashSet<String>();
     	Iterator<String> i;
@@ -238,6 +239,7 @@ public class CsvLoader
     	AutowireCapableBeanFactory fac = context.getAutowireCapableBeanFactory();
     	CsvLoader loader = new CsvLoader();
       	String[] files = {"Alumni/ICMC/alumni-icmc-posgrad-ccmc.csv", "Alumni/ICMC/alumni-icmc-posgrad-mat.csv"};
+      	
 
       	fac.autowireBean(loader);
     	

@@ -12,11 +12,6 @@ import com.ironiacorp.scienceanalyzer.library.Dissertation;
 @Entity
 public class Degree
 {
-	public enum DegreeType {
-		MSC,
-		PHD
-	}
-	
 	@Basic
 	private String courseName;
 	
