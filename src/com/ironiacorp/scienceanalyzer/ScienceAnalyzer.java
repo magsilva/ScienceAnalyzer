@@ -27,7 +27,8 @@ import com.ironiacorp.graph.layout.Graphviz;
 import com.ironiacorp.graph.layout.GraphvizGraph;
 import com.ironiacorp.graph.model.Graph;
 import com.ironiacorp.scienceanalyzer.education.Degree;
-import com.ironiacorp.scienceanalyzer.education.Degree.DegreeType;
+import com.ironiacorp.scienceanalyzer.education.MasterDegree;
+import com.ironiacorp.scienceanalyzer.education.PhdDegree;
 import com.ironiacorp.scienceanalyzer.library.Dissertation;
 import com.ironiacorp.scienceanalyzer.loader.CsvLoader;
 
@@ -57,20 +58,23 @@ public class ScienceAnalyzer
 	   	
 	    	Person advisee = new Person();
 	    	Person advisor = new Person();
-	    	Degree degree = new Degree();
+	    	Degree degree;
 	    	Dissertation dissertation = new Dissertation();
 	    	
 	    	dissertation.setTitle(dissertationTitle);
 	    	
+	    	if ("ME".equals(adviseeDegree)) {
+	    		degree = new MasterDegree();
+	    	} else {
+	    		if ("DO".equals(adviseeDegree)) {
+	    			degree = new PhdDegree();
+	    		} else {
+	    			throw new IllegalArgumentException("Invalid or unknown degree");
+	    		}
+	    	}
 	    	degree.setAdvisor(advisor);
 	    	degree.setDate(dateFormatter.parse(degreeDate));
 	    	degree.setDissertation(dissertation);
-	    	if ("ME".equals(adviseeDegree)) {
-	    		degree.setType(DegreeType.MSC);
-	    	}
-	    	if ("DO".equals(adviseeDegree)) {
-	    		degree.setType(DegreeType.PHD);
-	    	}
 
 	    	advisor.setName(advisorName);
 	    	

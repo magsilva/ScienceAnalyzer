@@ -4,15 +4,16 @@ import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import com.ironiacorp.scienceanalyzer.DegreeType;
 import com.ironiacorp.scienceanalyzer.Person;
 import com.ironiacorp.scienceanalyzer.library.Dissertation;
 
-@Entity(strategy=InheritanceType.TABLE_PER_CLASS)
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Degree
 {
 	@Basic
@@ -104,8 +105,6 @@ public class Degree
 			if (other.dissertation != null)
 				return false;
 		} else if (!dissertation.equals(other.dissertation))
-			return false;
-		if (type != other.type)
 			return false;
 		return true;
 	}

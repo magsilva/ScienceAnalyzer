@@ -29,7 +29,6 @@ import com.ironiacorp.scienceanalyzer.Institution;
 import com.ironiacorp.scienceanalyzer.Job;
 import com.ironiacorp.scienceanalyzer.Person;
 import com.ironiacorp.scienceanalyzer.PhoneNumber;
-import com.ironiacorp.scienceanalyzer.DegreeType;
 import com.ironiacorp.scienceanalyzer.education.Degree;
 import com.ironiacorp.scienceanalyzer.education.MasterDegree;
 import com.ironiacorp.scienceanalyzer.education.PhdDegree;
