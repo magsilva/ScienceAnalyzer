@@ -1,0 +1,54 @@
+A classificação dos veículos foi feita com base em critérios específicos para cada um dos veículos: Periódico Internacional (PI), Periódico Nacional (PN), Conferência Internacional (CI), e Conferência Nacional (CN), definidos neste documento. O QUALIS abrange o conjunto dos veículos de publicação relacionados pela área, classificados em Tipo A, B ou C ou então como "Não Classificado (D)" - no caso de ser publicação pertinente à área mas que não preenche os requisitos de classificação - ou "Inadequado", quando a publicação ou informação fornecida não forem pertinentes à área.
+
+3.1 Periódicos
+Periódicos Internacionais: foram considerados os índices de impacto do ano 2000 dos periódicos indexados no ISI/JCR (Journal Citation Records) e aqueles registrados pelo CS (CiteSeer - Computer Science ResearchIndex -- http://citeseer.nj.nec.com/impact.html).
+o Tipo A: JCR ≥ 0.396 CS ≥ 0.57
+o Tipo B: 0.125 ≤ JCR ≤ 0.396 0.11 ≤ CS ≤ 0.56
+o Tipo C: JCR ≤ 0.124 CS ≤ 0.10
+
+Regras:
+1. A classificação foi baseada nos seguintes pontos de corte dos índices de impacto:
+a. JCR: A: 60%; B: 30%; C: 10%
+b. CiteSeer: A: 40%; B: 40%; C: 20%
+2. No caso de periódicos que constam tanto no CiteSeer como no JCR foi considerada a melhor classificação.
+3. Periódicos das sociedades científicas da área: ACM, IEEE, INFORMS, SIAM que não estiverem indexados são classificados como B.
+4. Periódico Nacional:
+a. JBCS (Journal of the Brazilian Computer Society) é classificado como Nacional A, por decisão do Comitê.
+b. Periódicos nacionais não contemplados no CiteSeer não são classificados.
+5. Periódicos de áreas afins e outras áreas (não-afins): recebe a maior classificação das classificações atribuídas pelas outras áreas. As áreas afins são: Engenharia Eletrônica, Matemática, Pesquisa Operacional e Estatística, quando detectada a interface com a Computação. Faltando informação marca-se como impróprio.
+
+3.2 Conferências Internacionais
+Os fatores principais para classificação são:
+• Índice de impacto da conferência
+• Aceitação por artigo completo (i.e., full paper) com revisão por pares (i.e., referees)
+• Grau de internacionalização e qualidade (o evento deve receber um fluxo uniforme de artigos de países com tradição de pesquisa, ter um comitê internacional não concentrado no local do evento, formado por pesquisadores de renome na área).
+• Percentagem de aceitação
+• Tradição do evento
+Para classificar as conferências, usa-se basicamente o índice de impacto divulgado pelo Citeseer (CS), com o mesmo nível de corte adotado para periódicos. Tipo A: CS ( 0.57; Tipo B: 0.11 ≤ CS ≤ 0.56; Tipo C: CS ≤ 0.10
+Os níveis de corte são complementados pelos critérios abaixo, devendo prevalecer no final a classificação mais alta obtida.
+1. Tipo A: as conferências patrocinadas (i.e., sponsered) por Sociedades Científicas Internacionais como: IEEE, IFIP, ACM, SIAM, INFORMS, W3C, etc, desde que a publicação seja artigo completo (full paper) e avaliação por revisores (i.e., referees) e conferência de tradição. Conferências de tradição devem ter tido pelo menos 4 edições. O Comitê tem constatado uma grande variabilidade na qualidade dos eventos que publicam seus anais (i.e., proceedings) como Lectures Notes. Sendo assim, o Comitê irá julgar caso-a-caso a qualidade desses eventos para efeitos de classificação.
+2. Tipo B: se os critérios acima são satisfeitos, mas a conferência é considerada ainda recente, i.e., menos de 4 edições.
+3. Conferências com artigo completo (full paper) e avaliação de revisores, cujas publicações são *impressas* pelas Sociedades Científicas como IEEE, ACM IFIP, SIAM, etc. mas não são patrocinadas por estas sociedades, foram classificadas como C (por terem um filtro a mais na qualidade).
+4. Conferências patrocinadas por Sociedades Científicas mas com caráter claramente regional foram classificadas como C (por exemplo, Asian International Conference, Pacific-Rim Conference, Latin-American Conference).
+
+
+
+3.3 Conferências Nacionais
+Os seguintes critérios foram definidos como os principais para efeito de classificação da produção em eventos nacionais:
+• Características do Evento;
+• Comitê de Programa;
+• Número de submissões;
+• Percentual de aceitação;
+• Apoio de Entidades Científicas;
+• Tradição do Evento.
+É importante salientar que a qualificação de um evento é resultado da análise dos critérios acima, além do emprego de alguns outros critérios específicos, dependendo do caso. O enquadramento de uma conferência num determinado nível é resultado da análise conjunta de todos estes critérios. O fator "percentual de aceitação" e "tradição do evento" são considerados como preponderantes na determinação da classificação.
+o Características: O evento deve ser representativo de uma área de pesquisa, organizado, de preferência, por comitê oriundo de grupo de interesse na área, e organizado dentro de comunidade científica. É essencial que o evento seja de caráter científico, possua apoio de entidades científicas, possua página de apresentação bem organizada com acesso em inglês, além do português, divulgação ampla nacional e se for o caso internacional. Eventos de caráter local ou regional não serão considerados para efeito de qualificação. Eventos de nível "A" devem preferencialmente possuir divulgação e abrangência internacional.
+o Comitê de Programa: O Comitê de Programa deve ser constituído por pesquisadores qualificados, ativos e reconhecidos da comunidade científica nacional e internacional. Para um evento nível "A" espera-se que o comitê possua participação significativa de membros de reconhecido destaque da comunidade internacional.
+
+
+o Número de Submissões: Para um evento possuir representatividade na comunidade nacional e internacional é importante que, além de ter regularidade, possuir um número de submissões expressivo, demonstrando a importância que este evento possui na comunidade. Espera-se que o número de submissões para uma conferência qualificada e tradicional alcance patamares compatíveis com o da comunidade nacional atuante na área, desde que consolidada. Submissões bastante reduzidas de artigos demonstram um evento pouco procurado, ou uma área não consolidada ou então um evento de caráter fechado e restrito.
+o Percentual de Aceitação: Este critério leva em conta a relação entre o número de artigos aceitos para publicação pelo número de artigos recebidos. São considerados eventos de qualidade "A" aqueles que possuírem um percentual de aceitação inferior a 35% dos artigos submetidos. Índices de aceitação entre 35% e 55% apontam para eventos tipo "B".
+
+
+o Apoio de Entidades Científicas: A qualidade do evento é demonstrada também pelo apoio recebido (sponsors) de sociedades científicas tradicionais. Para um evento ser qualificado como de nível "A" espera-se um maior apoio de entidades nacionais e internacionais. É parte importante na análise do evento o veículo, a editora, possuir ISBN, assim como sua distribuição nacional e internacional.
+o Consolidação do Evento: A consolidação do evento junto à comunidade científica é parte da análise. Eventos novos, embora bem organizados, não receberão qualificação máxima antes que sejam organizados no mínimo 3 edições do evento repetidos e regulares. Eventos pontuais

@@ -1,0 +1,25 @@
+Procedimentos Gerais Adotados na Área Multidisciplinar para Atribuição de Conceitos de
+Periódicos como Qualis Internacional A, B e C, Nacional A, B e C e Local A, B e C
+a) Periódico Qualis Internacional:
+- ter índice de impacto;
+- estar indexado;
+- ter circulação internacional (sem confundir periódico estrangeiro com periódico com
+circulação internacional: atenção especial aos periódicos estrangeiros sem índice de
+impacto)
+A Índice > 0,5
+B 0,5 > Índice > 0,25
+C Índice < 0,25
+b) Periódico Qualis Nacional e Local:
+- se está no SCIELO é considerado periódico Nacional A, caso não preencha requisitos
+para ser classificado como Internacional A ou B;
+- não estando no SCIELO, verificar se tem ISSN e se já foi classificado por outro Comitê
+em anos anteriores;
+- se o periódico possuir Qualis em outra (s) área (s), ponderar o conceito da área “de
+origem” (área disciplinar onde o periódico está mais caracterizado), com o conceito das
+outras áreas, levando em conta as diretrizes do Comitê Multidisciplinar.
+- se o periódico não tiver sido classificado em nenhum comitê e não se enquadrar nos
+itens acima, verificar se está no portal de periódicos da CAPES, consultar portais de
+busca, verificar se tem página na Internet, se tem corpo editorial e corpo de consultores,
+se é periódico editado por Editora Universitária, considerar se atende diretrizes da Área
+Multidisciplinar na CAPES, subsidiando a discussão plenária entre os consultores da Área
+Multidisciplinar para classificar como Qualis Nacional B ou C ou Qualis Local A, B ou C.

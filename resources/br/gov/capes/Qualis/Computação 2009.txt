@@ -1,0 +1,114 @@
+Conforme já mencionado, as fontes de dados mais relevantes para a área são: ISI, Scopus,
+ACM, IEEE, SpringerLink, InterScience e Scielo. Além dos artigos em periódicos,
+também são considerados artigos de conferência para qualificação aqueles publicados nos
+anais de conferências tradicionais que aceitam artigos completos e são realizadas
+regularmente, contando com comitês de programa e um processo rigoroso de avaliação
+pelos pares. Além disso, os anais dessas conferências devem constar das mesmas fontes de
+dados relevantes para os periódicos.
+Um ponto importante a destacar na classificação refere-se às diferenças de índices (fatores
+de impacto como, por exemplo, JCR e H-index) entre subáreas da Ciência da
+Computação. Foi feita então uma normalização entre as subáreas para evitar o domínio
+artificial de uma subárea sobre outra. Desta forma, fez-se uma separação em 4 subáreas:
+(a) Teoria (Teoria da Computação, Algoritmos, Métodos Matemáticos para a
+Computação, etc.); (b) Sistemas de Computação (Bancos de Dados, Redes de
+Computadores, Inteligência Artificial, Engenharia de Software, etc.), incluindo todas as
+subáreas que compõe o núcleo básico da área, excetuando as subáreas do item (a); (c)
+Aplicações (Computação em Medicina, biologia, etc.) (d) Outros, incluindo os veículos de
+outras áreas, excetuando as acima, onde computação não aparece como tópico de interesse
+do veículo.
+Na normalização feita, notou-se que houve pouca diferença nos índices normalizados das
+subáreas (b) e (c). Desta forma, optou-se por unificar a classificação dos veículos (b) e (c).
+No intuito de avaliar os diferentes índices bibliométricos disponíveis, e ainda de forma a
+se obter um índice que pudesse ser aplicado tanto a conferências quanto a periódicos, foi
+realizado um estudo com conjunto de 317 periódicos de acordo com o índice JCR e o H-
+index calculado pela SCImago (http://www.scimagojr.com/), este último calculado a partir
+do Scopus (Elsevier). Como resultado, mostramos que o JCR e o H-index extraídos das
+bases de dados que calculam esses índices têm forte correlação. Além disso, é possível
+conseguir uma excelente aproximação do H-index calculado pelo SCImago usando o
+Google Scholar. Portanto, usamos na classificação tanto o JCR como o H-index calculado
+a partir do Scopus assim como o H-index calculado do Google Scholar. Este último foi
+essencial para obter uma classificação de conferências e sua comparação com periódicos.
+Para normalização entre as 3 subáreas indicadas acima, foi calculada a mediana dos três
+índices de impacto (JCR, H-index Scopus - HS, H-index Google Scholar - HG) para os
+periódicos constantes na coleta da área de Computação de 2007. É importante observar
+que a classificação obtida levou em consideração índices de impacto dos periódicos
+disponíveis no WebQualis em fevereiro de 2009.
+A partir da mediana para cada subárea, calculou-se um indicador normalizado J* , para os
+3 índices usados na classificação: JCR, HS e HG. O cálculo foi feito da seguinte forma:
+
+J_x^*(i) = sqrt(J_x(i)/M_x^(s(i)))
+
+
+onde x é igual a JCR, HS ou HG, s(i) indica a subárea do periódico i e Mx(s(i)) é o valor da
+mediana calculada para a subárea s(i), índice x. A Tabela 1 fornece os valores da
+normalização para as 3 subáreas e os 3 índices, utilizando como fonte a coleta de 2007
+com 845 periódicos. Dos 845 periódicos, 28%, 58% e 14% foram classificados como
+categoria (a), (b+c) e (d), respectivamente. É importante observar que os três subconjuntos
+de periódicos das subáreas usados para os cálculos das medianas não é o mesmo para cada
+índice, uma vez que alguns periódicos possuem, por exemplo, índice HS, mas não JCR.
+Para a maioria dos periódicos, entretanto, foram obtidos os três índices.
+                               Categoria JCR HS HG
+                               (a)         0,69 19               25
+                               (b+c)       0,87 21               28
+                               (d)         1,15 23               25
+  Tabela 1: Valores da normalização para as subáreas e os índices bibliométricos usados.
+Critério de Avaliação da Produção Científica
+Tendo em vista a análise realizada, propomos a classificação mostrada na Tabela 2 para
+periódicos.
+                                Estrato               J*
+                                A1 (7)                        > 1,42
+                                                     J*
+                                A2 (6)   1,20 <               ≤ 1,42
+                                                     J*
+                                B1 (5)   0,95 <               ≤ 1,20
+                                                     J*
+                                B2 (4)   0,20 <               ≤ 0,95
+                                                     J*
+                                B3 (3)   0,10 <               ≤ 0,20
+                                                     J*
+                                B4 (2)   0,00 <               ≤ 0,10
+                                                     J*
+                                B5 (1)                        = 0,00
+                                                     J*
+                                        periódicos que não satisfazem a
+                                   C    definição dada pela área
+          Tabela 2: Tabela dos critérios usados para classificação dos periódicos.
+O instrumento é classificado em um dos estratos se um dos índices normalizados estiver
+dentro da faixa correspondente. (Os respectivos índices não normalizados podem ser
+obtidos usando-se a fórmula de normalização e a mediana correspondente.) Assim, por
+exemplo, se um instrumento tiver J*JCR ou J*HS ou J*HG ≥ 1,42 (JCR > 1,75 caso seja da
+categoria (b+c) ou H-index Scopus HS > 42,3 ou H-index Google Scholar HG > 56,4),
+então é classificado como A1, e assim por diante. Para os periódicos da categoria (d),
+aplicou-se ainda um deflator de dois níveis com saturamento no estrato B2. Como essa
+categoria de periódicos é fora da área, procurou-se desta forma dar maior peso aos
+periódicos relacionados à Ciência da Computação.
+
+
+Procedimento semelhante foi aplicado a um conjunto de 1000 conferências internacionais.
+Para essas conferências, utilizou-se o H-index derivado do Google Scholar e,
+analogamente aos periódicos, aplicou-se o índice normalizado J* para essa categoria de
+conferência. A mediana encontrada foi igual a 7. Propomos, assim, a classificação
+mostrada na Tabela 3 para as conferências internacionais.
+                              Estrato                J*
+                              A1 (7)                J* > 2,3
+                              A2 (6)     1,8 < J* ≤ 2,3
+                              B1 (5)     1,5 < J* ≤ 1,8
+                              B2 (4)     1,0 < J* ≤ 1,5
+                              B3 (3)     0,7 < J* ≤ 1,0
+                              B4 (2)     0,0 < J* ≤ 0,7
+                              B5 (1)                J* = 0,0
+                                       Conferências que não satisfa-
+                                C      zem os requisitos da área
+ Tabela 3: Tabela dos critérios usados para classificação das conferências internacionais.
+
+
+Para as conferências nacionais e latino-americanas, usou-se o mesmo critério empregado
+para as conferências internacionais. Entretanto, quando não foi possível encontrar o H-
+index Google Scholar para uma conferência nacional, usou-se a classificação relativa do
+triênio anterior, utilizando os estratos de B3 a B5. Desta forma, a seguinte equivalência foi
+adotada: A → B3, B → B4, C → B5, onde A, B e C são os estratos do triênio 2005-2007.
+Obteve-se então os percentuais de 10%, 17%, 27% e 46% para os estratos de B2 a B5 para
+as conferências nacionais e latino-americanas.
+
+
+

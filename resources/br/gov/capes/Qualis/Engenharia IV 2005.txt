@@ -1,0 +1,15 @@
+Com referência ao trabalho da Comissão das Engenharias IV sobre o QUALIS,
+informamos o seguinte.
+A base classificada foi a de periódicos, usando o seguinte critério:
+CIRCULAÇÃO CLASSIFICAÇÃO CONDIÇÃO
+Internacional A Fator de Impacto maior ou igual a 0,3
+Internacional B Fator de Impacto entre 0,1 e 0,3
+Internacional C Fator de Impacto muito baixo ou não
+existente por ser publicação recente
+OBSERVAÇÃO: Periódicos eletrônicos seguiram as mesmas regras dos periódicos
+impressos em papel.
+CIRCULAÇÃO CLASSIFICAÇÃO CONDIÇÃO
+Nacional A Publicado por Sociedade Científica
+Nacional B Publicação recente de Soc. Científica
+Nacional C Publicado fora de Sociedade
+Científica

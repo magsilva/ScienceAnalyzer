@@ -1,0 +1,103 @@
+//lê um script separado
+source("script_boxplot_st.R")
+
+x <- read.table(file="all_reduction_rates.csv", header=TRUE, sep=",")
+//gera o boxplot
+boxplot(x[,1:2], ylim=c(0,0.36), yaxt='n')
+//gera o eixo y com as configurações aí que dá pra mudar na tentativa e erro
+axis(2, at=seq(0,0.36, by=0.01))
+//gera dados em texto
+summary(x[,1:2])
+
+//gera vários boxplots em uma só figura
+#x <- read.table(file="boxplot-states.csv", sep=",", header=TRUE)
+#par(mfrow=c(1,3), cex=1.15)
+#boxplot(x[,1:5], main="4 states", ylab="test suite length")
+#boxplot(x[,6:10], main="18 states")
+#boxplot(x[,11:15], main="30 states")
+
+//gera vários boxplots em uma só figura, mas já cria um arquivo pdf
+#States
+//comando q gera o pdf
+pdf('states_boxplot.pdf', height=5) 
+
+//aqui ta no esquema de várias figuras e com eixo y separado
+par(mfrow=c(1,3), cex=0.75)
+x <- read.table(file="3_2_2.csv", sep=",", header=TRUE)
+boxplot(x[,1:2], ylim=c(0,1.4), yaxt='n', main="3 estados")
+axis(2, at=seq(0,1.4, by=0.1))
+x <- read.table(file="8_2_2.csv", sep=",", header=TRUE)
+boxplot(x[,1:2], ylim=c(0,0.3), yaxt='n', main="8 estados")
+axis(2, at=seq(0,0.3, by=0.03))
+x <- read.table(file="12_2_2.csv", sep=",", header=TRUE)
+boxplot(x[,1:2], ylim=c(0,0.0075), yaxt='n',main="12 estados")
+axis(2, at=seq(0,0.0075, by=0.0005))
+
+//necessário ao comando pdf() ali de cima
+dev.off()
+
+
+//daqui pra baixo acho que não tem nada novo
+
+
+#Inputs
+pdf('inputs_boxplot.pdf', height=5) 
+
+par(mfrow=c(1,3), cex=0.75)
+x <- read.table(file="8_2_4_box.csv", sep=",", header=TRUE)
+boxplot(x[,1:2], ylim=c(0,0.65), yaxt='n', main="2 entradas")
+axis(2, at=seq(0,0.65, by=0.05))
+x <- read.table(file="8_5_4_box.csv", sep=",", header=TRUE)
+boxplot(x[,1:2], ylim=c(0,0.85), yaxt='n', main="5 entradas")
+axis(2, at=seq(0,0.85, by=0.05))
+x <- read.table(file="8_10_4_box.csv", sep=",", header=TRUE)
+boxplot(x[,1:2], ylim=c(0,1.2), yaxt='n', main="10 entradas")
+axis(2, at=seq(0,1.2, by=0.05))
+
+dev.off()
+
+
+#x <- read.table(file="boxplot-inputs.csv", sep=",", header=TRUE)
+
+#par(mfrow=c(1,3), cex=1.15)
+#boxplot(x[,1:5], main="Two inputs")
+#boxplot(x[,6:10], main="Six inputs")
+#boxplot(x[,11:15], main="Ten inputs")
+
+#Outputs
+
+pdf('outputs_boxplot.pdf', height=5) 
+
+par(mfrow=c(1,3), cex=0.75)
+x <- read.table(file="8_4_2_box.csv", sep=",", header=TRUE)
+boxplot(x[,1:2], ylim=c(0,0.17), yaxt='n', main="2 Saídas")
+axis(2, at=seq(0,0.17, by=0.01))
+x <- read.table(file="8_4_5_box.csv", sep=",", header=TRUE)
+boxplot(x[,1:2], ylim=c(0,2.9), yaxt='n', main="5 Saídas")
+axis(2, at=seq(0,2.9, by=0.2))
+x <- read.table(file="8_4_10_box.csv", sep=",", header=TRUE)
+boxplot(x[,1:2], ylim=c(0,2.3), yaxt='n', main="10 Saídas")
+axis(2, at=seq(0,2.3, by=0.2))
+
+dev.off()
+
+#x <- read.table(file="boxplot-outputs.csv", sep=",", header=TRUE)
+#par(mfrow=c(1,3), cex=1.15)
+#boxplot(x[,1:5], main="Two outputs")
+#boxplot(x[,6:10], main="Six outputs")
+#boxplot(x[,11:15], main="Ten outputs")
+
+#transitions
+x <- read.table(file="boxplot-transitions.csv", sep=",", header=TRUE)
+par(mfrow=c(1,3), cex=1.15)
+boxplot(x[,1:2], main="Degree 0.5", ylim=c(60,500))
+boxplot(x[,3:4], main="Degree 0.75", ylim=c(60,500))
+boxplot(x[,5:6], main="Degree 0.98", ylim=c(60,500))
+
+x <- read.table(file="boxplot-transitions-p_hsi.csv", sep=",", header=TRUE)
+y <- read.table(file="boxplot-transitions-p_hsi-complete.csv", sep=",", header=TRUE)
+
+par(mfrow=c(1,2), cex=1.15)
+
+boxplot(y, main="complete (100 FSMs)", ylim=c(0.4,1.2))
+boxplot(x, main="partial (2000 FSMs)", ylim=c(0.4,1.2))

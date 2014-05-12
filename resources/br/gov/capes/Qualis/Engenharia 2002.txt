@@ -1,0 +1,46 @@
+PERIÓDICOS INTERNACIONAIS
+Efetuando-se consulta ao ISI/JCR (Journal of Citation Report) do ano de 2000, foram
+considerados:
+IA - Periódicos de cunho científico e circulação internacional com índices de impacto
+maiores ou iguais a 0,3. Foi observado também a meia vida do periódico, uma vez que o
+índice de impacto para as publicações em Engenharia nem sempre é o índice mais
+representativo.
+IB - Periódicos de cunho científico e circulação internacional com índices de impacto
+menores que 0,3. Devido ao estágio evolutivo de credenciamento de alguns periódicos
+nacionais foram incluídos também nesta classificação periódicos indexados de grande
+importância e relevância para as áreas (Brazilian Journal of Chemical Engineering, Journal
+of the Brazilian Society of Mechanical Sciences, etc.)
+IC - Periódicos de circulação internacional em processo de reconhecimento pela
+comunidade científica e que ainda não apresentam índice de impacto mensurável.
+
+
+PERIÓDICOS NACIONAIS
+NA - Periódicos de cunho científico com ampla circulação nacional e com corpo editorial
+predominantemente nacional, não pertencente à listagem ISI/JCR mas reconhecido pela
+comunidade científica como de excelência.
+NB - Periódicos de abrangência nacional, com corpo editorial predominantemente nacional
+e considerados pela comunidade científica como de boa qualidade e boa regularidade
+NC - Periódicos de divulgação com abrangência nacional.
+
+
+ANAIS DE EVENTOS INTERNACIONAIS
+Nível A - Anais de cunho científico contendo trabalhos completos que foram submetidos a
+comprovado processo de avaliação pelo Comitê Organizador Internacional do evento e com
+ampla divulgação na comunidade científica internacional.
+Nível B - Anais de cunho científico contendo trabalhos completos que foram submetidos a
+comprovado processo de avaliação pelo Comitê Organizador Internacional do evento e com
+divulgação mais restrita na comunidade científica internacional.
+Nível C - Anais contendo trabalhos completos que foram submetidos a comprovado
+processo de avaliação pelo Comitê Organizador Internacional do evento, mas de natureza
+mais tecnológica.
+
+
+ANAIS DE EVENTOS NACIONAIS
+Nível A - Anais de cunho científico contendo trabalhos completos que foram submetidos a
+comprovado processo de avaliação pelo Comitê Organizador Nacional do evento e com
+ampla divulgação na comunidade científica nacional.
+Nível B - Anais de cunho científico contendo trabalhos completos que foram submetidos a
+comprovado processo de avaliação pelo Comitê Organizador Nacional do evento e com
+divulgação mais restrita na comunidade científica nacional.
+Nível C - Anais contendo trabalhos completos que foram submetidos a processo de
+avaliação pelo Comitê Organizador Nacional do evento, mas de natureza mais tecnológica.

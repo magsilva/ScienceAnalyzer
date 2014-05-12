@@ -1,0 +1,86 @@
+Periódicos
+Efetuando-se consulta ao ISI/JCR (Journal of Citation Report) do ano de
+2004, às bases de dados científicas reconhecidas como relevantes, o SCIELO
+e as páginas dos periódicos na Internet, foram considerados:
+Internacionais:
+IA - Periódicos de cunho científico e circulação internacional com fatores de
+impacto maiores ou iguais a 0,3 no ISI/JCR. Foi observado também o fator de
+imediatez e a meia vida do periódico, uma vez que o índice de impacto para as
+publicações em engenharia nem sempre é o índice mais representativo.
+IB – Periódicos de cunho científico e circulação internacional com índices de
+impacto menores que 0,3 no JCR. Devido ao estágio evolutivo de
+credenciamento de alguns periódicos, foram incluídos também nesta
+classificação periódicos indexados nas bases de dados científicas relevantes,
+desde que o fator de impacto desses periódicos atendessem, naquelas bases de
+dados, os limiares já mencionados, considerando-se assim os periódicos de
+grande importância e relevância para as áreas (Por exemplo: O Journal of the
+Brazilian Society of Mechanical Sciences, Pesquisa Operacional – indexado no
+IAOR, etc.).
+IC – Periódicos de circulação internacional em processo de reconhecimento
+pela comunidade científica e que ainda não apresentam índice de impacto
+mensurável. Nesses casos verificou -se ainda, nas páginas dos periódicos na
+Internet, a abrangência internacional da constituição do corpo editorial.
+Nacionais:
+NA - Periódicos de cunho científico com ampla circulação nacional e com corpo
+editorial predominantemente nacional, não pertencentes à listagem ISI/JCR,
+mas reconhecidos pela comunidade científica como de excelência. Periódicos
+Brasileiros incluídos no SCIELO são considerados como NA.
+NB - Periódicos de abrangência nacional, com corpo editorial
+predominantemente nacional e considerados pela comunidade científica como
+de boa qualidade e boa regularidade.
+NC - Periódicos científicos de divulgação com abrangência nacional.
+Revistas – Publicação em veículos de divulgação técnica para os setores
+profissionais, que não tenham caráter predominantemente científico nem
+procedimento de seleção de trabalhos com corpo editorial científico e com
+arbitragem feita por revisores do meio acadêmico.
+
+Anais de Eventos Internacionais:
+Nível A - Anais de cunho científico contendo trabalhos completos que foram
+submetidos a comprovado processo de avaliação pelo Comitê Organizador
+Internacional do evento e com ampla divulgação na comunidade científica
+internacional. São incluídos nessa categoria os anais de congressos organizados
+pelas associações científicas de abrangência internacional.
+Nível B – Anais de cunho científico, contendo trabalhos completos, que foram
+submetidos a comprovado processo de avaliação pelo Comitê Organizador
+Internacional do evento e com divulgação mais restrita na comunidade
+científica internacional.
+Nível C - Anais contendo trabalhos completos, que foram submetidos a
+processo de avaliação pelo Comitê Organizador Internacional do evento. São
+considerados nesta categoria os eventos novos, sem muita consolidação e
+também aqueles cujo escopo seja de natureza mais tecnológica.
+Anais de Eventos Nacionais:
+Nível A - Anais de cunho científico, contendo trabalhos completos que foram
+
+submetidos a comprovado processo de avaliação pelo Comitê Organizador
+Nacional do evento e com ampla divulgação na comunidade científica nacional.
+São incluídos nessa categoria os anais de congressos organizados pelas
+associações científicas de abrangência nacional.
+Nível B – Anais de cunho científico, contendo trabalhos completos que foram
+submetidos a comprovado processo de avaliação pelo Comitê Organizador
+Nacional do evento e com divulgação mais restrita na comunidade científica
+nacional.
+Nível C - Anais contendo trabalhos completos que foram submetidos a
+processo de avaliação pelo Comitê Organizador nacional do evento. São
+considerados nesta categoria os eventos nacionais novos, sem muita
+consolidação, e também aqueles cujo escopo seja de natureza mais tecnológica.
+Observação: Não são consideradas como contribuições para os Programas de
+Pós Graduação pela Comissão de Avaliação das Engenharias III os trabalhos
+publicados em anais decorrentes de eventos de Iniciação Científica, Extensão
+e tão pouco os trabalhos que contenham apenas Resumos.
+Definições (referente a 2004):
+Fator de Impacto = (número de citações em 2004 em todos os periódicos, de
+artigos publicados pelo respectivo periódico em 2003 e 2002)/(número de
+artigos publicados em 2003 e 2002 no respectivo periódico)
+Índice de Imediatez = (número de citações em 2004 de artigos publicados em
+2004)/(número de artigos publicados em 2004)
+Índice de Meia Vida = número de anos a partir de 2004 para trás necessários
+para que metade das citações se refira a artigos publicados neste período
+Observações: O sistema QUALIS utiliza como base de análise todos os dados
+declarados no COLETA pelos programas de Pós Graduação. Muitos programas
+não preenchem os dados de forma completa. Dessa forma, alguns periódicos e
+anais foram classificados como IMPRÒPRIOS por não ser possível verificar
+precisamente nas bases de dados os respectivos detalhes. É importante que os
+programas sempre utilizem os números do ISBN e do ISSN para que a
+classificação seja viabilizada.
+
+
