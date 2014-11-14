@@ -3,18 +3,12 @@
 >
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>icmc-usp</groupId>
+	<groupId>utfpr</groupId>
 	<artifactId>lattes-analyzer</artifactId>
 	<packaging>jar</packaging>
 	<name>Lattes Analyzer</name>
 	<inceptionYear>2011</inceptionYear>
 	<version>0.1.0</version>
-
-
-	<organization>
-		<name>Institute of Mathematical Sciences and Computing</name>
-		<url>http://www.icmc.usp.br</url>
-	</organization>
 
 	<licenses>
 		<license>
@@ -29,10 +23,7 @@
 		<developer>
 			<id>magsilva</id>
 			<name>Marco Aurélio Graciotto Silva</name>
-			<email>magsilva@icmc.usp.br</email>
-			<url>http://www.icmc.usp.br/~magsilva/</url>
-			<organization>Ironia Corporation</organization>
-			<organizationUrl>http://www.ironiacorp.com</organizationUrl>
+			<email>magsilva@utfpr.edu.br</email>
 			<timezone>+3</timezone>
 			<roles>
 				<role>Manager</role>
@@ -41,46 +32,41 @@
 		</developer>
 	</developers>
 
-	<issueManagement>
-	</issueManagement>
-
-	<scm>
-		<connection>https://www.ironiacorp.com/svn/projects/ScienceAnalyzer/trunk</connection>
-		<developerConnection>https://www.ironiacorp.com/svn/projects/ScienceAnalyzer/trunk</developerConnection>
-		<tag>trunk</tag>
-		<url>http://www.ironiacorp.com/Apps/WebSVN/wsvn/Active%20projects.ScienceAnalyzer</url>
-	</scm>
-
-	<ciManagement>
-		<system>Hudson</system>
-		<url>http://www.ironiacorp.com/Apps/Hudson/job/Science-Analyzer</url>
-	</ciManagement>
-
 	<distributionManagement>
 		<repository>
-			<id>labes-pc-010808</id>
-			<name>labes-pc-010808</name>
-			<url>http://www.ironiacorp.com/Apps/Artifactory/libs-releases-local</url>
+			<id>IroniaCorp</id>
+			<url>dav:http://www.ironiacorp.com/repo/maven2</url>
 		</repository>
 	</distributionManagement>
 
-	<repositories>
-		<repository>
-			<id>central</id>
-			<url>http://repo1.maven.org/maven2/</url>
-			<releases>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-		</repository>
-				
-		<repository>
-			<id>LabES repository</id>
-			<url>http://www.ironiacorp.com/Apps/Artifactory/repo</url>
-			<releases>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-		</repository>
-		
+
+        <repositories>
+                <repository>
+                        <id>repo1</id>
+                        <url>http://repo1.maven.org/maven2/</url>
+                        <releases>
+                                <enabled>true</enabled>
+                                <updatePolicy>interval:10080</updatePolicy>
+                        </releases>
+                        <snapshots>
+                                <enabled>false</enabled>
+                        </snapshots>
+                </repository>
+
+                <repository>
+                        <id>IroniaCorp</id>
+                        <name>Ironia Corporation</name>
+                        <url>http://www.ironiacorp.com/repo/maven2</url>
+                        <releases>
+                                <enabled>true</enabled>
+                                <updatePolicy>interval:10080</updatePolicy>
+                        </releases>
+                        <snapshots>
+                                <enabled>true</enabled>
+                                <updatePolicy>interval:10080</updatePolicy>
+                        </snapshots>
+                </repository>
+
 		<repository>
 			<id>CodeHaus</id>
 			<url>http://repository.codehaus.org</url>
@@ -91,7 +77,7 @@
 	</repositories>
 
 	<properties>
-		<sonar.host.url>http://www.ironiacorp.com/Apps/Sonar/</sonar.host.url>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.springframework.version>3.0.6.RELEASE</org.springframework.version>
 	</properties>
 
@@ -301,6 +287,21 @@
 				<filtering>false</filtering>
 			</testResource>
 		</testResources>
+
+		<extensions>
+                        <extension>
+                                <groupId>org.apache.maven.wagon</groupId>
+                                <artifactId>wagon-webdav-jackrabbit</artifactId>
+                                <version>2.4</version>
+                        </extension>
+
+                        <extension>
+                                <groupId>org.slf4j</groupId>
+                                <artifactId>slf4j-nop</artifactId>
+                                <version>1.6.6</version>
+                        </extension>
+                </extensions>
+
 
 		<pluginManagement>
 			<plugins>
