@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<zk>
+	<!--
+		<listener> <listener-class>net.sf.sysrev.gui.zk.i18n.LanguageDetector</listener-class> </listener>
+	-->
+
+	<desktop-config>
+		<!--
+			It specifies the time, in seconds, between client requests before a desktop is invalidated. A
+			negative time indicates the desktop should never timeout.
+		-->
+		<desktop-timeout>-1</desktop-timeout>
+
+		<!--
+			Period to Check Whether a File Is Modified. ZK caches the parsed result of a ZUML page and
+			re-compiles it only if it is modified. In a production system, ZUML pages are rarely modified so
+			you can prolong the period to check whether a page is modified by specifying file-check-period in
+			WEB-INF/zk.xml as shown below. By default, it is 5 seconds.
+		-->
+		<file-check-period>1</file-check-period><!-- unit: seconds -->
+
+		<theme-provider-class>net.sf.sysrev.gui.zk.i18n.CustomThemeProvider</theme-provider-class>
+	</desktop-config>
+
+
+
+	<client-config>
+		<click-filter-delay>0</click-filter-delay>
+		 
+		<debug-js>true</debug-js>
+
+		<!--
+			It specifies whether to keep the desktop when a user reloads an URL or browses away to another
+			URL.
+		-->
+		<keep-across-visits>false</keep-across-visits>
+
+		<!--
+			Time, in milliseconds, to wait before prompting the user with a dialog indicating that the
+			request is in processing.
+		-->
+		<processing-prompt-delay>2000</processing-prompt-delay>
+
+		<!--
+			Time, in milliseconds, to wait before resending the AU requests to the server. Negative values
+			disable the resend mechanism (Google App Engine users must disable the resend feature as
+			AppEngine does not support user's threads).
+		-->
+		<resend-delay>-1</resend-delay>
+
+		<!--
+			Time, in milliseconds, to wait before popping up the tooltip when the user moves the mouse
+			pointer over particular UI components.
+		-->
+		<tooltip-delay>700</tooltip-delay>
+	</client-config>
+
+
+	<session-config>
+		<!--
+			It specifies the time, in seconds, between client requests before a session is invalidated. A
+			negative time indicates the session should never timeout. The default zero means to use the
+			system default (which is usually specified in web.xml).
+		-->
+		<session-timeout>0</session-timeout>
+
+		<!--
+			A session is considered as timed out (and then invalidated) if it doesn't receive any client
+			request in the session timeout interval (see the session-timeout element). By setting this option
+			to true, the onTimer event, just like any other events, will reset the session timeout counter
+			(and then keep the session alive until timeout). Notice that, if this option is false and the
+			timer is shorter than the session timeout, the session won't be expired. By default, this option
+			is false. It means the onTimer event is ignored when handling the session timeout. In other
+			words, the session will expire if no other event is received before timeout.
+		-->
+		<timer-keep-alive>false</timer-keep-alive>
+
+		<!--
+			It specifies the maximal allowed number of desktops per session. A desktop represents a HTML page
+			for a browser. In other words, this number controls the number of concurrent browser windows
+			allowed per session. A negative number means no limitation at all.
+		-->
+		<max-desktops-per-session>-1</max-desktops-per-session>
+
+		<!--
+			It specifies the maximal allowed number of concurrent server-push connections per session. A
+			negative number (default) means no limitation at all. Zero means no server push is allowed at
+			all.
+		-->
+		<max-pushes-per-session>-1</max-pushes-per-session>
+
+		
+		<!--
+			It specifies the maximal allowed number of concurrent requests per session. A negative number
+			means no limitation at all.
+		-->
+		<max-requests-per-session>-1</max-requests-per-session>
+	</session-config>
+
+
+	<system-config>
+		<!--
+			It specifies which class used to implement the AU writer. The AU writer is used to generate the
+			output and send it to the client. There are two built-in implementations, HttpAuWriter and
+			SmartAuWriter. The former one send the output the client after the requests are processed
+			completely. On the other hand, the later one will send a partial output first if the processing
+			is taking too long (half of the value specified in the resend-delay element). By sending the
+			partial output, the client will know the server is still alive.
+		-->
+		<au-writer-class>org.zkoss.zkmax.au.http.SmartAuWriter</au-writer-class>
+
+		<!--
+			It specifies which class used to implement the desktop cache. Available implementations are
+			SessionDesktopCacheProvider and GlobalDesktopCacheProvider. The SessionDesktopCacheProvider
+			stores all desktops from the same session in one single cache. It is simple and fast, but not
+			supporting clustering. org.zkoss.zk.ui.impl. The GlobalDesktopCacheProvider stores all desktops
+			from the same Web application in one single cache.
+		-->
+		<cache-provider-class>org.zkoss.zk.ui.impl.SessionDesktopCacheProvider</cache-provider-class>
+
+		<!--
+			Specifies whether to disable the use of the event processing thread. If disabled, no event
+			processing thread will be used at all. In other words, all events are processed in the Servlet
+			thread directly.
+		-->
+		<disable-event-thread>true</disable-event-thread>
+
+		<!--
+			Specifies the maximal allowed number of the thread pool for queuing the idle event processing
+			threads. ZK will reuse the idle event processing threads by keeping them in a thread pool. The
+			number specified here then controls the maximal size of the pool. A negative value indicates
+			there is no limit. Zero means no pool at all.
+		-->
+		<max-spare-threads>-1</max-spare-threads>
+
+		<!--
+			It specifies the maximal allowed number of the suspended event processing threads. A negative
+			value indicates there is no limit at all. An exception is thrown if an event processing thread is
+			going to suspend and the number of suspended threads exceeds the number specified here. You can
+			use the error-page element to control how to display this error, or catch the exception and
+			handle it in a different way.
+		-->
+		<max-suspended-threads>-1</max-suspended-threads>
+
+		<!--
+			It specifies the maximal allowed size, in kilobytes, to upload a file from the client. A negative
+			value indicates there is no limit.
+		-->
+		<max-upload-size>-1</max-upload-size>
+
+		<!--
+			It specifies the maximal allowed time to process events, in milliseconds. It must be positive. ZK
+			will keep processing the requests sent from the client until all requests are processed, or the
+			maximal allowed time expires.
+		-->
+		<max-process-time>3000</max-process-time>
+
+		<!--
+			It specifies the session cache used to store ZK sessions. It must implement the
+			org.zkoss.zk.ui.sys.SessionCache interface. By default, org.zkoss.zk.ui.http.SimpleSessionCache
+			is used and it stores the ZK session in an attribute of the native session (i.e., HttpSession or
+			PortletSession).
+		-->
+		<session-cache-class>org.zkoss.zk.ui.http.SimpleSessionCache</session-cache-class>
+ 		 		
+		<!--
+			It specifies which class used to create desktops and pages, and to convert URL to a page
+			definition. The class must have a default constructor (without any argument), and implement the
+			org.zkoss.zk.ui.sys.UiFactory interface. One instance of the UI factory is created and shared for
+			each Web application, so you have to synchronize the access properly.
+		-->
+		<ui-factory-class>org.zkoss.zk.ui.http.SerializableUiFactory</ui-factory-class>
+
+		<!--
+			Specifies which class used to implement the Web application. The class must have a default
+			constructor (without any argument), and implement both the org.zkoss.zk.ui.WebApp and
+			org.zkoss.zk.ui.sys.WebAppCtrl interfaces
+		-->
+		<web-app-class>org.zkoss.zk.ui.http.SimpleWebApp</web-app-class>
+	</system-config>
+
+
+
+
+
+
+	<library-property>
+		<name>org.zkoss.util.label.web.location</name>
+		<value>/WEB-INF/resources/i18n/messages.properties</value>
+	</library-property>
+
+	<!-- Defines the number of lines to log an error message. -->
+	<library-property>
+		<name>org.zkoss.util.logging.realCauseBriefly</name>
+		<value>-1</value>
+	</library-property>
+
+	<!-- Defines the number of lines to log a warniing message. -->
+	<library-property>
+		<name>org.zkoss.util.logging.warningBriefly</name>
+		<value>-1</value>
+	</library-property>
+
+	<!--
+	Change Font Size and/or Family
+	-->
+	<!-- Default font size. It is used in the most components. -->
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeM</name>
+		<value>12px</value>
+	</library-property>
+
+	<!-- Smaller font size used in the component that requires small fonts, such as toolbar. -->
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeS</name>
+		<value>10px</value>
+	</library-property>
+
+	<!-- Extremely small font size; rarely used. -->
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeXS</name>
+		<value>9px</value>
+	</library-property>
+
+	<!-- Font size used in the menu items. -->
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeMS</name>
+		<value>11px</value>
+	</library-property>
+
+
+	<!-- Font family used for titles and captions. -->
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeT</name>
+		<value>Verdana, Tahoma, Arial, Helvetica, sans-serif</value>
+	</library-property>
+
+
+	<!-- Font family used for contents. -->
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeT</name>
+		<value>Times, serif</value>
+	</library-property>
+
+
+	<!--
+		hen using the include component within ZUL files we can experience problems if the included file's
+		components need to be accessed before they have been created and rendered. There are three include
+		modes, defer, instant and auto.
+	-->
+	<library-property>
+		<name>org.zkoss.zul.include.mode</name>
+		<value>auto</value>
+	</library-property>
+
+	<!--
+		<error-page> <exception-type>''ClassName''</exception-type> <location>''the error page's
+		URI''</location> </error-page>
+	-->
+	
+	<log>    
+    	<log-base></log-base>    
+    </log>   
+</zk>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+default-lazy-init="true"
+--> 
+<beans 
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd"
+
+>
+
+	<!--
+		FIXME: Apache Tomcat does not understand classpath:dbms.properties (or do not include 'WEB-INF/'
+		into the classpath), so we have to use this.
+	-->
+	<!-- 
+	<context:property-placeholder location="classpath:dbms.properties" />
+	-->
+	<context:property-placeholder location="WEB-INF/dbms.properties" />
+
+	<!--
+		Data sources
+	-->
+	<bean id="ordinaryDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${dbms.driver}" />
+        <property name="url" value="${dbms.middleware}:${dbms.type}://${dbms.hostname}/${dbms.database}" />
+		<property name="username" value="${dbms.username}" />
+		<property name="password" value="${dbms.password}" />
+    </bean>
+	
+	
+	<!-- Pool data source -->
+	<bean id="poolDataSource" class="org.apache.commons.dbcp.BasicDataSource" scope="singleton">
+		<property name="driverClassName" value="${dbms.driver}" />
+		<property name="url" value="${dbms.middleware}:${dbms.type}://${dbms.hostname}/${dbms.database}" />
+		<property name="username" value="${dbms.username}" />
+		<property name="password" value="${dbms.password}" />
+	</bean>
+
+
+	<!--
+		JPA adapter configuration
+	-->
+	<!-- Hibernate JPA adapter -->
+	<bean id="hibernateJpaAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+		scope="singleton"
+	>
+		<property name="showSql" value="true" />
+		<property name="generateDdl" value="true" />
+		<property name="database" value="MYSQL" />
+		<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+	</bean>
+
+
+	<!--
+	Entity Manager Factory configuration 
+	-->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		scope="singleton"
+	>
+		<property name="persistenceXmlLocation"  value="META-INF/persistence.xml"/>
+		<property name="persistenceUnitName" value="sysrev-hibernate" />
+		<property name="dataSource" ref="poolDataSource" />
+		<property name="jpaVendorAdapter" ref="hibernateJpaAdapter" />
+	</bean>
+
+
+	<!-- DataNucleus configuration -->
+	<!--
+		<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> <property
+		name="persistence-xml-location" value="classpath:META-INF/persistence.xml" /> <property
+		name="persistenceUnitName" value="sysrev-datanucleus" /> <property name="jpaVendorAdapter"> <bean
+		class="org.springframework.orm.jpa.vendor.DatanucleusJpaVendorAdapter"> <property name="showSql"
+		value="true" /> <property name="generateDdl" value="true" /> </bean> </property> </bean>
+	-->
+
+
+	<!-- Google App Engine configuration -->
+	<!--
+		<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean"
+		lazy-init="true"> <property name="persistence-xml-location"
+		value="classpath:META-INF/persistence.xml" /> <property name="persistenceUnitName" value="sysrev"
+		/> </bean>
+	-->
+
+
+	<!--
+			Transaction management configuration. 
+	-->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+	<!--
+		Enable support for @PersistenceUnit and @PersistenceContext annotations both at field and method
+		level. The 'annotation-config' will automatically register all of Spring's standard
+		post-processors for annotation-based configuration
+	-->
+	<context:annotation-config />
+
+	<!--
+		Setup a JPA ClassTransformer instance to be plugged in a specific manner depending on the
+		environment. This is the preferred way of setting up a load-time weaver, delivering autodetection
+		of the platform (WebLogic, OC4J, GlassFish, Tomcat, Resin, VM agent) as well as automatic
+		propagation of the weaver to all weaver-aware beans.
+	-->
+	<!-- 
+	<context:load-time-weaver />
+ -->
+
+	<!-- 
+	Statistics gathering.
+	-->
+	<bean class="org.springframework.jmx.export.MBeanExporter">
+		<property name="autodetect" value="false" />
+		<property name="assembler">
+			<bean id="jmxAssembler" class="org.springframework.jmx.export.assembler.MetadataMBeanInfoAssembler">
+				<property name="attributeSource">
+					<bean class="org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource" />
+				</property>
+			</bean>
+		</property>
+		<property name="beans">
+			<map>
+				<entry key="org.hibernate:name=statistics">
+					<bean class="org.hibernate.jmx.StatisticsService">
+						<property name="statisticsEnabled" value="true" />
+						<property name="sessionFactory">
+							<util:property-path path="entityManagerFactory.sessionFactory" />
+						</property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+
+
+	<!--
+		DAO configuration 
+	-->
+	<bean id="dataSourceService" class="net.sf.sysrev.util.persistence.dao.jpa.PersistenceServiceImpl" />
+
+	<bean id="dataSourceController" class="net.sf.sysrev.gui.zk.Controller" scope="prototype">
+		<property name="dataSourceService" ref="dataSourceService" />
+	</bean>
+</beans>

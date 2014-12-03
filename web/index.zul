@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:x="http://www.zkoss.org/2005/zul" xmlns:zk="http://www.zkoss.org/2005/zk"
+	xmlns:a="http://www.zkoss.org/2005/zk/annotation"
+>
+	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+	<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+	<?page title="${c:l('app.title')}" contentType="text/html;charset=UTF-8"?>
+
+	<window title="${c:l('app.title')}" border="normal" apply="${dataSourceController}">
+		<zscript src="index.zs"/>
+		<!-- 
+			<include src="topbar.zul" />
+		-->
+
+		<listbox id="list" multiple="true" rows="4">
+			<listhead>
+				<listheader label="Name" />
+				<listheader label="Source" width="80px" />
+				<listheader label="Content" width="90px" />
+			</listhead>
+		</listbox>
+
+		<vbox>
+			<hbox>
+				Resource: <textbox id="name" cols="40" constraint="no empty" />
+				Source: <textbox id="source" cols="40" constraint="no empty" />
+				<fileupload maxsize="50000" native="true" number="1">
+					<attribute name="onUpload" trim="true">
+						java: processUpload();
+					</attribute>
+				</fileupload>
+			</hbox>
+	
+			<hbox>
+				<button id="add" label="${c:l('button.add')}" width="36px" height="24px" />
+				<button id="delete" label="${c:l('button.delete')}" width="46px" height="24px" />
+			</hbox>
+		</vbox>
+	</window>
+	<!-- 
+		<fisheyelist id="fi" itemWidth="170" itemHeight="50" itemMaxWidth="340" itemMaxHeight="100"
+		itemPadding="10" attachEdge="left" labelEdge="right" orient="vertical">
+		<fisheyeitem image="/images/dogs_icon.gif" onClick='go("DOGS")' />
+		<fisheyeitem image="/images/cats_icon.gif" onClick='go("CATS")' />
+		<fisheyeitem image="/images/birds_icon.gif" onClick='go("BIRDS")' />
+		<fisheyeitem image="/images/fish_icon.gif" onClick='go("FISH")' />
+		<fisheyeitem image="/images/reptiles_icon.gif" onClick='go("REPTILES")' />
+		</fisheyelist>
+	-->
+</zk>

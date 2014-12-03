@@ -1,0 +1,12 @@
+<<<<<<< .mine
+- Colocar as expressões regulares em arquivo (.properties).
+- Criar caso de teste.
+- Tentar armazenar os dados lidos em um arquivo BibTex.=======
+- Implementar o padrão Listener (cada miner em um thread, cada
+thread associado a um controlador, cada thread com um FileSystemMiner
+ou InternetMiner que notifica o controlador a cada dado ou metadado
+obtido).
+
+- Colocar as expressões regulares em arquivo (.properties).
+- Criar caso de teste.
+- Tentar armazenar os dados lidos em um arquivo BibTex.>>>>>>> .r4

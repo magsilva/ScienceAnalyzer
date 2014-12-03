@@ -1,0 +1,762 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>sysrev</groupId>
+	<artifactId>sysrev</artifactId>
+	<version>1.0</version>
+	<packaging>war</packaging>
+
+	<name>SysRev</name>
+	<description>Learning objects development tool based on systematic reviews</description>
+	<url>http://www.labes.icmc.usp.br/~magsilva/projects/SysRev</url>
+	<inceptionYear>2009</inceptionYear>
+
+	<organization>
+		<name>Software Engineering Laboratory</name>
+		<url>http://www.labes.icmc.usp.br</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments />
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>magsilva</id>
+			<name>Marco Aurélio Graciotto Silva</name>
+			<email>magsilva@icmc.usp.br</email>
+			<url>http://www.icmc.usp.br/~magsilva/</url>
+			<organization>Software Engineering Laboratory</organization>
+			<organizationUrl>http://www.labes.icmc.usp.br</organizationUrl>
+			<timezone>+3</timezone>
+			<roles>
+				<role>Manager</role>
+				<role>Main developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<issueManagement>
+		<system>Bugzilla</system>
+		<url>http://143.107.183.152/Admin/Bugzilla/</url>
+	</issueManagement>
+
+	<scm>
+		<connection>scm:svn:https://143.107.183.152/svn/projects/SystematicReviewer/trunk</connection>
+		<developerConnection>scm:svn:https://143.107.183.152/svn/projects/SystematicReviewer/trunk</developerConnection>
+		<tag>trunk</tag>
+		<url>https://143.107.183.152/Admin/ViewVC/viewvc.cgi/SystematicReviewer/trunk</url>
+	</scm>
+
+	<ciManagement>
+		<system>Hudson</system>
+		<url>http://143.107.183.152:8080/Hudson</url>
+		<notifiers>
+			<notifier>
+				<type>mail</type>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>false</sendOnSuccess>
+				<sendOnWarning>true</sendOnWarning>
+				<address>magsilva@icmc.usp.br</address>
+			</notifier>
+		</notifiers>
+	</ciManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>labes-pc-010808-releases</id>
+			<name>labes-pc-010808-releases</name>
+			<url>http://143.107.183.152:8080/Artifactory/libs-releases-local</url>
+		</repository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>labes-pc-010808-releases</id>
+			<url>http://143.107.183.152:8080/Artifactory/repo</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>labes-pc-010808-snapshots</id>
+			<url>http://143.107.183.152:8080/Artifactory/repo</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+
+		<repository>
+			<id>DataNucleus_Repos2</id>
+			<name>DataNucleus Repository</name>
+			<url>http://www.datanucleus.org/downloads/maven2</url>
+		</repository>
+
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>Maven 1 repository</id>
+			<name>Maven 1.x Repository</name>
+			<url>http://download.java.net/maven/1</url>
+			<layout>legacy</layout>
+		</repository>
+
+		<repository>
+			<id>ZK</id>
+			<name>ZK release</name>
+			<url>http://repo1.maven.org/maven2/org/zkoss/zk/zk/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Maven Plugin Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>apache-snapshot</id>
+			<name>Maven Plugin Snapshots</name>
+			<url>http://people.apache.org/repo/m2-snapshot-repository</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>DataNucleus_2</id>
+			<url>http://www.datanucleus.org/downloads/maven2/</url>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>Mojo</id>
+			<url>http://repository.codehaus.org</url>
+		</pluginRepository>
+
+		<pluginRepository>
+			<id>Mojo Snapshots</id>
+			<url>http://snapshots.repository.codehaus.org</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- ZK (RIA application) -->
+	<dependencies>
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zk</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zhtml</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zul</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkex</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkmax</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zkplus</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.zkoss.zk</groupId>
+			<artifactId>zml</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+
+		<!-- Libraries required by Zk -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.beanshell</groupId>
+			<artifactId>bsh</artifactId>
+			<version>2.0b4</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>3.5.2</version>
+			<scope>runtime</scope>
+		</dependency>
+
+
+		<!-- Google AppEngine support -->
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-1.0-sdk</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-tools-sdk</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
+
+
+		<!--
+			Database drivers 
+		-->
+
+		<!-- MySQL database driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+			<type>jar</type>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- PostgreSQL database driver -->
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>8.3-603.jdbc4</version>
+			<type>jar</type>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- HSQLdb database driver -->
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.10</version>
+			<type>jar</type>
+			<scope>runtime</scope>
+		</dependency>
+
+
+		<!--
+		Datanucleus support
+		-->
+		<!--
+			<dependency> <groupId>org.datanucleus</groupId> <artifactId>datanucleus-jpa</artifactId>
+			<version>1.1.5</version> </dependency>
+		-->
+
+		<dependency>
+			<groupId>org.htmlparser</groupId>
+			<artifactId>htmlparser</artifactId>
+			<version>1.6</version>
+		</dependency>
+
+		<!-- HTTP Client 3.x -->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<!-- HTTP Client 4.x -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.0-beta2</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.0-beta2</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ironiacorp</groupId>
+			<artifactId>ironia-commons</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>0.8.0-incubator-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring</artifactId>
+			<version>2.5.6.SEC01</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>2.5.6.SEC01</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jpa</artifactId>
+			<version>2.0.8</version>
+			<type>jar</type>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.2.7.ga</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.4.0.GA</version>
+			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.5</version>
+			<type>jar</type>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-agent</artifactId>
+			<version>2.5.6.SEC01</version>
+			<type>jar</type>
+			<scope>runtime</scope>
+		</dependency>
+
+
+		<!--
+		Datasource providers
+		-->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.2.2</version>
+			<scope>runtime</scope>
+		</dependency>
+
+
+		<!--
+		Logging 
+		-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jcl</artifactId>
+			<version>1.5.6</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>concurrent</groupId>
+			<artifactId>concurrent</artifactId>
+			<version>1.3.4</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}-${project.version}-r${buildNumber}</finalName>
+
+
+		<directory>target</directory>
+
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
+
+		<outputDirectory>target/classes</outputDirectory>
+		<testOutputDirectory>target/test-classes</testOutputDirectory>
+
+		<resources>
+			<resource>
+				<targetPath>lib/</targetPath>
+				<filtering>false</filtering>
+				<directory>${basedir}/lib</directory>
+				<includes>
+					<include>res.jar</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.plexus</groupId>
+						<artifactId>plexus-compiler-eclipse</artifactId>
+						<version>1.5.1</version>
+						<type>jar</type>
+						<scope>compile</scope>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<compilerId>javac</compilerId> <!-- javac, aspectj, csharp, eclipse, jikes -->
+					<debug>true</debug>
+					<fork>true</fork>
+					<meminitial>128m</meminitial>
+					<maxmem>512m</maxmem>
+					<optimize>false</optimize>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+					<skip>true</skip>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<classesDirectory>${project.build.outputDirectory}</classesDirectory>
+					<finalName>${project.artifactId}-${project.version}</finalName>
+					<outputDirectory>${project.build.directory}</outputDirectory>
+					<archive>
+						<index>true</index>
+						<!--
+							<manifestEntries> <mode>development</mode> <url>${pom.url}</url> </manifestEntries>
+						-->
+						<manifest>
+							<mainClass>net.sf.sysrev.SysRev</mainClass>
+							<packageName>${project.artifactId}</packageName>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib</classpathPrefix>
+							<!--
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							-->
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>pom-assembly-release.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attached</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/web/WEB-INF/lib</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>web</directory>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+
+			<!--
+				<plugin> <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId> <dependencies> </dependencies> <executions>
+				<execution> <id>generate-sources</id> <phase>generate-sources</phase> <configuration> <tasks>
+				<path id="classpath"> <path refid="maven.compile.classpath" /> <path
+				refid="maven.plugin.classpath" /> </path> <ant antfile="${basedir}/build.xml" dir="${basedir}"
+				inheritRefs="true"> <target name="generate-sources" /> </ant> </tasks> </configuration> <goals>
+				<goal>run</goal> </goals> </execution> </executions> </plugin>
+			-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.0-beta-3</version>
+				<configuration>
+					<format>{0,date,yyyy-MM-dd HH:mm:ss}</format>
+					<items>
+						<item>timestamp</item>
+					</items>
+					<doCheck>false</doCheck>
+					<doUpdate>false</doUpdate>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>argouml-maven-plugin</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>transform</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<inputFiles>
+						<inputFile>model/</inputFile>
+					</inputFiles>
+					<outputDirectory>${project.build.directory}/site/images</outputDirectory>
+					<outputFormat>png</outputFormat> <!-- Supported values are: ps, eps, png, gif, svg. -->
+					<recursive>true</recursive>
+					<scale>1</scale>
+				</configuration>
+			</plugin>
+
+			<!-- Datanucleus JPA persistence -->
+			<!--
+				<plugin> <groupId>org.datanucleus</groupId> <artifactId>maven-datanucleus-plugin</artifactId>
+				<version>1.1.3</version> <configuration>
+				<log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration> <verbose>true</verbose>
+				<mappingIncludes>**/*.class</mappingIncludes> <verbose>true</verbose>
+				<enhancerName>ASM</enhancerName> <api>JPA</api> <fork>true</fork> </configuration> <executions>
+				<execution> <phase>process-classes</phase> <goals> <goal>enhance</goal> </goals> </execution>
+				</executions> </plugin>
+			-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<disableXmlReport>true</disableXmlReport>
+					<enableAssertions>true</enableAssertions>
+					<forkMode>once</forkMode>  	<!--  "never", "once" or "always". -->
+					<redirectTestOutputToFile>true</redirectTestOutputToFile>
+					<reportFormat>plain</reportFormat>
+					<skipTests>true</skipTests>
+					<useFile>true</useFile>
+					<useManifestOnlyJar>true</useManifestOnlyJar>
+					<useSystemClassLoader>true</useSystemClassLoader>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.10</version>
+				<configuration>
+					<webAppSourceDirectory>${basedir}/web</webAppSourceDirectory>
+					<webXml>${basedir}/web/WEB-INF/web.xml</webXml>
+					<connectors>
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<port>9090</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>javancss-maven-plugin</artifactId>
+				<version>2.0-beta-2</version>
+
+				<configuration>
+					<failOnViolation>true</failOnViolation>
+					<ccnLimit>12</ccnLimit>
+					<ncssLimit>90</ncssLimit>
+				</configuration>
+			</plugin>
+
+
+			<!-- Cobertura -->
+			<!--
+			http://jira.codehaus.org/browse/MCOBERTURA-103
+			-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.2</version>
+				<dependencies>
+					<dependency>
+						<groupId>net.sourceforge.cobertura</groupId>
+						<artifactId>cobertura</artifactId>
+						<version>1.9.2</version>
+					</dependency>
+					<dependency>
+						<groupId>net.sourceforge.cobertura</groupId>
+						<artifactId>cobertura-runtime</artifactId>
+						<version>1.9.2</version>
+						<type>pom</type>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<check>
+						<branchRate>85</branchRate>
+						<lineRate>85</lineRate>
+						<haltOnFailure>true</haltOnFailure>
+						<totalBranchRate>85</totalBranchRate>
+						<totalLineRate>85</totalLineRate>
+						<packageLineRate>85</packageLineRate>
+						<packageBranchRate>85</packageBranchRate>
+					</check>
+					<cobertura>
+						<outputDirectory>${project.reporting.outputDirectory}/tests/cobertura</outputDirectory>
+						<formats>
+							<format>html</format>
+							<format>xml</format>
+						</formats>
+					</cobertura>
+				</configuration>
+				<executions>
+					<execution>
+						<id>clean</id>
+						<goals>
+							<goal>clean</goal>
+							<goal>check</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>build</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>instrument</goal>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Emma -->
+			<!--
+				<plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>emma-maven-plugin</artifactId>
+				<executions> <execution> <phase>process-classes</phase> <goals> <goal>instrument</goal> </goals>
+				<configuration> <verbose>true</verbose> </configuration> </execution> </executions> </plugin>
+
+				<plugin> <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId> <configuration> <forkMode>once</forkMode>
+				<reportFormat>xml</reportFormat>
+				<classesDirectory>${project.build.directory}/generated-classes/emma/classes</classesDirectory>
+				</configuration> </plugin>
+			-->
+		</plugins>
+	</build>
+
+	<reporting>
+		<outputDirectory>site</outputDirectory>
+
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>javancss-maven-plugin</artifactId>
+				<version>2.0-beta-2</version>
+			</plugin>
+
+			<!-- Tests -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>surefire-report-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- Emma -->
+			<!--
+				<plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>emma-maven-plugin</artifactId>
+				</plugin>
+			-->
+
+			<!-- Cobertura -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
+</project>

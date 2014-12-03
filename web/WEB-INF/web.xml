@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+	<!-- Listeners -->
+	<!-- ZK listener for session cleanup  -->
+	<listener>
+		<listener-class>org.zkoss.zk.ui.http.HttpSessionListener</listener-class>
+	</listener>
+
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<!--
+			FIXME: Apache Tomcat does not understand classpath:dbms.properties (or do not include 'WEB-INF/'
+			into the classpath), so we have to use this.
+		-->
+		<!-- 
+		<param-value>classpath:spring-config.xml</param-value>
+		-->
+		<param-value>WEB-INF/spring-config.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+
+	<!-- Servlets -->
+	<!--
+		<servlet> <servlet-name>dspLoader</servlet-name> <description>The servlet loads the DSP
+		pages.</description> <servlet-class>org.zkoss.web.servlet.dsp.InterpreterServlet</servlet-class>
+		</servlet>
+	-->
+
+	<servlet>
+		<servlet-name>zkLoader</servlet-name>
+		<description>ZK loader for ZUML pages</description>
+		<servlet-class>org.zkoss.zk.ui.http.DHtmlLayoutServlet
+		</servlet-class>
+		<init-param>
+			<param-name>update-uri</param-name>
+			<param-value>/zkau</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>auEngine</servlet-name>
+		<description>The asynchronous update engine for ZK</description>
+		<servlet-class>org.zkoss.zk.au.http.DHtmlUpdateServlet</servlet-class>
+	</servlet>
+
+
+	<!-- Servlet mappings -->
+	<!--
+		<servlet-mapping> <servlet-name>dspLoader</servlet-name> <url-pattern>*.dsp</url-pattern>
+		</servlet-mapping>
+	-->
+
+	<servlet-mapping>
+		<servlet-name>zkLoader</servlet-name>
+		<url-pattern>*.zul</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>zkLoader</servlet-name>
+		<url-pattern>*.zhtml</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>auEngine</servlet-name>
+		<url-pattern>/zkau/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>auEngine</servlet-name>
+		<url-pattern>/zkau</url-pattern>
+	</servlet-mapping>
+
+	<!-- Main page -->
+	<welcome-file-list>
+		<welcome-file>index.zul</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.zhtml</welcome-file>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+
+	<!--
+		The 'error-page' element contains either an 'error-code' element with an HTTP error code value
+		(such as 500), or an 'exception-type' element with the class name of the expected exception (such
+		as java.io.IOException). It also contains a 'location' element containing the URL path of the
+		resource to show when the error occurs.
+	-->
+	<error-page>
+		<error-code>500</error-code>
+		<location>/errors/servererror.jsp</location>
+	</error-page>
+</web-app>
