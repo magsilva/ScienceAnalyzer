@@ -11,10 +11,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import lode.miner.extraction.bibtex.handmade.HandmadeBibtexParser;
+//import lode.miner.extraction.bibtex.handmade.HandmadeBibtexParser;
 import lode.model.publication.Collection;
 import lode.model.publication.EventArticle;
 import lode.model.publication.Publication;
+import mariane.GUESSGraphPreProcessing;
 
 
 public class ScienceEvolution
@@ -123,9 +124,9 @@ public class ScienceEvolution
          * TODO: compile a consolidated BibTeX and use a pretty GDF to create a brand-new GDF with year data.
          */
 		GUESSGraphPreProcessing guess = new GUESSGraphPreProcessing();
-		guess.readData(new File("/home/magsilva/Dropbox/Papers/10thSBSC/sci2/try3/SBSC.bib"));
+		guess.readData(new File("/home/mariane/Dropbox/RS-Mariane/AutomaticEvaluation/referencias_mojo.bib"));
 		try {
-			guess.createCoAuthoringGraph(new File("/home/magsilva/Dropbox/Papers/10thSBSC/sci2/try4/tentativa2-final.gdf"));
+			guess.createCoAuthoringGraph(new File("/home/mariane/Dropbox/RS-Mariane/AutomaticEvaluation/Citation analysis/TODO/Network_of_co-authored.gdf"));
 		} catch (Exception e) {
 			throw new RuntimeException("Error found when updating coauthoring network", e);
 		}
@@ -140,8 +141,10 @@ public class ScienceEvolution
 	}
 	
 	public static void main(String[] args) throws Exception {
+		
 		ScienceEvolution evolution = new ScienceEvolution();
-		String files[] = {
+		evolution.run();
+		/*String files[] = {
 				"SBSC-2004.bib",
 				"SBSC-2005.bib", 
 				"SBSC-2006.bib",
@@ -151,10 +154,10 @@ public class ScienceEvolution
 				"SBSC-2010.bib",
 				"SBSC-2011.bib",
 				"SBSC-2012.bib",
-		};
+		};*/
 		
 		
-		for (String file : files) {
+		/*for (String file : files) {
 			HandmadeBibtexParser parser = new HandmadeBibtexParser();
 			ArrayList<Integer> pagesPerPaper = new ArrayList<Integer>();
 			Collection collection = null;
@@ -195,7 +198,7 @@ public class ScienceEvolution
 			variance = Math.sqrt(variance / quantidade);
 			averageVariance = ((maxPages - minPages) * 1.0) / quantidade;	
 			
-		}
+		}*/
 	/*
 		
 	

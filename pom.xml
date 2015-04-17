@@ -81,8 +81,8 @@
 		<org.springframework.version>3.0.6.RELEASE</org.springframework.version>
 	</properties>
 
-	<dependencies>
-		<dependency>
+  	<dependencies>
+	<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>[4.0,)</version>
@@ -122,13 +122,13 @@
 			<scope>runtime</scope>
 		</dependency>
 		
-		<dependency>
+  		<dependency>
 			<groupId>org.apache.james</groupId>
 			<artifactId>apache-mime4j</artifactId>
 			<version>0.6.1</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>net.sf.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
@@ -136,31 +136,31 @@
 			<scope>compile</scope>
 		</dependency>
 		
-		<dependency>
+  		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.18</version>
 			<scope>runtime</scope>
 		</dependency>
 		
-		<dependency>
+  		<dependency>
 			<groupId>org.apache.openjpa</groupId>
 			<artifactId>openjpa</artifactId>
 			<version>2.1.1</version>
 		</dependency>
-			
+
 		<dependency>
 			<groupId>ironiacorp</groupId>
 			<artifactId>commons-graph</artifactId>
 			<version>5.0.0-SNAPSHOT</version>
 		</dependency>
 		
-		<dependency>
+ 		<dependency>
 			<groupId>org.jfree</groupId>
 			<artifactId>jfreechart</artifactId>
 			<version>[1.0.14,)</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>ironiacorp</groupId>
 			<artifactId>commons-email</artifactId>
@@ -172,13 +172,14 @@
 			<artifactId>commons-computer</artifactId>
 			<version>5.0.0-SNAPSHOT</version>
 		</dependency>
-		
+
+<!-- 		
 		<dependency>
 			<groupId>lode</groupId>
 			<artifactId>lode-miner</artifactId>
 			<version>0.5.0-SNAPSHOT</version>
 		</dependency>
-		
+ -->		
 		<dependency>
 			<groupId>lode</groupId>
 			<artifactId>lode-model</artifactId>

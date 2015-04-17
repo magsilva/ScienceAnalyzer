@@ -25,20 +25,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import mariane.HandmadeBibtexParser;
+import net.sf.jabref.BibtexDatabase;
+import net.sf.sysrev.db.bibtex.Bibtex;
 import au.com.bytecode.opencsv.CSVParser;
+import br.edu.utfpr.cm.scienceanalyzer.evol.BibTeX2DTM;
+import br.edu.utfpr.cm.scienceanalyzer.evol.Corpus;
 
+import com.ironiacorp.computer.Filesystem;
 import com.ironiacorp.io.IoUtil;
-import lode.miner.extraction.bibtex.handmade.HandmadeBibtexParser;
-import lode.model.publication.Collection;
+
+
+
+
+
+
+
+//import lode.miner.extraction.bibtex.handmade.HandmadeBibtexParser;
+import lode.model.*;
 import lode.model.publication.EventArticle;
 import lode.model.publication.Person;
 import lode.model.publication.Publication;
-
 
 public class GUESSGraphPreProcessing
 {
@@ -56,9 +69,9 @@ public class GUESSGraphPreProcessing
 		"node1", "node2", "__edgeid", "visible", "width", "weight", "directed"
 	};
 	
-	private Collection collection;
-
-
+	private lode.model.publication.Collection collection;
+	
+	
 	
 	public GUESSGraphPreProcessing()
 	{
@@ -74,10 +87,20 @@ public class GUESSGraphPreProcessing
 		HandmadeBibtexParser parser = new HandmadeBibtexParser();
 		parser.setPreferredLanguage("en");
 		parser.setIgnoreErrors(true);
-		collection = parser.parse(bibtexFile.getName(), new BufferedReader(new FileReader(bibtexFile)));
+		collection = parser.parse(bibtexFile, new BufferedReader(new FileReader(bibtexFile)));
+	
 	}
 	
+	public String getExtension(String name){
+		int pos = name.lastIndexOf(".");
+		String ex = name.substring(pos, name.length());
+
+		return ex;
+	}
 	
+	public String replaceExtension(String oldEx, String newEx){
+		return newEx;
+	}
 	/**
 	 * 
 	 * @param args
@@ -91,7 +114,10 @@ public class GUESSGraphPreProcessing
 		Writer fileWriter; 
 		
 		String baseName = originalGraphFile.getName();
-		baseName = IoUtil.replaceExtension(IoUtil.getExtension(baseName), ".new." + IoUtil.getExtension(baseName));
+		String extension = getExtension(baseName);
+		//baseName = IoUtil.replaceExtension(IoUtil.getExtension(baseName), ".new." + IoUtil.getExtension(baseName));
+		
+		baseName = replaceExtension(getExtension(baseName), ".new." + getExtension(baseName));
 		newGraphFile = new File(originalGraphFile.getPath() + File.separator + baseName);
 		fileWriter = new FileWriter(newGraphFile);
 		
@@ -148,7 +174,8 @@ public class GUESSGraphPreProcessing
 		String line;
 
 		String baseName = originalGraphFile.getName();
-		baseName = IoUtil.replaceExtension(baseName, "new." + IoUtil.getExtension(baseName));
+		baseName = replaceExtension(baseName, "new" + getExtension(baseName));
+		
 		newGraphFile = new File(originalGraphFile.getParent() + File.separator + baseName);
 		fileWriter = new FileWriter(newGraphFile);
 
@@ -158,7 +185,7 @@ public class GUESSGraphPreProcessing
 			if (publication instanceof EventArticle) {
 				List<Person> authors = publication.getAuthors();
 				for (Person author : authors) {
-					String key = author.getName().toLowerCase();
+					String key = author.getName();
 					if (authorsYear.containsKey(key)) {
 						int year = authorsYear.get(key);
 						if (publication.getYear() < year) {
@@ -244,7 +271,11 @@ public class GUESSGraphPreProcessing
 						if (nodeFieldName.equals(prefix)) {
 							if (! nodeFieldName.equals("year")) {
 								noe.properties.put(nodeFieldName, nodeField);
-								fileWriter.append(nodeField);
+								if(nodeFieldName.equals("label")){
+									fileWriter.append("'" + nodeField + "'");
+								}else{
+									fileWriter.append(nodeField);
+								}
 								fileWriter.append(",");
 							}
 						}
@@ -255,6 +286,7 @@ public class GUESSGraphPreProcessing
 				if (! noe.properties.containsKey("year")) {
 					String id = noe.properties.get("name");
 					String author = noe.properties.get("label").toLowerCase();
+					
 					if (authorsYear.containsKey(author)) {
 						int year = authorsYear.get(author);
 						fileWriter.append(Integer.toString(year));
