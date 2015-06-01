@@ -47,6 +47,7 @@ import com.ironiacorp.io.IoUtil;
 
 
 
+
 //import lode.miner.extraction.bibtex.handmade.HandmadeBibtexParser;
 import lode.model.*;
 import lode.model.publication.EventArticle;
@@ -66,7 +67,7 @@ public class GUESSGraphPreProcessing
 	};
 	
 	private static final String[] EDGE_FIELDS = {
-		"node1", "node2", "__edgeid", "visible", "width", "weight", "directed"
+		"node1", "node2", "__edgeid", "visible", "width", "weight", "directed", "year"
 	};
 	
 	private lode.model.publication.Collection collection;
@@ -160,15 +161,28 @@ public class GUESSGraphPreProcessing
 	 * @param args
 	 * @throws Exception
 	 */
+	/*TODO ver #TODOMari */
 	public File createCoAuthoringGraph(File originalGraphFile) throws Exception
 	{
-		ArrayList<String> nodeFields = new ArrayList<String>();
+		ArrayList<String> nodeFields = new ArrayList<String>(); // n1 ... nN
 		ArrayList<String> edgeFields = new ArrayList<String>();
-		Iterator<String> iField;
-		InputStreamReader isr = new InputStreamReader(new FileInputStream(originalGraphFile));
-		Map<String, Integer> authorsYear = new HashMap<String, Integer>();
+		InputStreamReader isr = new InputStreamReader(new FileInputStream(originalGraphFile)); // file do arquivo original
+		
+		
+		/*map feito para associar uma string (nome do autor) a um objeto Person correspondente ao autor.
+		 * fiz esse map para conseguir usar o contains do publications.getAuthors(), ele precisa comparar um um objeto Person.
+		 * */
+		Map<String,Person> mapAuthors = new HashMap<String, Person>();
+
+		
+		Map<String, Integer> authorsYear = new HashMap<String, Integer>(); // map de (Autor,Ano)
+		
+		/*map feito para mapear um name (n1,n2 .. nn) a um objeto Person (author) */
+		Map<String, Person> nodeAuthor = new HashMap<String, Person>(); // map <node,author> , ex: n0,Arnow
+		
 		boolean processingNodes = false;
 		boolean processingEdges = false;
+		
 		File newGraphFile;
 		Writer fileWriter;
 		String line;
@@ -184,7 +198,11 @@ public class GUESSGraphPreProcessing
 			Publication publication = i.next();
 			if (publication instanceof EventArticle) {
 				List<Person> authors = publication.getAuthors();
+				Integer k = 0;
 				for (Person author : authors) {
+					/* inserindo um author no mapAuthors */
+					mapAuthors.put(author.getName(), author);
+					
 					String key = author.getName();
 					if (authorsYear.containsKey(key)) {
 						int year = authorsYear.get(key);
@@ -198,10 +216,17 @@ public class GUESSGraphPreProcessing
 			}
 		}
 		
+		
+		
 		BufferedReader reader = new BufferedReader(isr);
+		String oldNode1 = null; /* variaveis de controle para nao escrever duas vezes no arquivo final uma aresta, por exemplo n15 n16 estava 
+		escrevendo duas vezes, essas variavei evitam que seja escrito duas vezes uma mesma aresta. */
+		String oldNode2 = null;
+		
 		while ((line = reader.readLine()) != null) {
 			CSVParser csvParser = new CSVParser(',', '\'');
 			String[] fields = csvParser.parseLine(line);
+			
 			
 			if (line.startsWith("nodedef>")) {
 				fields[0] = fields[0].replaceFirst("nodedef>", "");
@@ -242,36 +267,54 @@ public class GUESSGraphPreProcessing
 					String fieldName = field.split(" ")[0];
 					String fieldType = field.split(" ")[1];
 					edgeFields.add(fieldName);
-					for (String prefix : EDGE_FIELDS) {
-						if (fieldName.equals(prefix)) {
-							fileWriter.append(field);
-							fileWriter.append(",");
+					if (! fieldName.equals("year")) {
+						for (String prefix : EDGE_FIELDS) {
+							if (fieldName.equals(prefix)) {
+								fileWriter.append(field);
+								fileWriter.append(",");
+							}
 						}
 					}
 				}
 				fileWriter.append("xyzTerm BOOLEAN");
+				if (! edgeFields.contains("year")) {
+					edgeFields.add("year");
+					fileWriter.append(",year INTEGER");
+				}
 				fileWriter.append("\n");
 				continue;
 			}
 			
 			if (processingNodes) {
+				String key = null;
+				
 				NodeOrEdge noe = new NodeOrEdge();
 				for (int fieldId = 0; fieldId < nodeFields.size(); fieldId++) {
-					String nodeFieldName = nodeFields.get(fieldId);
+					String nodeFieldName = nodeFields.get(fieldId); // campos
 					String nodeField = "";
+					
 					if (nodeFieldName.equals("year")) {
 						try {
 							nodeField = fields[fieldId];
 							noe.properties.put(nodeFieldName, nodeField);
 						} catch (ArrayIndexOutOfBoundsException e) {}
 					} else {
-						nodeField = fields[fieldId];
+						nodeField = fields[fieldId]; // value of nodefieldName
 					}
+					
+					
 					for (String prefix : NODE_FIELDS) {
 						if (nodeFieldName.equals(prefix)) {
 							if (! nodeFieldName.equals("year")) {
 								noe.properties.put(nodeFieldName, nodeField);
+								if(nodeFieldName.equals("name")){
+									key = nodeField;
+								}
 								if(nodeFieldName.equals("label")){
+									/*pego o autor referente ao nodeField no mapAuhtors e insiro o objeto Person retornado no map
+									 * de nodeAuthor */
+									Person aux = mapAuthors.get(nodeField.toLowerCase());
+									nodeAuthor.put(key, aux);
 									fileWriter.append("'" + nodeField + "'");
 								}else{
 									fileWriter.append(nodeField);
@@ -280,6 +323,10 @@ public class GUESSGraphPreProcessing
 							}
 						}
 					}
+				}
+				if(key != null){
+					String authorY = noe.properties.get("label").toLowerCase();
+					int y = authorsYear.get(authorY);
 				}
 				fileWriter.append("true,");
 
@@ -301,18 +348,68 @@ public class GUESSGraphPreProcessing
 			
 			if (processingEdges) {
 				NodeOrEdge noe = new NodeOrEdge();
+				
 				for (int fieldId = 0; fieldId < edgeFields.size(); fieldId++) {
-					String edgeField = fields[fieldId];
+					String edgeField = "";
 					String edgeFieldName = edgeFields.get(fieldId);
+					if (edgeFieldName.equals("year")) {
+						try {
+							edgeField = fields[fieldId];
+							noe.properties.put(edgeFieldName, edgeField);
+						} catch (ArrayIndexOutOfBoundsException e) {}
+					} else {
+						edgeField = fields[fieldId]; // value of edgeFieldName
+					}
 					for (String prefix : EDGE_FIELDS) {
 						if (edgeFieldName.equals(prefix)) {
-							noe.properties.put(edgeFieldName, edgeField);
-							fileWriter.append(edgeField);
-							fileWriter.append(",");
+							if (! edgeFieldName.equals("year")) {
+								noe.properties.put(edgeFieldName, edgeField);
+								if(edgeFieldName.equals("label")){
+									fileWriter.append("'" + edgeField + "'");
+								}else{
+									fileWriter.append(edgeField);
+								}
+								fileWriter.append(",");
+							}
 						}
 					}
 				}
-				fileWriter.append("true");
+				fileWriter.append("true,");
+				
+				if (! noe.properties.containsKey("year")) {
+					Integer y = null;
+					String node1 = noe.properties.get("node1");
+					String node2 = noe.properties.get("node2");
+					
+					Iterator<Publication> iterator = collection.iterator();
+					while (iterator.hasNext()) {
+						Publication publication = iterator.next();
+						
+						Person a1 = nodeAuthor.get(node1);
+						Person a2 = nodeAuthor.get(node2);
+						
+						
+						y = Integer.MAX_VALUE;
+						
+						/*agr consigo comparar com o metodo contains se o Person vindo do node1 esta contido na lista de authors 
+						 * da publication */
+						if(publication.getAuthors().contains(a1) && publication.getAuthors().contains(a2)){
+							int yearOfPubl = publication.getYear();
+							if(yearOfPubl < y){
+								y = yearOfPubl;
+								
+								if(oldNode1 != node1 && oldNode1 != node1){
+								System.err.println(node1 + "--" + node2 + " Year: " + y);
+								fileWriter.append("year: "+ y.toString());
+								
+								oldNode1= node1;
+								oldNode2 = node2;
+								
+								}
+							}
+						}
+					}
+				}
 				fileWriter.append("\n");
 			}
 		}

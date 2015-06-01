@@ -1,0 +1,5 @@
+
+fiz um map de author, node (exemplo: n0,Arnow)
+
+agr quando eu tiver la em edges e houver um n0, eu pego neste map quem é o author (Arnow) e verifico
+no bib com quem esse autor ja publicou.

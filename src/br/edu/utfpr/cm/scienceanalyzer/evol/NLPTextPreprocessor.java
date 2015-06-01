@@ -60,7 +60,7 @@ public class NLPTextPreprocessor extends TypicalPipelineComponent
         String paras[] = tokenizer.tokenize(textResource.getText());
 
         String tags[] = tagger.tag(paras);
-        ArrayList<String> words = new ArrayList<>();
+        ArrayList<String> words = new ArrayList<String>();
         for (int i = 0; i < tags.length; i++) {
         	if (tags[i].compareTo("CC") != 0 && tags[i].compareTo("CD") != 0
                 && tags[i].compareTo("DT") != 0 && tags[i].compareTo("EX") != 0

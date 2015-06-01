@@ -66,6 +66,7 @@ public class HandmadeBibtexParser {
 			pub.addAuthors(person);
 		}
 		
+		
 		/* referenceID*/
 		String referenceID = entry.getCiteKey();
 		pub.setReferenceId(referenceID);
